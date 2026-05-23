@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Museo Malawi</title>
+    <meta
+      name="description"
+      content="Un museo virtuale dedicato a tre anni di volontariato in Malawi e alla raccolta fondi per il prossimo anno."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-grain" aria-hidden="true"></div>
+
+    <main class="museum-app">
+      <section class="menu-screen" id="menuScreen" aria-labelledby="menuTitle">
+        <article class="menu-card menu-card--guide">
+          <p class="menu-card__eyebrow">Guida del percorso</p>
+          <div class="menu-card__divider"></div>
+          <h1 class="menu-card__headline" id="menuTitle">
+            Storie vere.<br />
+            Persone vere.<br />
+            Cambiamenti reali.
+          </h1>
+          <p class="menu-card__intro">
+            Un viaggio in Malawi tra volti, vita quotidiana e ricerca di futuro.
+            Ogni sala raccoglie incontri, gesti e momenti che per noi hanno
+            lasciato il segno.
+          </p>
+
+          <div class="menu-guide">
+            <div class="menu-guide__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="menu-icon-svg">
+                <circle cx="12" cy="12" r="8.6"></circle>
+                <path d="M8.4 15.6L11.2 8.7L16.9 6.5L14.1 13.4L8.4 15.6Z"></path>
+                <path d="M11.2 8.7L14.1 13.4"></path>
+                <path d="M12 12L8.4 15.6"></path>
+              </svg>
+            </div>
+            <div class="menu-guide__copy">
+              <p class="menu-guide__title">Come muoversi</p>
+              <p class="menu-guide__text">
+                Segui il percorso dall'inizio oppure scegli liberamente una sala.
+                Prenditi il tuo tempo.
+              </p>
+            </div>
+          </div>
+
+          <div class="menu-screen__actions">
+            <button class="button button--primary" id="startTourButton">
+              Inizia il percorso
+            </button>
+          </div>
+
+          <div class="menu-card__meta">
+            <a
+              class="menu-meta-link"
+              id="menuDonateButton"
+              href="https://www.gofundme.com/f/children-of-malawi-63cqk?attribution_id=sl:8d1cd865-19c2-4b9d-8ee7-491e37da54ad&lang=en_US&ts=1776781151&utm_campaign=man_sharesheet_dash&utm_content=amp20_t1&utm_medium=customer&utm_source=copy_link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="menu-meta-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="menu-icon-svg">
+                  <path d="M12 20.2C7.2 16.8 4 13.7 4 9.9C4 7.4 5.9 5.6 8.3 5.6C9.9 5.6 11.2 6.4 12 7.8C12.8 6.4 14.1 5.6 15.7 5.6C18.1 5.6 20 7.4 20 9.9C20 13.7 16.8 16.8 12 20.2Z"></path>
+                </svg>
+              </span>
+              <span>Sostieni il prossimo anno</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="menu-card menu-card--areas">
+          <p class="menu-card__eyebrow">Le aree e le sale</p>
+          <div class="menu-card__divider"></div>
+          <div class="menu-areas" id="roomList" aria-label="Elenco delle sale"></div>
+          <div class="menu-areas__footer">
+            <div class="menu-meta-info">
+              <span class="menu-meta-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="menu-icon-svg">
+                  <circle cx="12" cy="12" r="8.5"></circle>
+                  <path d="M12 8V12.2L14.8 14"></path>
+                </svg>
+              </span>
+              <span>Tempo consigliato 10–15 minuti</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="tour-screen hidden" id="tourScreen" aria-live="polite">
+        <header class="tour-topbar">
+          <button class="topbar-link" id="backToMenuButton" type="button">
+            Menu iniziale
+          </button>
+          <div class="tour-progress">
+            <span class="tour-progress__label" id="progressLabel">Sala 1 di 10</span>
+            <div class="tour-progress__track">
+              <div class="tour-progress__value" id="progressValue"></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="travel-overlay hidden" id="travelOverlay" aria-hidden="true">
+          <div class="travel-overlay__center"></div>
+        </div>
+
+        <article class="gallery-room" id="galleryRoom">
+          <div class="gallery-room__shell">
+            <div class="gallery-room__ceiling"></div>
+            <div class="room-header">
+              <p class="room-copy__index" id="roomIndex">Sala 1</p>
+              <h2 class="room-header__title" id="roomTitle"></h2>
+            </div>
+            <div class="gallery-room__wall gallery-room__wall--left">
+              <button
+                class="wall-nav wall-nav--left"
+                id="prevRoomButton"
+                type="button"
+              >
+                <span class="wall-nav__arrow" aria-hidden="true">←</span>
+                <span class="wall-nav__eyebrow">Sala precedente</span>
+              </button>
+            </div>
+
+            <div class="gallery-room__wall gallery-room__wall--center">
+              <div class="light light--left"></div>
+              <div class="light light--center"></div>
+              <div class="light light--right"></div>
+
+              <div class="artworks" id="artworks"></div>
+
+              <div class="room-actions">
+                <button class="button button--dark" id="nextRoomButton" type="button">
+                  Vai avanti
+                </button>
+              </div>
+            </div>
+
+            <div class="gallery-room__wall gallery-room__wall--right">
+              <div class="room-copy room-copy--details" id="roomCopyBox">
+                <button
+                  class="room-copy__toggle"
+                  id="roomCopyToggle"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  <span class="room-copy__summary" id="roomCopySummary"></span>
+                  <span class="room-copy__hint">
+                    <span class="room-copy__hint-text">Tocca per aprire</span>
+                    <span class="room-copy__symbol" aria-hidden="true">+</span>
+                  </span>
+                </button>
+                <div class="room-copy__details-text" id="roomCopyDetails" hidden></div>
+              </div>
+            </div>
+
+            <div class="gallery-room__bench" aria-hidden="true"></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ingrandita">
+      <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Chiudi foto">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="lightbox__overlay" id="lightboxOverlay"></div>
+      <img class="lightbox__image" id="lightboxImage" src="" alt="" />
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
