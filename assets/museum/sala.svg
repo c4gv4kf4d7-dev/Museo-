@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 875" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ceilGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f2ec"/>
+      <stop offset="100%" stop-color="#eae6de"/>
+    </linearGradient>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d6d0c6"/>
+      <stop offset="7%" stop-color="#e3ddd5"/>
+      <stop offset="93%" stop-color="#e3ddd5"/>
+      <stop offset="100%" stop-color="#d6d0c6"/>
+    </linearGradient>
+    <linearGradient id="wallVertGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.07)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.05)"/>
+    </linearGradient>
+    <linearGradient id="leftWallGrad" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#d2cdc4"/>
+      <stop offset="100%" stop-color="#bfbab0"/>
+    </linearGradient>
+    <linearGradient id="rightWallGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d2cdc4"/>
+      <stop offset="100%" stop-color="#bfbab0"/>
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#aeaaa2"/>
+      <stop offset="35%" stop-color="#b8b4ab"/>
+      <stop offset="100%" stop-color="#c0bbb2"/>
+    </linearGradient>
+    <linearGradient id="benchTopGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4f0ea"/>
+      <stop offset="100%" stop-color="#e6e2dc"/>
+    </linearGradient>
+    <linearGradient id="benchFrontGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e6e2dc"/>
+      <stop offset="100%" stop-color="#d8d4ce"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.24)"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="22" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- ── Ceiling ── -->
+  <rect x="0" y="0" width="1400" height="178" fill="url(#ceilGrad)"/>
+  <rect x="0" y="166" width="1400" height="14" fill="rgba(0,0,0,0.035)"/>
+
+  <!-- ── Left side wall ── -->
+  <rect x="0" y="178" width="168" height="520" fill="url(#leftWallGrad)"/>
+  <!-- Corridor opening -->
+  <rect x="0" y="218" width="136" height="452" fill="#1c1a16"/>
+  <rect x="0" y="218" width="118" height="452" fill="#252320"/>
+  <!-- Small painting in corridor -->
+  <rect x="14" y="308" width="66" height="80" fill="rgba(90,86,76,0.85)"/>
+  <rect x="18" y="312" width="58" height="72" fill="rgba(70,66,56,0.7)"/>
+  <!-- Corridor track light -->
+  <rect x="20" y="234" width="52" height="3" rx="1.5" fill="rgba(140,135,125,0.55)"/>
+  <rect x="40" y="237" width="13" height="15" rx="3" fill="rgba(100,96,86,0.55)"/>
+  <!-- Corridor floor -->
+  <line x1="0" y1="670" x2="136" y2="670" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
+
+  <!-- ── Right side wall ── -->
+  <rect x="1232" y="178" width="168" height="520" fill="url(#rightWallGrad)"/>
+  <!-- Window outer frame -->
+  <rect x="1270" y="212" width="108" height="392" rx="1" fill="#282420"/>
+  <!-- Foliage background -->
+  <rect x="1274" y="216" width="100" height="384" fill="#5e8a48"/>
+  <rect x="1274" y="216" width="100" height="110" fill="#4e7a38"/>
+  <rect x="1274" y="310" width="100" height="130" fill="#6a9852"/>
+  <rect x="1274" y="430" width="100" height="170" fill="#4e7a38"/>
+  <!-- Window glass shimmer -->
+  <rect x="1274" y="216" width="100" height="384" fill="rgba(255,255,255,0.10)"/>
+  <!-- Horizontal window bar -->
+  <rect x="1274" y="404" width="100" height="4" fill="#282420"/>
+
+  <!-- ── Back wall ── -->
+  <rect x="168" y="178" width="1064" height="520" fill="url(#wallGrad)"/>
+  <rect x="168" y="178" width="1064" height="520" fill="url(#wallVertGrad)"/>
+
+  <!-- Wall light pools (large soft halos, rendered behind spotlights) -->
+  <ellipse cx="432" cy="390" rx="148" ry="218" fill="rgba(255,248,218,0.48)" filter="url(#softBlur)"/>
+  <ellipse cx="700" cy="390" rx="148" ry="218" fill="rgba(255,248,218,0.48)" filter="url(#softBlur)"/>
+  <ellipse cx="968" cy="390" rx="148" ry="218" fill="rgba(255,248,218,0.48)" filter="url(#softBlur)"/>
+
+  <!-- ── Track lighting rail ── -->
+  <rect x="298" y="188" width="804" height="7" rx="3.5" fill="#8c877e"/>
+  <!-- Rail highlight -->
+  <rect x="298" y="188" width="804" height="3" rx="1.5" fill="rgba(255,255,255,0.28)"/>
+
+  <!-- Spotlight 1 -->
+  <rect x="420" y="195" width="24" height="32" rx="5" fill="#706d66"/>
+  <ellipse cx="432" cy="230" rx="14" ry="9" fill="#484642"/>
+  <circle cx="432" cy="228" r="5" fill="rgba(255,242,205,0.95)"/>
+  <!-- Cone of light line hints -->
+  <line x1="432" y1="230" x2="382" y2="698" stroke="rgba(255,248,220,0.04)" stroke-width="60"/>
+
+  <!-- Spotlight 2 -->
+  <rect x="688" y="195" width="24" height="32" rx="5" fill="#706d66"/>
+  <ellipse cx="700" cy="230" rx="14" ry="9" fill="#484642"/>
+  <circle cx="700" cy="228" r="5" fill="rgba(255,242,205,0.95)"/>
+  <line x1="700" y1="230" x2="700" y2="698" stroke="rgba(255,248,220,0.04)" stroke-width="60"/>
+
+  <!-- Spotlight 3 -->
+  <rect x="956" y="195" width="24" height="32" rx="5" fill="#706d66"/>
+  <ellipse cx="968" cy="230" rx="14" ry="9" fill="#484642"/>
+  <circle cx="968" cy="228" r="5" fill="rgba(255,242,205,0.95)"/>
+  <line x1="968" y1="230" x2="1018" y2="698" stroke="rgba(255,248,220,0.04)" stroke-width="60"/>
+
+  <!-- ── Wall / floor junction ── -->
+  <line x1="0" y1="698" x2="1400" y2="698" stroke="rgba(128,122,116,0.38)" stroke-width="1.5"/>
+
+  <!-- ── Floor ── -->
+  <rect x="0" y="698" width="1400" height="177" fill="url(#floorGrad)"/>
+  <!-- Floor highlight strip -->
+  <rect x="0" y="698" width="1400" height="28" fill="rgba(255,255,255,0.07)"/>
+  <!-- Floor reflections from spotlights -->
+  <ellipse cx="432" cy="730" rx="80" ry="18" fill="rgba(255,248,218,0.12)"/>
+  <ellipse cx="700" cy="730" rx="80" ry="18" fill="rgba(255,248,218,0.12)"/>
+  <ellipse cx="968" cy="730" rx="80" ry="18" fill="rgba(255,248,218,0.12)"/>
+
+  <!-- ── Bench shadow ── -->
+  <ellipse cx="700" cy="756" rx="248" ry="13" fill="rgba(0,0,0,0.10)" filter="url(#softBlur)"/>
+
+  <!-- ── Bench ── -->
+  <!-- Top surface -->
+  <rect x="460" y="730" width="480" height="22" rx="2" fill="url(#benchTopGrad)"/>
+  <!-- Front face -->
+  <rect x="460" y="752" width="480" height="54" rx="1" fill="url(#benchFrontGrad)"/>
+  <!-- Underside shadow -->
+  <rect x="460" y="764" width="480" height="6" fill="rgba(0,0,0,0.04)"/>
+  <!-- Left leg -->
+  <rect x="482" y="806" width="38" height="28" rx="1" fill="#d8d4ce"/>
+  <!-- Right leg -->
+  <rect x="880" y="806" width="38" height="28" rx="1" fill="#d8d4ce"/>
+
+  <!-- ── Global vignette ── -->
+  <rect x="0" y="0" width="1400" height="875" fill="url(#vignette)"/>
+</svg>

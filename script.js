@@ -125,8 +125,8 @@ const roomLayouts = {
 const rooms = [
   {
     number: 1,
-    backdrop: "./assets/museum/Sala1.jpg",
-    backdropFit: "contain",
+    backdrop: "./assets/museum/sala.svg",
+    backdropFit: "cover",
     backdropPosition: "center center",
     layout: roomLayouts.room1,
     title: "Comunità",
@@ -136,7 +136,7 @@ const rooms = [
   },
   {
     number: 2,
-    backdrop: "./assets/stanze/931C8EC2-4B0F-4665-B043-1B46ED64EADE.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room2,
     title: "Non si vede, ma c'e.",
     text:
@@ -148,7 +148,7 @@ const rooms = [
   },
   {
     number: 3,
-    backdrop: "./assets/stanze/A135CA34-6B62-4FF5-A083-13EDD1724D08.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room3,
     title: "Cambia qualcosa.",
     text:
@@ -160,7 +160,7 @@ const rooms = [
   },
   {
     number: 4,
-    backdrop: "./assets/stanze/5B92F4B7-615A-4491-8783-9C8B8D1C6998.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room4,
     title: "Le ragazze.",
     text:
@@ -171,7 +171,7 @@ const rooms = [
   },
   {
     number: 5,
-    backdrop: "./assets/stanze/2A530854-993A-4684-BB8A-A8DAD014C50F.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room5,
     title: "Le parole.",
     text:
@@ -182,7 +182,7 @@ const rooms = [
   },
   {
     number: 6,
-    backdrop: "./assets/stanze/9C0ABADD-F3FC-4D0A-82EB-8E1EBB861F0F.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room6,
     title: "Il futuro.",
     text:
@@ -193,7 +193,7 @@ const rooms = [
   },
   {
     number: 7,
-    backdrop: "./assets/stanze/517B972D-6844-4C8F-8998-9ED90C6C294E.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room7,
     title: "La pioggia.",
     text:
@@ -204,7 +204,7 @@ const rooms = [
   },
   {
     number: 8,
-    backdrop: "./assets/stanze/C9163C05-7B21-47E6-94E8-8A8753D41936.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room8,
     title: "Grazie.",
     text:
@@ -215,7 +215,7 @@ const rooms = [
   },
   {
     number: 9,
-    backdrop: "./assets/stanze/6467815A-1EAF-4C7D-B161-0232A06481B7.png",
+    backdrop: "./assets/museum/sala.svg",
     layout: roomLayouts.room9,
     title: "Correre.",
     text:

@@ -797,7 +797,11 @@ a {
   padding: 0;
   border-radius: 0;
   background: transparent;
-  box-shadow: none;
+  box-shadow:
+    0 0 0 8px #c9a84c,
+    0 0 0 10px #b8922e,
+    0 0 0 11px #e8c86e,
+    0 6px 28px rgba(0,0,0,0.28);
 }
 
 .artwork__empty {
