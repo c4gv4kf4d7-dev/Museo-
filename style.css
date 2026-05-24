@@ -311,7 +311,7 @@ a {
 
 .menu-areas {
   display: grid;
-  gap: 18px;
+  gap: 28px;
 }
 
 .menu-areas__footer {
