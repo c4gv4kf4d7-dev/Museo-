@@ -110,16 +110,16 @@ a {
 .menu-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 34px;
   background:
-    radial-gradient(circle at center, rgba(243, 233, 219, 0.18), transparent 70%),
-    linear-gradient(180deg, rgba(255, 251, 245, 0.72), rgba(249, 243, 235, 0.68));
+    radial-gradient(circle at center, rgba(243, 233, 219, 0.10), transparent 70%),
+    linear-gradient(180deg, rgba(255, 251, 245, 0.38), rgba(249, 243, 235, 0.34));
   box-shadow:
-    0 28px 60px rgba(55, 46, 37, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(22px) saturate(130%);
-  -webkit-backdrop-filter: blur(22px) saturate(130%);
+    0 28px 60px rgba(55, 46, 37, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
 }
 
 .menu-card::after {
@@ -665,14 +665,14 @@ a {
 
 .room-copy--details {
   padding: 13px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(20, 16, 12, 0.42);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 12px 24px rgba(33, 27, 21, 0.035);
-  backdrop-filter: blur(14px) saturate(122%);
-  -webkit-backdrop-filter: blur(14px) saturate(122%);
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 12px 24px rgba(33, 27, 21, 0.18);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
 }
 
 .room-copy__toggle {
@@ -687,7 +687,7 @@ a {
 
 .room-copy__summary,
 .room-copy__details-text {
-  color: rgba(32, 28, 24, 0.9);
+  color: rgba(245, 240, 232, 0.95);
   font-size: clamp(0.68rem, 0.96vw, 0.88rem);
   line-height: 1.48;
   white-space: pre-line;
@@ -701,7 +701,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: rgba(36, 31, 27, 0.78);
+  color: rgba(220, 212, 200, 0.82);
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -874,7 +874,7 @@ a {
 
 .gallery-room__wall--right {
   right: clamp(16px, 2.7vw, 34px);
-  bottom: clamp(84px, 9vw, 118px);
+  bottom: clamp(36px, 4vw, 56px);
   width: clamp(168px, 20vw, 240px);
   transform: none;
   z-index: 4;
