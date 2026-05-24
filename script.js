@@ -339,19 +339,29 @@ function splitRoomText(text) {
 function renderRoomList() {
   roomList.innerHTML = menuAreas
     .map(
-      (area) => `
+      (area, areaIndex) => `
         <section
           class="menu-area"
           style="--area-accent:${area.accent}; --area-accent-text:${area.accentText}"
         >
-          <div class="menu-area__heading">
+          <button
+            class="menu-area__header"
+            type="button"
+            aria-expanded="false"
+            aria-controls="area-rooms-${areaIndex}"
+          >
             <div class="menu-area__badge" aria-hidden="true">${area.icon}</div>
             <div class="menu-area__meta">
               <p class="menu-area__label">${area.label}</p>
               <h2 class="menu-area__title">${area.title}</h2>
             </div>
-          </div>
-          <div class="room-list">
+            <span class="menu-area__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </span>
+          </button>
+          <div class="room-list" id="area-rooms-${areaIndex}">
             ${area.items
               .map(
                 (item) => `
@@ -368,10 +378,17 @@ function renderRoomList() {
     )
     .join("");
 
+  roomList.querySelectorAll(".menu-area__header").forEach((header) => {
+    header.addEventListener("click", () => {
+      const area = header.closest(".menu-area");
+      const isOpen = area.classList.toggle("is-open");
+      header.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
+
   roomList.querySelectorAll("[data-room-index]").forEach((button) => {
     button.addEventListener("click", () => {
-      const index = Number(button.dataset.roomIndex);
-      openTour(index);
+      openTour(Number(button.dataset.roomIndex));
     });
   });
 }
