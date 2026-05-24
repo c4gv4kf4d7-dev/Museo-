@@ -16,8 +16,9 @@ const menuAreas = [
     `,
     items: [
       { text: "Comunità", roomIndex: 0 },
-      { text: "Non si vede, ma c'e", roomIndex: 1 },
-      { text: "Cambia qualcosa", roomIndex: 2 }
+      { text: "Mais", roomIndex: 1 },
+      { text: "La forza delle donne", roomIndex: 2 },
+      { text: "Sorrisi", roomIndex: 3 }
     ]
   },
   {
@@ -32,9 +33,9 @@ const menuAreas = [
       </svg>
     `,
     items: [
-      { text: "Le ragazze", roomIndex: 4 },
-      { text: "Le parole", roomIndex: 5 },
-      { text: "Il futuro", roomIndex: 6 }
+      { text: "Le ragazze", roomIndex: 5 },
+      { text: "Le parole", roomIndex: 6 },
+      { text: "Il futuro", roomIndex: 7 }
     ]
   },
   {
@@ -48,9 +49,9 @@ const menuAreas = [
       </svg>
     `,
     items: [
-      { text: "La pioggia", roomIndex: 8 },
-      { text: "Grazie", roomIndex: 9 },
-      { text: "Correre", roomIndex: 10 }
+      { text: "La pioggia", roomIndex: 9 },
+      { text: "Grazie", roomIndex: 10 },
+      { text: "Correre", roomIndex: 11 }
     ]
   }
 ];
@@ -134,7 +135,7 @@ const rooms = [
     hall: 1,
     backdrop: "./assets/museum/sala2.jpg",
     layout: roomLayouts.room2,
-    title: "Non si vede, ma c'è.",
+    title: "Mais",
     text:
       "Una stanza doppia, come doppio è stato il nostro sguardo: da una parte i volti, dall'altra la vita di ogni giorno che ci ha insegnato a restare."
   },
@@ -142,17 +143,25 @@ const rooms = [
     hall: 1,
     backdrop: "./assets/museum/sala3.jpg",
     layout: roomLayouts.room3,
-    title: "Cambia qualcosa.",
+    title: "La forza delle donne",
     text:
       "Le cornici gemelle raccontano una crescita condivisa. Ogni progetto è stato fatto di persone diverse, ma tenute insieme dallo stesso desiderio di futuro."
   },
   {
+    hall: 1,
+    backdrop: "./assets/museum/sala4.jpg",
+    layout: roomLayouts.room1,
+    title: "Sorrisi",
+    text:
+      "Ci sono sorrisi che non si dimenticano. In Malawi abbiamo imparato che la gioia non ha bisogno di molte parole per essere vera e contagiosa."
+  },
+  {
     corridor: true,
-    backdrop: "./assets/museum/corridoio1.jpg"
+    backdrop: "./assets/museum/corridoio1.png"
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala4.jpg",
+    backdrop: "./assets/museum/sala5.jpg",
     layout: roomLayouts.room4,
     title: "Le ragazze.",
     text:
@@ -160,7 +169,7 @@ const rooms = [
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala5.jpg",
+    backdrop: "./assets/museum/sala6.jpg",
     layout: roomLayouts.room5,
     title: "Le parole.",
     text:
@@ -168,7 +177,7 @@ const rooms = [
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala6.jpg",
+    backdrop: "./assets/museum/sala7.jpg",
     layout: roomLayouts.room6,
     title: "Il futuro.",
     text:
@@ -180,7 +189,7 @@ const rooms = [
   },
   {
     hall: 3,
-    backdrop: "./assets/museum/sala7.jpg",
+    backdrop: "./assets/museum/sala8.jpg",
     layout: roomLayouts.room7,
     title: "La pioggia.",
     text:
@@ -188,7 +197,7 @@ const rooms = [
   },
   {
     hall: 3,
-    backdrop: "./assets/museum/sala8.jpg",
+    backdrop: "./assets/museum/sala9.jpg",
     layout: roomLayouts.room8,
     title: "Grazie.",
     text:
@@ -196,7 +205,7 @@ const rooms = [
   },
   {
     hall: 3,
-    backdrop: "./assets/museum/sala9.jpg",
+    backdrop: "./assets/museum/sala10.jpg",
     layout: roomLayouts.room9,
     title: "Correre.",
     text:
