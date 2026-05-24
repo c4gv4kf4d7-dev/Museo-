@@ -137,7 +137,7 @@ const rooms = [
     layout: roomLayouts.room2,
     title: "Mais",
     text:
-      "Una stanza doppia, come doppio è stato il nostro sguardo: da una parte i volti, dall'altra la vita di ogni giorno che ci ha insegnato a restare."
+      "Insieme ai volontari di Tiyende Pamodzi abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte case vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto."
   },
   {
     hall: 1,
