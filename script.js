@@ -8,10 +8,11 @@ const menuAreas = [
     accentText: "#c28a17",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
-        <circle cx="8" cy="8" r="2.2"></circle>
-        <circle cx="16" cy="8" r="2.2"></circle>
-        <path d="M4.5 17.5C5.5 14.7 7.2 13.2 9.5 13.2C11.8 13.2 13.5 14.7 14.5 17.5"></path>
-        <path d="M9.8 17.5C10.4 15.1 11.8 13.8 14 13.8C16.2 13.8 17.9 15.2 19 17.5"></path>
+        <circle cx="9" cy="7.5" r="2.5"/>
+        <circle cx="15.5" cy="7.5" r="2.5"/>
+        <path d="M4.5 19c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/>
+        <path d="M15.5 14.5c2.8 0 4.5 1.8 4.5 4.5"/>
+        <line x1="9" y1="12" x2="15.5" y2="12" stroke-dasharray="1.5 1.5"/>
       </svg>
     `,
     items: [
@@ -27,8 +28,9 @@ const menuAreas = [
     accentText: "#2d81c7",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
-        <path d="M5 6.5L12 4.8L19 6.5V17.8L12 16.2L5 17.8V6.5Z"></path>
-        <path d="M12 5V16"></path>
+        <path d="M4 19V7.5a2 2 0 0 1 2-2H10.5v13.5H6a2 2 0 0 1-2-2z"/>
+        <path d="M20 19V7.5a2 2 0 0 0-2-2H13.5v13.5H18a2 2 0 0 0 2-2z"/>
+        <line x1="12" y1="5.5" x2="12" y2="19"/>
       </svg>
     `,
     items: [
@@ -44,8 +46,8 @@ const menuAreas = [
     accentText: "#89a019",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
-        <path d="M12 4.8C14.8 8.1 17 10.4 17 13.3C17 16 14.8 18.2 12 18.2C9.2 18.2 7 16 7 13.3C7 10.4 9.2 8.1 12 4.8Z"></path>
-        <path d="M9.2 13.6C10 14.6 10.9 15.1 12 15.1C13.1 15.1 14 14.6 14.8 13.6"></path>
+        <path d="M12 3C8.5 8 6 11.5 6 14.5a6 6 0 0 0 12 0C18 11.5 15.5 8 12 3z"/>
+        <path d="M9.5 16.5a3.2 3.2 0 0 0 4 1.2"/>
       </svg>
     `,
     items: [
@@ -301,7 +303,7 @@ document.addEventListener("keydown", (e) => {
 // ── Rendering ─────────────────────────────────────────────────────────────────
 
 function buildArtworkMarkup(room) {
-  return room.artworks
+  return (room.artworks || [])
     .map((artwork, index) => {
       const frame = room.layout.frames[index];
       const style = `style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"`;
