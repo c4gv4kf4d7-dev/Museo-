@@ -153,7 +153,7 @@ const rooms = [
     layout: roomLayouts.room1,
     title: "Sorrisi",
     text:
-      "Ci sono sorrisi che non si dimenticano. In Malawi abbiamo imparato che la gioia non ha bisogno di molte parole per essere vera e contagiosa."
+      "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza."
   },
   {
     corridor: true,
