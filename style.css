@@ -1082,6 +1082,17 @@ a {
   }
 }
 
+/* ── Corridoio ───────────────────────────────────────────────────────────── */
+
+.gallery-room--corridor .room-header,
+.gallery-room--corridor .gallery-room__wall--right {
+  display: none;
+}
+
+.gallery-room--corridor .gallery-room__wall--left {
+  bottom: clamp(84px, 9vw, 118px);
+}
+
 /* ── Lightbox ─────────────────────────────────────────────────────────────── */
 
 .lightbox {

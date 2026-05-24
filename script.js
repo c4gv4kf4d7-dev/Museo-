@@ -1,5 +1,5 @@
 const GOFUNDME_URL = "https://www.gofundme.com/f/children-of-malawi-63cqk?attribution_id=sl:8d1cd865-19c2-4b9d-8ee7-491e37da54ad&lang=en_US&ts=1776781151&utm_campaign=man_sharesheet_dash&utm_content=amp20_t1&utm_medium=customer&utm_source=copy_link";
-const ENTRANCE_URL = "./assets/stanze/0CAA7C64-B698-4268-9245-E323981EE76C.png";
+const ENTRANCE_URL = "./assets/museum/menu.jpg";
 const menuAreas = [
   {
     label: "Sala 1",
@@ -32,9 +32,9 @@ const menuAreas = [
       </svg>
     `,
     items: [
-      { text: "Le ragazze", roomIndex: 3 },
-      { text: "Le parole", roomIndex: 4 },
-      { text: "Il futuro", roomIndex: 5 }
+      { text: "Le ragazze", roomIndex: 4 },
+      { text: "Le parole", roomIndex: 5 },
+      { text: "Il futuro", roomIndex: 6 }
     ]
   },
   {
@@ -49,9 +49,9 @@ const menuAreas = [
       </svg>
     `,
     items: [
-      { text: "La pioggia", roomIndex: 6 },
-      { text: "Grazie", roomIndex: 7 },
-      { text: "Correre", roomIndex: 8 }
+      { text: "La pioggia", roomIndex: 8 },
+      { text: "Grazie", roomIndex: 9 },
+      { text: "Correre", roomIndex: 10 }
     ]
   }
 ];
@@ -124,7 +124,7 @@ const roomLayouts = {
 
 const rooms = [
   {
-    number: 1,
+    hall: 1,
     backdrop: "./assets/museum/sala1.jpg",
     layout: roomLayouts.room1,
     title: "Comunità",
@@ -132,7 +132,7 @@ const rooms = [
       "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno decide di vederla."
   },
   {
-    number: 2,
+    hall: 1,
     backdrop: "./assets/museum/sala2.jpg",
     layout: roomLayouts.room2,
     title: "Non si vede, ma c'è.",
@@ -140,7 +140,7 @@ const rooms = [
       "Una stanza doppia, come doppio è stato il nostro sguardo: da una parte i volti, dall'altra la vita di ogni giorno che ci ha insegnato a restare."
   },
   {
-    number: 3,
+    hall: 1,
     backdrop: "./assets/museum/sala3.jpg",
     layout: roomLayouts.room3,
     title: "Cambia qualcosa.",
@@ -148,7 +148,11 @@ const rooms = [
       "Le cornici gemelle raccontano una crescita condivisa. Ogni progetto è stato fatto di persone diverse, ma tenute insieme dallo stesso desiderio di futuro."
   },
   {
-    number: 4,
+    corridor: true,
+    backdrop: "./assets/museum/corridoio1.jpg"
+  },
+  {
+    hall: 2,
     backdrop: "./assets/museum/sala4.jpg",
     layout: roomLayouts.room4,
     title: "Le ragazze.",
@@ -156,7 +160,7 @@ const rooms = [
       "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero è già un modo di prendersi cura."
   },
   {
-    number: 5,
+    hall: 2,
     backdrop: "./assets/museum/sala5.jpg",
     layout: roomLayouts.room5,
     title: "Le parole.",
@@ -164,7 +168,7 @@ const rooms = [
       "Le aperture laterali ricordano che il volontariato non si esaurisce in una sola scena. Ogni gesto apre sempre un passaggio verso qualcos'altro."
   },
   {
-    number: 6,
+    hall: 2,
     backdrop: "./assets/museum/sala6.jpg",
     layout: roomLayouts.room6,
     title: "Il futuro.",
@@ -172,7 +176,11 @@ const rooms = [
       "In questa stanza la luce entra con decisione, come molti momenti vissuti sul campo. Anche nella fatica c'erano chiarezza, bellezza e gratitudine."
   },
   {
-    number: 7,
+    corridor: true,
+    backdrop: "./assets/museum/corridoio2.jpg"
+  },
+  {
+    hall: 3,
     backdrop: "./assets/museum/sala7.jpg",
     layout: roomLayouts.room7,
     title: "La pioggia.",
@@ -180,7 +188,7 @@ const rooms = [
       "Una sala essenziale, quasi silenziosa. È il ricordo di tutte le volte in cui non serviva fare molto, ma soltanto esserci con continuità."
   },
   {
-    number: 8,
+    hall: 3,
     backdrop: "./assets/museum/sala8.jpg",
     layout: roomLayouts.room8,
     title: "Grazie.",
@@ -188,7 +196,7 @@ const rooms = [
       "Una grande immagine centrale per custodire il senso di questi tre anni. Non solo attività, ma un legame che continua a interrogarci e a chiamarci."
   },
   {
-    number: 9,
+    hall: 3,
     backdrop: "./assets/museum/sala9.jpg",
     layout: roomLayouts.room9,
     title: "Correre.",
@@ -317,10 +325,14 @@ function buildArtworkMarkup(room) {
     .join("");
 }
 
+const nonCorridorRooms = rooms.filter(r => !r.corridor);
+
 function updateProgress(index) {
-  const roomNumber = index + 1;
-  progressLabel.textContent = `Sala ${roomNumber} di ${rooms.length}`;
-  progressValue.style.width = `${(roomNumber / rooms.length) * 100}%`;
+  const room = rooms[index];
+  if (room.corridor) return;
+  const pos = nonCorridorRooms.indexOf(room) + 1;
+  progressLabel.textContent = `Stanza ${pos} di ${nonCorridorRooms.length}`;
+  progressValue.style.width = `${(pos / nonCorridorRooms.length) * 100}%`;
 }
 
 function splitRoomText(text) {
@@ -395,46 +407,59 @@ function renderRoomList() {
 
 function renderRoom(index) {
   const room = rooms[index];
-  const museumHallNumber = Math.ceil((index + 1) / 3);
+  const isCorridor = Boolean(room.corridor);
 
   currentRoomIndex = index;
+  galleryRoom.classList.toggle("gallery-room--corridor", isCorridor);
   galleryRoom.style.setProperty("--room-backdrop", `url("${room.backdrop}")`);
-  galleryRoom.style.setProperty("--room-backdrop-fit", room.backdropFit || "cover");
-  galleryRoom.style.setProperty("--room-backdrop-position", room.backdropPosition || "center top");
-  galleryRoom.style.setProperty("--plaque-x", `${room.layout.plaque.x}%`);
-  galleryRoom.style.setProperty("--plaque-y", `${room.layout.plaque.y}%`);
-  galleryRoom.style.setProperty("--plaque-w", `${room.layout.plaque.w}%`);
-  galleryRoom.style.setProperty("--prev-x", `${room.layout.prev.x}%`);
-  galleryRoom.style.setProperty("--prev-y", `${room.layout.prev.y}%`);
-  galleryRoom.style.setProperty("--prev-w", `${room.layout.prev.w}%`);
-  galleryRoom.style.setProperty("--action-x", `${room.layout.action.x}%`);
-  galleryRoom.style.setProperty("--action-y", `${room.layout.action.y}%`);
-  artworksContainer.innerHTML = buildArtworkMarkup(room);
-  roomIndex.textContent = `Sala ${museumHallNumber}`;
-  roomTitle.textContent = room.title;
-  const { summary, details } = splitRoomText(room.text);
-  roomCopySummary.textContent = summary;
-  roomCopyDetails.textContent = details;
-  roomCopyDetails.hidden = true;
-  roomCopyBox.classList.remove("is-open", "is-static");
-  roomCopyToggle.setAttribute("aria-expanded", "false");
-  roomCopyToggle.disabled = false;
+  galleryRoom.style.setProperty("--room-backdrop-fit", "cover");
+  galleryRoom.style.setProperty("--room-backdrop-position", "center center");
+  galleryRoom.style.setProperty("--action-x", isCorridor ? "50%" : `${room.layout.action.x}%`);
+  galleryRoom.style.setProperty("--action-y", isCorridor ? "88%" : `${room.layout.action.y}%`);
 
-  if (!details) {
-    roomCopyBox.classList.add("is-static");
-    roomCopyToggle.disabled = true;
+  if (!isCorridor) {
+    galleryRoom.style.setProperty("--plaque-x", `${room.layout.plaque.x}%`);
+    galleryRoom.style.setProperty("--plaque-y", `${room.layout.plaque.y}%`);
+    galleryRoom.style.setProperty("--plaque-w", `${room.layout.plaque.w}%`);
+    galleryRoom.style.setProperty("--prev-x", `${room.layout.prev.x}%`);
+    galleryRoom.style.setProperty("--prev-y", `${room.layout.prev.y}%`);
+    galleryRoom.style.setProperty("--prev-w", `${room.layout.prev.w}%`);
+  }
+
+  artworksContainer.innerHTML = isCorridor ? "" : buildArtworkMarkup(room);
+
+  if (isCorridor) {
+    roomIndex.textContent = "";
+    roomTitle.textContent = "";
+    roomCopyBox.hidden = true;
+    nextRoomButton.textContent = "Entra nella prossima sala";
+    nextRoomButton.dataset.mode = "next";
+  } else {
+    roomCopyBox.hidden = false;
+    roomIndex.textContent = `Sala ${room.hall}`;
+    roomTitle.textContent = room.title;
+    const { summary, details } = splitRoomText(room.text);
+    roomCopySummary.textContent = summary;
+    roomCopyDetails.textContent = details;
+    roomCopyDetails.hidden = true;
+    roomCopyBox.classList.remove("is-open", "is-static");
+    roomCopyToggle.setAttribute("aria-expanded", "false");
+    roomCopyToggle.disabled = false;
+    if (!details) {
+      roomCopyBox.classList.add("is-static");
+      roomCopyToggle.disabled = true;
+    }
+    if (room.donate) {
+      nextRoomButton.textContent = "Vai a GoFundMe";
+      nextRoomButton.dataset.mode = "donate";
+    } else {
+      nextRoomButton.textContent = "Vai avanti";
+      nextRoomButton.dataset.mode = "next";
+    }
   }
 
   prevRoomButton.disabled = false;
   updateProgress(index);
-
-  if (room.donate) {
-    nextRoomButton.textContent = "Vai a GoFundMe";
-    nextRoomButton.dataset.mode = "donate";
-  } else {
-    nextRoomButton.textContent = "Vai avanti";
-    nextRoomButton.dataset.mode = "next";
-  }
 }
 
 function openTour(index = 0) {
