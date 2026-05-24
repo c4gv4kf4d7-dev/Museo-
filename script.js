@@ -8,11 +8,10 @@ const menuAreas = [
     accentText: "#c28a17",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
-        <circle cx="9" cy="7.5" r="2.5"/>
-        <circle cx="15.5" cy="7.5" r="2.5"/>
-        <path d="M4.5 19c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/>
-        <path d="M15.5 14.5c2.8 0 4.5 1.8 4.5 4.5"/>
-        <line x1="9" y1="12" x2="15.5" y2="12" stroke-dasharray="1.5 1.5"/>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
       </svg>
     `,
     items: [
@@ -28,9 +27,8 @@ const menuAreas = [
     accentText: "#2d81c7",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
-        <path d="M4 19V7.5a2 2 0 0 1 2-2H10.5v13.5H6a2 2 0 0 1-2-2z"/>
-        <path d="M20 19V7.5a2 2 0 0 0-2-2H13.5v13.5H18a2 2 0 0 0 2-2z"/>
-        <line x1="12" y1="5.5" x2="12" y2="19"/>
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
       </svg>
     `,
     items: [
@@ -46,8 +44,7 @@ const menuAreas = [
     accentText: "#89a019",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
-        <path d="M12 3C8.5 8 6 11.5 6 14.5a6 6 0 0 0 12 0C18 11.5 15.5 8 12 3z"/>
-        <path d="M9.5 16.5a3.2 3.2 0 0 0 4 1.2"/>
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
       </svg>
     `,
     items: [
