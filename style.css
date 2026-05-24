@@ -421,7 +421,7 @@ a {
 }
 
 .menu-area.is-open .room-list {
-  max-height: 220px;
+  max-height: 300px;
 }
 
 .room-list__item {
