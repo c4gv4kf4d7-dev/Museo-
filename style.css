@@ -1106,6 +1106,50 @@ a {
   bottom: clamp(84px, 9vw, 118px);
 }
 
+/* ── Corridor sign ───────────────────────────────────────────────────────── */
+
+.corridor-sign {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 2.4rem 3rem;
+  background: rgba(14, 10, 6, 0.52);
+  backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(220, 200, 170, 0.18);
+  border-radius: 4px;
+  min-width: clamp(220px, 38vw, 420px);
+  pointer-events: none;
+}
+
+.corridor-sign__eyebrow {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(0.62rem, 1vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(220, 200, 165, 0.72);
+  margin: 0 0 0.9rem;
+}
+
+.corridor-sign__rule {
+  width: 32px;
+  height: 1px;
+  background: rgba(220, 200, 165, 0.35);
+  margin: 0 auto 1rem;
+}
+
+.corridor-sign__title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.7rem, 3.8vw, 2.8rem);
+  font-weight: 600;
+  color: rgba(245, 238, 224, 0.96);
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
 /* ── Lightbox ─────────────────────────────────────────────────────────────── */
 
 .lightbox {

@@ -157,7 +157,9 @@ const rooms = [
   },
   {
     corridor: true,
-    backdrop: "./assets/museum/corridoio1.png"
+    backdrop: "./assets/museum/corridoio1.png",
+    eyebrow: "Stai per visitare la Sala 2",
+    nextTitle: "Istituto Saint John"
   },
   {
     hall: 2,
@@ -234,6 +236,9 @@ const startTourButton = document.getElementById("startTourButton");
 const backToMenuButton = document.getElementById("backToMenuButton");
 const menuDonateButton = document.getElementById("menuDonateButton");
 const travelOverlay = document.getElementById("travelOverlay");
+const corridorSign = document.getElementById("corridorSign");
+const corridorEyebrow = document.getElementById("corridorEyebrow");
+const corridorTitle = document.getElementById("corridorTitle");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
@@ -442,7 +447,11 @@ function renderRoom(index) {
     roomCopyBox.hidden = true;
     nextRoomButton.textContent = "Entra nella prossima sala";
     nextRoomButton.dataset.mode = "next";
+    corridorEyebrow.textContent = room.eyebrow || "";
+    corridorTitle.textContent = room.nextTitle || "";
+    corridorSign.hidden = false;
   } else {
+    corridorSign.hidden = true;
     roomCopyBox.hidden = false;
     roomIndex.textContent = `Sala ${room.hall}`;
     roomTitle.textContent = room.title;
