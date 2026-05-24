@@ -113,8 +113,8 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 34px;
   background:
-    radial-gradient(circle at center, rgba(243, 233, 219, 0.10), transparent 70%),
-    linear-gradient(180deg, rgba(255, 251, 245, 0.38), rgba(249, 243, 235, 0.34));
+    radial-gradient(circle at center, rgba(243, 233, 219, 0.06), transparent 70%),
+    linear-gradient(180deg, rgba(255, 251, 245, 0.20), rgba(249, 243, 235, 0.17));
   box-shadow:
     0 28px 60px rgba(55, 46, 37, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
@@ -318,10 +318,21 @@ a {
 
 .menu-areas__footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(136, 113, 86, 0.14);
+}
+
+.menu-credit {
+  margin: 0;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #7a6248;
+  line-height: 1.55;
+  text-align: left;
 }
 
 .menu-card--areas .menu-meta-info {
@@ -688,7 +699,7 @@ a {
 .room-copy__summary,
 .room-copy__details-text {
   color: rgba(245, 240, 232, 0.95);
-  font-size: clamp(0.68rem, 0.96vw, 0.88rem);
+  font-size: clamp(0.82rem, 1.15vw, 1.02rem);
   line-height: 1.48;
   white-space: pre-line;
 }
@@ -874,8 +885,8 @@ a {
 
 .gallery-room__wall--right {
   right: clamp(16px, 2.7vw, 34px);
-  bottom: clamp(36px, 4vw, 56px);
-  width: clamp(168px, 20vw, 240px);
+  bottom: clamp(18px, 2.2vw, 34px);
+  width: clamp(180px, 22vw, 260px);
   transform: none;
   z-index: 4;
 }

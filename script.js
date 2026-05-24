@@ -129,7 +129,7 @@ const rooms = [
     layout: roomLayouts.room1,
     title: "Comunità",
     text:
-      "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno decide di vederla."
+      "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla."
   },
   {
     hall: 1,
