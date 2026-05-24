@@ -125,104 +125,75 @@ const roomLayouts = {
 const rooms = [
   {
     number: 1,
-    backdrop: "./assets/museum/sala.svg",
-    backdropFit: "cover",
-    backdropPosition: "center center",
+    backdrop: "./assets/museum/sala1.jpg",
     layout: roomLayouts.room1,
     title: "Comunità",
     text:
-      "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno decide di vederla.",
-    artworks: []
+      "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno decide di vederla."
   },
   {
     number: 2,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala2.jpg",
     layout: roomLayouts.room2,
-    title: "Non si vede, ma c'e.",
+    title: "Non si vede, ma c'è.",
     text:
-      "Una stanza doppia, come doppio e' stato il nostro sguardo: da una parte i volti, dall'altra la vita di ogni giorno che ci ha insegnato a restare.",
-    artworks: [
-      { label: "Ritratto" },
-      { label: "Quotidiano" }
-    ]
+      "Una stanza doppia, come doppio è stato il nostro sguardo: da una parte i volti, dall'altra la vita di ogni giorno che ci ha insegnato a restare."
   },
   {
     number: 3,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala3.jpg",
     layout: roomLayouts.room3,
     title: "Cambia qualcosa.",
     text:
-      "Le cornici gemelle raccontano una crescita condivisa. Ogni progetto e' stato fatto di persone diverse, ma tenute insieme dallo stesso desiderio di futuro.",
-    artworks: [
-      { label: "Persona 1" },
-      { label: "Persona 2" }
-    ]
+      "Le cornici gemelle raccontano una crescita condivisa. Ogni progetto è stato fatto di persone diverse, ma tenute insieme dallo stesso desiderio di futuro."
   },
   {
     number: 4,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala4.jpg",
     layout: roomLayouts.room4,
     title: "Le ragazze.",
     text:
-      "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero e' gia' un modo di prendersi cura.",
-    artworks: [
-      { label: "Ascolto" }
-    ]
+      "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero è già un modo di prendersi cura."
   },
   {
     number: 5,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala5.jpg",
     layout: roomLayouts.room5,
     title: "Le parole.",
     text:
-      "Le aperture laterali ricordano che il volontariato non si esaurisce in una sola scena. Ogni gesto apre sempre un passaggio verso qualcos'altro.",
-    artworks: [
-      { label: "Percorso" }
-    ]
+      "Le aperture laterali ricordano che il volontariato non si esaurisce in una sola scena. Ogni gesto apre sempre un passaggio verso qualcos'altro."
   },
   {
     number: 6,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala6.jpg",
     layout: roomLayouts.room6,
     title: "Il futuro.",
     text:
-      "In questa stanza la luce entra con decisione, come molti momenti vissuti sul campo. Anche nella fatica c'erano chiarezza, bellezza e gratitudine.",
-    artworks: [
-      { label: "Luce" }
-    ]
+      "In questa stanza la luce entra con decisione, come molti momenti vissuti sul campo. Anche nella fatica c'erano chiarezza, bellezza e gratitudine."
   },
   {
     number: 7,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala7.jpg",
     layout: roomLayouts.room7,
     title: "La pioggia.",
     text:
-      "Una sala essenziale, quasi silenziosa. E' il ricordo di tutte le volte in cui non serviva fare molto, ma soltanto esserci con continuita'.",
-    artworks: [
-      { label: "Presenza" }
-    ]
+      "Una sala essenziale, quasi silenziosa. È il ricordo di tutte le volte in cui non serviva fare molto, ma soltanto esserci con continuità."
   },
   {
     number: 8,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala8.jpg",
     layout: roomLayouts.room8,
     title: "Grazie.",
     text:
-      "Una grande immagine centrale per custodire il senso di questi tre anni. Non solo attività, ma un legame che continua a interrogarci e a chiamarci.",
-    artworks: [
-      { label: "Cuore" }
-    ]
+      "Una grande immagine centrale per custodire il senso di questi tre anni. Non solo attività, ma un legame che continua a interrogarci e a chiamarci."
   },
   {
     number: 9,
-    backdrop: "./assets/museum/sala.svg",
+    backdrop: "./assets/museum/sala9.jpg",
     layout: roomLayouts.room9,
     title: "Correre.",
     text:
       "Qui il racconto si apre al prossimo passo. La raccolta fondi nasce da questo: non chiudere il museo nel ricordo, ma trasformarlo in un nuovo anno di presenza.",
-    artworks: [
-      { label: "Continua" }
-    ],
     donate: true
   }
 ];
