@@ -145,7 +145,7 @@ const rooms = [
     layout: roomLayouts.room3,
     title: "La forza delle donne",
     text:
-      "Le cornici gemelle raccontano una crescita condivisa. Ogni progetto è stato fatto di persone diverse, ma tenute insieme dallo stesso desiderio di futuro."
+      "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa."
   },
   {
     hall: 1,
