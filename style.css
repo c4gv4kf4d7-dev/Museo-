@@ -1114,13 +1114,13 @@ a {
   top: 42%;
   transform: translate(-50%, -50%);
   text-align: center;
-  padding: 1.4rem 2.2rem;
+  padding: 1.15rem 1.8rem;
   background: rgba(14, 10, 6, 0.22);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(220, 200, 170, 0.08);
   border-radius: 3px;
   min-width: 0;
-  width: clamp(220px, 32vw, 380px);
+  width: clamp(190px, 27vw, 320px);
   pointer-events: none;
 }
 
@@ -1143,7 +1143,7 @@ a {
 
 .corridor-sign__title {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.2rem, 2.4vw, 1.9rem);
   font-weight: 600;
   color: rgba(245, 238, 224, 0.82);
   margin: 0;
