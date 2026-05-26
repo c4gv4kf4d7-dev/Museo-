@@ -125,6 +125,7 @@ const roomLayouts = {
 const rooms = [
   {
     hall: 1,
+    uploaded: true,
     backdrop: "./assets/museum/sala1.jpg",
     layout: roomLayouts.room1,
     title: "Comunità",
@@ -133,6 +134,7 @@ const rooms = [
   },
   {
     hall: 1,
+    uploaded: true,
     backdrop: "./assets/museum/sala2.jpg",
     layout: roomLayouts.room2,
     title: "Mais",
@@ -141,6 +143,7 @@ const rooms = [
   },
   {
     hall: 1,
+    uploaded: true,
     backdrop: "./assets/museum/sala3.jpg",
     layout: roomLayouts.room3,
     title: "La forza delle donne",
@@ -149,6 +152,7 @@ const rooms = [
   },
   {
     hall: 1,
+    uploaded: true,
     backdrop: "./assets/museum/sala4.jpg",
     layout: roomLayouts.room1,
     title: "Sorrisi",
@@ -314,28 +318,39 @@ document.addEventListener("keydown", (e) => {
 // ── Rendering ─────────────────────────────────────────────────────────────────
 
 function buildArtworkMarkup(room) {
-  return (room.artworks || [])
-    .map((artwork, index) => {
-      const frame = room.layout.frames[index];
-      const style = `style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"`;
-      const hasPhoto = Boolean(artwork.src);
+  const artworks = room.artworks || [];
+  const frames = (room.layout && room.layout.frames) || [];
+  if (!artworks.length && !room.uploaded) return "";
 
-      return `
-        <figure
-          class="artwork${hasPhoto ? " artwork--has-photo" : ""}"
-          ${style}
-          ${hasPhoto ? `data-lightbox-src="${artwork.src}" data-lightbox-alt="${room.title} — ${artwork.label}"` : ""}
-        >
-          <div class="artwork__frame">
-            ${hasPhoto
-              ? `<img class="artwork__image" src="${artwork.src}" alt="${room.title} — ${artwork.label}" loading="lazy" />`
-              : `<div class="artwork__empty"></div>`
-            }
-          </div>
-        </figure>
-      `;
-    })
-    .join("");
+  return frames.map((frame, index) => {
+    const artwork = artworks[index];
+    const hasPhoto = artwork && Boolean(artwork.src);
+    const style = `style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"`;
+
+    return `
+      <figure class="artwork${hasPhoto ? " artwork--has-photo" : ""}" ${style}>
+        <div class="artwork__frame">
+          ${hasPhoto
+            ? `<img class="artwork__image" src="${artwork.src}" alt="${room.title} — ${artwork.label}" loading="lazy" />`
+            : `<div class="artwork__empty"></div>`
+          }
+        </div>
+        ${room.uploaded ? `
+          <button
+            class="artwork__zoom-btn"
+            data-lightbox-src="${room.backdrop}"
+            data-lightbox-alt="${room.title}"
+            type="button"
+          >
+            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            Guarda da vicino
+          </button>
+        ` : ""}
+      </figure>
+    `;
+  }).join("");
 }
 
 const nonCorridorRooms = rooms.filter(r => !r.corridor);
