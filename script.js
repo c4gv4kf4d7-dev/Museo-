@@ -68,9 +68,9 @@ const roomLayouts = {
   },
   room1c: {
     frames: [
-      { x: 23, y: 44, w: 21, h: 38 },
-      { x: 51, y: 46, w: 15, h: 35 },
-      { x: 78, y: 44, w: 21, h: 38 }
+      { x: 23, y: 44, w: 21, h: 45 },
+      { x: 51, y: 46, w: 15, h: 51 },
+      { x: 78, y: 44, w: 21, h: 45 }
     ],
     plaque: { x: 17.5, y: 76.8, w: 21 },
     prev: { x: 14, y: 16, w: 16 },
@@ -348,17 +348,11 @@ function buildArtworkMarkup(room) {
     const frame = room.layout.frames[index];
     if (!frame) return "";
     const style = `style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"`;
-    const hasPhoto = Boolean(artwork.src);
 
     return `
-      <figure class="artwork${hasPhoto ? " artwork--has-photo" : ""}" ${style}>
-        <div class="artwork__frame">
-          ${hasPhoto
-            ? `<img class="artwork__image" src="${artwork.src}" alt="${room.title} — ${artwork.label}" loading="lazy" />`
-            : `<div class="artwork__empty"></div>`
-          }
-        </div>
-        ${hasPhoto ? `
+      <figure class="artwork" ${style}>
+        <div class="artwork__frame"><div class="artwork__empty"></div></div>
+        ${artwork.src ? `
           <button
             class="artwork__zoom-btn"
             data-lightbox-src="${artwork.src}"
