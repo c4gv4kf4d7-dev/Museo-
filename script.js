@@ -66,6 +66,16 @@ const roomLayouts = {
     prev: { x: 14, y: 16, w: 16 },
     action: { x: 50, y: 86.4 }
   },
+  room1c: {
+    frames: [
+      { x: 23, y: 44, w: 21, h: 38 },
+      { x: 51, y: 46, w: 15, h: 35 },
+      { x: 78, y: 44, w: 21, h: 38 }
+    ],
+    plaque: { x: 17.5, y: 76.8, w: 21 },
+    prev: { x: 14, y: 16, w: 16 },
+    action: { x: 50, y: 86.4 }
+  },
   room2: {
     frames: [
       { x: 41.5, y: 36.3, w: 13, h: 23.2 },
@@ -126,8 +136,13 @@ const rooms = [
   {
     hall: 1,
     backdrop: "./assets/museum/sala1.jpg",
-    layout: roomLayouts.room1,
+    layout: roomLayouts.room1c,
     title: "Comunità",
+    artworks: [
+      { src: "./comunita-1.jpg", label: "Foto 1" },
+      { src: "./comunita-2.jpg", label: "Foto 2" },
+      { src: "./comunita-3.jpg", label: "Foto 3" }
+    ],
     text:
       "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla."
   },
@@ -136,6 +151,10 @@ const rooms = [
     backdrop: "./assets/museum/sala2.jpg",
     layout: roomLayouts.room2,
     title: "Mais",
+    artworks: [
+      { src: "./mais-1.jpg", label: "Foto 1" },
+      { src: "./mais-2.jpg", label: "Foto 2" }
+    ],
     text:
       "Insieme ai volontari di Tiyende Pamodzi abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte famiglie vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto."
   },
@@ -144,6 +163,10 @@ const rooms = [
     backdrop: "./assets/museum/sala3.jpg",
     layout: roomLayouts.room3,
     title: "La forza delle donne",
+    artworks: [
+      { src: "./donne-1.jpg", label: "Foto 1" },
+      { src: "./donne-2.jpg", label: "Foto 2" }
+    ],
     text:
       "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa."
   },
@@ -152,6 +175,10 @@ const rooms = [
     backdrop: "./assets/museum/sala4.jpg",
     layout: roomLayouts.room1,
     title: "Sorrisi",
+    artworks: [
+      { src: "./sorrisi-1.jpg", label: "Foto 1" },
+      { src: "./sorrisi-2.jpg", label: "Foto 2" }
+    ],
     text:
       "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza."
   },
