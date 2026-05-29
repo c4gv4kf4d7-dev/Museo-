@@ -588,11 +588,19 @@ prevRoomButton.addEventListener("click", () => {
   }
   performTransition(currentRoomIndex - 1);
 });
-roomCopyToggle.addEventListener("click", () => {
+roomCopyToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
   if (roomCopyToggle.disabled) return;
   const isOpen = roomCopyBox.classList.toggle("is-open");
   roomCopyDetails.hidden = !isOpen;
   roomCopyToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+roomCopyBox.addEventListener("click", () => {
+  if (!roomCopyBox.classList.contains("is-open")) return;
+  roomCopyBox.classList.remove("is-open");
+  roomCopyDetails.hidden = true;
+  roomCopyToggle.setAttribute("aria-expanded", "false");
 });
 nextRoomButton.addEventListener("click", handleNextAction);
 
