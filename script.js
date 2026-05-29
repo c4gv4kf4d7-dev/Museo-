@@ -580,32 +580,27 @@ roomCopyToggle.addEventListener("click", () => {
 });
 nextRoomButton.addEventListener("click", handleNextAction);
 
-// ── Debug grid (press G to toggle) ───────────────────────────────────────────
+// ── Debug coordinate tracker (press G to toggle) ─────────────────────────────
 (function () {
-  let grid = null;
+  let tracker = null;
+  let active = false;
   document.addEventListener("keydown", (e) => {
     if (e.key !== "g" && e.key !== "G") return;
-    if (grid) { grid.remove(); grid = null; return; }
+    active = !active;
+    if (!active) { if (tracker) { tracker.remove(); tracker = null; } return; }
+    tracker = document.createElement("div");
+    tracker.style.cssText = "position:fixed;top:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:#fff;font:bold 13px monospace;padding:6px 14px;border-radius:20px;z-index:99999;pointer-events:none;letter-spacing:0.05em;";
+    tracker.textContent = "muovi il mouse sul muro";
+    document.body.appendChild(tracker);
+  });
+  document.addEventListener("mousemove", (e) => {
+    if (!active || !tracker) return;
     const wall = document.querySelector(".gallery-room__wall--center");
     if (!wall) return;
-    grid = document.createElement("div");
-    grid.style.cssText = "position:absolute;inset:0;pointer-events:none;z-index:9999;";
-    for (let i = 10; i < 100; i += 10) {
-      const vl = document.createElement("div");
-      vl.style.cssText = `position:absolute;left:${i}%;top:0;bottom:0;border-left:1px dashed rgba(255,0,0,0.4);`;
-      const vt = document.createElement("span");
-      vt.textContent = i + "%";
-      vt.style.cssText = "position:absolute;top:2px;left:2px;font:bold 9px monospace;color:red;";
-      vl.appendChild(vt); grid.appendChild(vl);
-      const hl = document.createElement("div");
-      hl.style.cssText = `position:absolute;top:${i}%;left:0;right:0;border-top:1px dashed rgba(0,0,255,0.4);`;
-      const ht = document.createElement("span");
-      ht.textContent = i + "%";
-      ht.style.cssText = "position:absolute;left:2px;top:2px;font:bold 9px monospace;color:blue;";
-      hl.appendChild(ht); grid.appendChild(hl);
-    }
-    wall.style.position = "relative";
-    wall.appendChild(grid);
+    const r = wall.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width * 100).toFixed(1);
+    const y = ((e.clientY - r.top) / r.height * 100).toFixed(1);
+    tracker.textContent = `x: ${x}%  y: ${y}%`;
   });
 })();
 

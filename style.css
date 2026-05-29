@@ -805,10 +805,8 @@ a {
 }
 
 .artworks {
-  position: relative;
-  display: block;
-  min-height: 100%;
-  padding-top: 0;
+  position: absolute;
+  inset: 0;
   z-index: 1;
 }
 
