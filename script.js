@@ -287,13 +287,18 @@ function openLightbox(src, alt) {
 }
 
 function closeLightbox() {
-  lightbox.classList.add("hidden");
-  lightboxImage.src = "";
-  document.body.style.overflow = "";
+  lightbox.classList.add("is-closing");
+  window.setTimeout(() => {
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("is-closing");
+    lightboxImage.src = "";
+    document.body.style.overflow = "";
+  }, 260);
 }
 
 lightboxClose.addEventListener("click", closeLightbox);
 lightboxOverlay.addEventListener("click", closeLightbox);
+lightboxImage.addEventListener("click", closeLightbox);
 
 artworksContainer.addEventListener("click", (e) => {
   const artwork = e.target.closest("[data-lightbox-src]");
@@ -347,7 +352,10 @@ function buildArtworkMarkup(room) {
   const figures = artworks.map((artwork, index) => {
     const frame = room.layout.frames[index];
     if (!frame) return "";
-    return `<figure class="artwork" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"><div class="artwork__frame"><div class="artwork__empty"></div></div></figure>`;
+    const lightboxAttrs = artwork.src
+      ? `data-lightbox-src="${artwork.src}" data-lightbox-alt="${room.title} — ${artwork.label}"`
+      : "";
+    return `<figure class="artwork${artwork.src ? " artwork--has-photo" : ""}" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%" ${lightboxAttrs}><div class="artwork__frame"><div class="artwork__empty"></div></div></figure>`;
   }).join("");
 
   const buttons = artworks.map((artwork, index) => {
