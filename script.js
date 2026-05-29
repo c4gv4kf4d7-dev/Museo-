@@ -270,6 +270,7 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 const lightboxOverlay = document.getElementById("lightboxOverlay");
+const lightboxCaption = document.getElementById("lightboxCaption");
 
 let currentRoomIndex = 0;
 let isTransitioning = false;
@@ -279,9 +280,10 @@ menuScreen.style.setProperty("--entrance-backdrop", `url("${ENTRANCE_URL}")`);
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────
 
-function openLightbox(src, alt) {
+function openLightbox(src, alt, caption) {
   lightboxImage.src = src;
   lightboxImage.alt = alt || "";
+  lightboxCaption.textContent = caption || "";
   lightbox.classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
@@ -302,7 +304,7 @@ lightboxImage.addEventListener("click", closeLightbox);
 
 artworksContainer.addEventListener("click", (e) => {
   const artwork = e.target.closest("[data-lightbox-src]");
-  if (artwork) openLightbox(artwork.dataset.lightboxSrc, artwork.dataset.lightboxAlt);
+  if (artwork) openLightbox(artwork.dataset.lightboxSrc, artwork.dataset.lightboxAlt, artwork.dataset.lightboxCaption);
 });
 
 // ── Swipe mobile ──────────────────────────────────────────────────────────────
@@ -352,8 +354,9 @@ function buildArtworkMarkup(room) {
   const figures = artworks.map((artwork, index) => {
     const frame = room.layout.frames[index];
     if (!frame) return "";
+    const captionAttr = artwork.caption ? ` data-lightbox-caption="${artwork.caption.replace(/"/g, '&quot;')}"` : "";
     const lightboxAttrs = artwork.src
-      ? `data-lightbox-src="${artwork.src}" data-lightbox-alt="${room.title} — ${artwork.label}"`
+      ? `data-lightbox-src="${artwork.src}" data-lightbox-alt="${room.title} — ${artwork.label}"${captionAttr}`
       : "";
     return `<figure class="artwork${artwork.src ? " artwork--has-photo" : ""}" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%" ${lightboxAttrs}><div class="artwork__frame"><div class="artwork__empty"></div></div></figure>`;
   }).join("");
@@ -363,12 +366,13 @@ function buildArtworkMarkup(room) {
     if (!frame || !artwork.src) return "";
     const bx = frame.btnX ?? frame.x;
     const by = frame.btnY ?? (frame.y + frame.h / 2 + 5);
+    const captionAttr = artwork.caption ? `\n        data-lightbox-caption="${artwork.caption.replace(/"/g, '&quot;')}"` : "";
     return `
       <button
         class="artwork__zoom-btn"
         style="left:${bx}%;top:${by}%;"
         data-lightbox-src="${artwork.src}"
-        data-lightbox-alt="${room.title} — ${artwork.label}"
+        data-lightbox-alt="${room.title} — ${artwork.label}"${captionAttr}
         type="button"
       >
         <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
