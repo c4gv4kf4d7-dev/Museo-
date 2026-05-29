@@ -164,8 +164,8 @@ const rooms = [
     layout: roomLayouts.room3,
     title: "La forza delle donne",
     artworks: [
-      { src: "./donne-1.jpg", label: "Foto 1" },
-      { src: "./donne-2.jpg", label: "Foto 2" }
+      { src: "./donne-1.jpg", label: "Foto 1", caption: "Makanjira, vicino al confine con il Mozambico. Ogni mese le famiglie si riuniscono per gli incontri di Tiyende Pamodzi, un momento di supporto, condivisione e formazione dedicato ai bambini con disabilità." },
+      { src: "./donne-2.jpg", label: "Foto 2", caption: "Una giovane madre tiene in braccio il proprio figlio durante la visita del fisioterapista, che ogni mese raggiunge il villaggio per seguire i bambini con disabilità." }
     ],
     text:
       "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa."
