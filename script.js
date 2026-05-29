@@ -59,8 +59,8 @@ const menuAreas = [
 const roomLayouts = {
   room1: {
     frames: [
-      { x: 33.8, y: 35.4, w: 25.8, h: 16.1 },
-      { x: 66.2, y: 35.4, w: 25.8, h: 16.1 }
+      { x: 33.8, y: 35.4, w: 25.8, h: 16.1, btnX: 32, btnY: 83 },
+      { x: 66.2, y: 35.4, w: 25.8, h: 16.1, btnX: 68, btnY: 76 }
     ],
     plaque: { x: 17.5, y: 76.8, w: 21 },
     prev: { x: 14, y: 16, w: 16 },
