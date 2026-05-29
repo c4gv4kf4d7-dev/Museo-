@@ -1317,3 +1317,52 @@ a {
     width: 92vw;
   }
 }
+
+/* ── Mobile layout (max 640px) ───────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+
+  /* Bottone indietro: icona sola, in basso a sinistra */
+  .gallery-room__wall--left {
+    left: 10px;
+    bottom: 14px;
+  }
+
+  .wall-nav__eyebrow {
+    display: none;
+  }
+
+  /* Box testo: in basso a destra, sopra il "Vai avanti" */
+  .gallery-room__wall--right {
+    right: 10px;
+    bottom: 64px;
+    width: min(54vw, 188px);
+  }
+
+  /* "Vai avanti": basso al centro */
+  .room-actions {
+    top: auto !important;
+    bottom: 14px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .button--dark {
+    min-height: 40px;
+    min-width: 112px;
+    padding: 8px 14px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* "Guarda da vicino": leggermente più piccolo */
+  .artwork__zoom-btn {
+    font-size: 0.56rem;
+    padding: 3px 8px 3px 6px;
+  }
+
+  /* Room header: font leggermente più piccolo */
+  .room-header__title {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+}
