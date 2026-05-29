@@ -839,8 +839,6 @@ a {
 
 .artwork__zoom-btn {
   position: absolute;
-  bottom: -38px;
-  left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;

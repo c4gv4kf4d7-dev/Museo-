@@ -68,9 +68,9 @@ const roomLayouts = {
   },
   room1c: {
     frames: [
-      { x: 23, y: 44, w: 21, h: 45 },
-      { x: 51, y: 46, w: 15, h: 51 },
-      { x: 78, y: 44, w: 21, h: 45 }
+      { x: 23, y: 44, w: 21, h: 45, btnX: 25, btnY: 80 },
+      { x: 51, y: 46, w: 15, h: 51, btnX: 50, btnY: 80 },
+      { x: 78, y: 44, w: 21, h: 45, btnX: 75, btnY: 80 }
     ],
     plaque: { x: 17.5, y: 76.8, w: 21 },
     prev: { x: 14, y: 16, w: 16 },
@@ -344,30 +344,34 @@ function buildArtworkMarkup(room) {
   const artworks = room.artworks || [];
   if (!artworks.length) return "";
 
-  return artworks.map((artwork, index) => {
+  const figures = artworks.map((artwork, index) => {
     const frame = room.layout.frames[index];
     if (!frame) return "";
-    const style = `style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"`;
+    return `<figure class="artwork" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%"><div class="artwork__frame"><div class="artwork__empty"></div></div></figure>`;
+  }).join("");
 
+  const buttons = artworks.map((artwork, index) => {
+    const frame = room.layout.frames[index];
+    if (!frame || !artwork.src) return "";
+    const bx = frame.btnX ?? frame.x;
+    const by = frame.btnY ?? (frame.y + frame.h / 2 + 5);
     return `
-      <figure class="artwork" ${style}>
-        <div class="artwork__frame"><div class="artwork__empty"></div></div>
-        ${artwork.src ? `
-          <button
-            class="artwork__zoom-btn"
-            data-lightbox-src="${artwork.src}"
-            data-lightbox-alt="${room.title} — ${artwork.label}"
-            type="button"
-          >
-            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-            Guarda da vicino
-          </button>
-        ` : ""}
-      </figure>
+      <button
+        class="artwork__zoom-btn"
+        style="left:${bx}%;top:${by}%;"
+        data-lightbox-src="${artwork.src}"
+        data-lightbox-alt="${room.title} — ${artwork.label}"
+        type="button"
+      >
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        Guarda da vicino
+      </button>
     `;
   }).join("");
+
+  return figures + buttons;
 }
 
 const nonCorridorRooms = rooms.filter(r => !r.corridor);
