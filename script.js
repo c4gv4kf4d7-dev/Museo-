@@ -358,7 +358,10 @@ function buildArtworkMarkup(room) {
     const lightboxAttrs = artwork.src
       ? `data-lightbox-src="${artwork.src}" data-lightbox-alt="${room.title} — ${artwork.label}"${captionAttr}`
       : "";
-    return `<figure class="artwork${artwork.src ? " artwork--has-photo" : ""}" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%" ${lightboxAttrs}><div class="artwork__frame"><div class="artwork__empty"></div></div></figure>`;
+    const inner = artwork.src
+      ? `<img class="artwork__hittarget" src="${artwork.src}" alt="" aria-hidden="true" loading="lazy">`
+      : `<div class="artwork__empty"></div>`;
+    return `<figure class="artwork${artwork.src ? " artwork--has-photo" : ""}" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%" ${lightboxAttrs}><div class="artwork__frame">${inner}</div></figure>`;
   }).join("");
 
   const buttons = artworks.map((artwork, index) => {

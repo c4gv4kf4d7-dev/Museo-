@@ -840,8 +840,17 @@ a {
 .artwork__frame {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.001);
+  background: transparent;
   overflow: hidden;
+  cursor: zoom-in;
+}
+
+.artwork__hittarget {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
   cursor: zoom-in;
 }
 
