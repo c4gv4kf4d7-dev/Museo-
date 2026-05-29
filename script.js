@@ -152,8 +152,8 @@ const rooms = [
     layout: roomLayouts.room2,
     title: "Mais",
     artworks: [
-      { src: "./mais-1.jpg", label: "Foto 1" },
-      { src: "./mais-2.jpg", label: "Foto 2" }
+      { src: "./mais-1.jpg", label: "Foto 1", caption: "Ludovica consegna un sacco a un membro della comunità seguendo il tradizionale rituale locale. In risposta riceve un inchino e una preghiera di ringraziamento, un gesto semplice che racconta il valore di ciò che viene donato." },
+      { src: "./mais-2.jpg", label: "Foto 2", caption: "Sul pickup di Tiyende Pamodzi, accanto a una piccola parte dei 400 sacchi di mais destinati a 200 famiglie del distretto di Namwera." }
     ],
     text:
       "Insieme ai volontari di Tiyende Pamodzi abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte famiglie vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto."
