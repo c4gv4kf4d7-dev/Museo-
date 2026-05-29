@@ -176,8 +176,8 @@ const rooms = [
     layout: roomLayouts.room1,
     title: "Sorrisi",
     artworks: [
-      { src: "./sorrisi-1.jpg", label: "Foto 1" },
-      { src: "./sorrisi-2.jpg", label: "Foto 2" }
+      { src: "./sorrisi-1.jpg", label: "Foto 1", caption: "Dopo ore di attesa, incontri e fisioterapia, una madre stringe il proprio bambino in un momento di calma sotto gli alberi di Makanjira." },
+      { src: "./sorrisi-2.jpg", label: "Foto 2", caption: "I sorrisi dei bambini della scuola di Makanjira, fieri di mostrarci i loro quaderni e felici di condividere con noi un piccolo pezzo della loro giornata." }
     ],
     text:
       "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza."
