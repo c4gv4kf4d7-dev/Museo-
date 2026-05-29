@@ -139,9 +139,9 @@ const rooms = [
     layout: roomLayouts.room1c,
     title: "Comunità",
     artworks: [
-      { src: "./comunita-1.jpg", label: "Foto 1" },
-      { src: "./comunita-2.jpg", label: "Foto 2" },
-      { src: "./comunita-3.jpg", label: "Foto 3" }
+      { src: "./comunita-1.jpg", label: "Foto 1", caption: "Un bambino di Namwera trasporta un sacco da 10 kg di mais ricevuto durante la distribuzione. Per la sua famiglia significa cibo per le settimane a venire." },
+      { src: "./comunita-2.jpg", label: "Foto 2", caption: "Un'anziana della comunità partecipa agli incontri di Tiyende Pamodzi. Anche gli anziani hanno un ruolo fondamentale nel sostenere le famiglie più vulnerabili e nel trasmettere solidarietà tra generazioni." },
+      { src: "./comunita-3.jpg", label: "Foto 3", caption: "Con il mais raccolto avvolto nel chitenje, il tradizionale telo malawiano, le madri percorrono chilometri a piedi per tornare ai propri villaggi." }
     ],
     text:
       "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla."
