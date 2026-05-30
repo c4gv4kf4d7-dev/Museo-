@@ -194,12 +194,12 @@ const rooms = [
     layout: roomLayouts.room4,
     title: "Il pullman.",
     artworks: [
-      { src: "./assets/photos/pullman-1.jpg", label: "Foto 1", caption: "" },
-      { src: "./assets/photos/pullman-2.jpg", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/pullman-1.jpg", label: "Foto 1", caption: "Il viaggio è appena iniziato. Alcuni bambini piangono, altri si lasciano contagiare dal pianto. Altri ancora cantano a squarciagola la stessa filastrocca che accompagna ogni mattina il tragitto verso la Saint John." },
+      { src: "./assets/photos/pullman-2.jpg", label: "Foto 2", caption: "Ad ogni fermata le mamme si stringono a decine attorno alle porte del pullman e sollevano i propri bambini verso l'interno per assicurargli un posto. Hanno camminato per chilometri prima dell'alba e non vogliono perdere l'occasione di mandare i figli a scuola." },
       { src: "./assets/photos/pullman-3.jpg", label: "Foto 3", caption: "" }
     ],
     text:
-      "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero è già un modo di prendersi cura."
+      "All'alba il pullman della Saint John percorre chilometri di strade sterrate per raccogliere i bambini dei villaggi.\nLa scuola, fondata da Padre Kimu, offre gratuitamente istruzione e almeno un pasto al giorno.\nSu un autobus da 70 posti viaggiano spesso fino a 200 bambini.\nOgni sedile, ogni corridoio, ogni angolo racconta una straordinaria voglia di imparare."
   },
   {
     hall: 2,
