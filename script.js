@@ -96,9 +96,9 @@ const roomLayouts = {
   },
   room4: {
     frames: [
-      { x: 0, y: 0, w: 0, h: 0, btnX: 30, btnY: 79.3 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 52, btnY: 79.3 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 74, btnY: 79.3 }
+      { x: 0, y: 0, w: 0, h: 0, btnX: 30, btnY: 77.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 52, btnY: 77.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 74, btnY: 77.2 }
     ],
     plaque: { x: 82.4, y: 73.2, w: 14.2 },
     prev: { x: 83, y: 17, w: 12 },
