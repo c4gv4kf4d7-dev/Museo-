@@ -1364,6 +1364,18 @@ a {
     background: #f5f1ea;
   }
 
+  /* Corridoio: hero a tutto schermo */
+  .mobile-card--corridor .mobile-card__hero {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    background-position: center top;
+  }
+
+  .mobile-card--corridor .mobile-card__body {
+    display: none;
+  }
+
   /* Hero: foto stanza croppata in alto */
   .mobile-card__hero {
     position: relative;

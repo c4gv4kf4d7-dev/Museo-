@@ -185,6 +185,7 @@ const rooms = [
   {
     corridor: true,
     backdrop: "./assets/museum/corridoio1.png",
+    backdropMobile: "./assets/museum/corridoio-verticale1.png",
     eyebrow: "Stai per visitare la Sala 2",
     nextTitle: "Istituto Saint John"
   },
@@ -583,7 +584,9 @@ function renderRoom(index) {
 
 function renderMobileCard(index, isCorridor) {
   const room = rooms[index];
-  mobileCardHero.style.backgroundImage = `url("${room.backdrop}")`;
+  const heroSrc = (isCorridor && room.backdropMobile) ? room.backdropMobile : room.backdrop;
+  mobileCardHero.style.backgroundImage = `url("${heroSrc}")`;
+  mobileCard.classList.toggle("mobile-card--corridor", isCorridor);
 
   if (isCorridor) {
     mobileCardIndex.textContent = room.eyebrow || "Corridoio";
