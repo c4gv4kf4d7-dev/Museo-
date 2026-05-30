@@ -190,7 +190,7 @@ const rooms = [
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala5.jpg",
+    backdrop: "./sala5.jpg",
     layout: roomLayouts.room4,
     title: "Il pullman.",
     artworks: [
