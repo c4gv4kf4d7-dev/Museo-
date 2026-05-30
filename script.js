@@ -633,6 +633,8 @@ function renderMobileCard(index, isCorridor) {
   mobileCardPrev.disabled = false;
   if (room.donate) {
     mobileCardNextLabel.textContent = "Dona";
+  } else if (isCorridor) {
+    mobileCardNextLabel.textContent = "Entra nella prossima sala";
   } else if (index >= rooms.length - 1) {
     mobileCardNextLabel.textContent = "Fine";
   } else {
