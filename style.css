@@ -1458,8 +1458,8 @@ a {
 
   .artwork-card {
     flex: 0 0 auto;
-    width: 60vw;
-    max-width: 240px;
+    width: 52vw;
+    max-width: 210px;
     aspect-ratio: 3 / 4;
     border: 0;
     border-radius: 12px;
@@ -1485,11 +1485,11 @@ a {
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 9px 4px 7px;
+    padding: 5px 11px 5px 9px;
     border-radius: 20px;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.6);
     color: #fff;
-    font-size: 0.6rem;
+    font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     backdrop-filter: blur(4px);

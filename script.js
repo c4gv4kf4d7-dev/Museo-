@@ -603,7 +603,7 @@ function renderMobileCard(index, isCorridor) {
         <img src="${a.src}" alt="" loading="lazy">
         <span class="artwork-card__hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-          Guarda
+          Guarda da vicino
         </span>
       </button>`;
     }).join("");
