@@ -139,9 +139,9 @@ const rooms = [
     layout: roomLayouts.room1c,
     title: "Comunità",
     artworks: [
-      { src: "./comunita-1.jpg", label: "Foto 1", caption: "Un bambino di Namwera trasporta un sacco da 10 kg di mais ricevuto durante la distribuzione. Per la sua famiglia significa cibo per le settimane a venire." },
-      { src: "./comunita-2.jpg", label: "Foto 2", caption: "Un'anziana della comunità partecipa agli incontri di Tiyende Pamodzi. Anche gli anziani hanno un ruolo fondamentale nel sostenere le famiglie più vulnerabili e nel trasmettere solidarietà tra generazioni." },
-      { src: "./comunita-3.jpg", label: "Foto 3", caption: "Con il mais raccolto avvolto nel chitenje, il tradizionale telo malawiano, le madri percorrono chilometri a piedi per tornare ai propri villaggi." }
+      { src: "./assets/photos/comunita-1.jpg", label: "Foto 1", caption: "Un bambino di Namwera trasporta un sacco da 10 kg di mais ricevuto durante la distribuzione. Per la sua famiglia significa cibo per le settimane a venire." },
+      { src: "./assets/photos/comunita-2.jpg", label: "Foto 2", caption: "Un'anziana della comunità partecipa agli incontri di Tiyende Pamodzi. Anche gli anziani hanno un ruolo fondamentale nel sostenere le famiglie più vulnerabili e nel trasmettere solidarietà tra generazioni." },
+      { src: "./assets/photos/comunita-3.jpg", label: "Foto 3", caption: "Con il mais raccolto avvolto nel chitenje, il tradizionale telo malawiano, le madri percorrono chilometri a piedi per tornare ai propri villaggi." }
     ],
     text:
       "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla."
@@ -152,8 +152,8 @@ const rooms = [
     layout: roomLayouts.room2,
     title: "Mais",
     artworks: [
-      { src: "./mais-1.jpg", label: "Foto 1", caption: "Ludovica consegna un sacco a un membro della comunità seguendo il tradizionale rituale locale. In risposta riceve un inchino e una preghiera di ringraziamento, un gesto semplice che racconta il valore di ciò che viene donato." },
-      { src: "./mais-2.jpg", label: "Foto 2", caption: "Sul pickup di Tiyende Pamodzi, accanto a una piccola parte dei 400 sacchi di mais destinati a 200 famiglie del distretto di Namwera." }
+      { src: "./assets/photos/mais-1.jpg", label: "Foto 1", caption: "Ludovica consegna un sacco a un membro della comunità seguendo il tradizionale rituale locale. In risposta riceve un inchino e una preghiera di ringraziamento, un gesto semplice che racconta il valore di ciò che viene donato." },
+      { src: "./assets/photos/mais-2.jpg", label: "Foto 2", caption: "Sul pickup di Tiyende Pamodzi, accanto a una piccola parte dei 400 sacchi di mais destinati a 200 famiglie del distretto di Namwera." }
     ],
     text:
       "Insieme ai volontari di Tiyende Pamodzi abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte famiglie vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto."
@@ -164,8 +164,8 @@ const rooms = [
     layout: roomLayouts.room3,
     title: "La forza delle donne",
     artworks: [
-      { src: "./donne-1.jpg", label: "Foto 1", caption: "Makanjira, vicino al confine con il Mozambico. Ogni mese le famiglie si riuniscono per gli incontri di Tiyende Pamodzi, un momento di supporto, condivisione e formazione dedicato ai bambini con disabilità." },
-      { src: "./donne-2.jpg", label: "Foto 2", caption: "Una giovane madre tiene in braccio il proprio figlio durante la visita del fisioterapista, che ogni mese raggiunge il villaggio per seguire i bambini con disabilità." }
+      { src: "./assets/photos/donne-1.jpg", label: "Foto 1", caption: "Makanjira, vicino al confine con il Mozambico. Ogni mese le famiglie si riuniscono per gli incontri di Tiyende Pamodzi, un momento di supporto, condivisione e formazione dedicato ai bambini con disabilità." },
+      { src: "./assets/photos/donne-2.jpg", label: "Foto 2", caption: "Una giovane madre tiene in braccio il proprio figlio durante la visita del fisioterapista, che ogni mese raggiunge il villaggio per seguire i bambini con disabilità." }
     ],
     text:
       "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa."
@@ -176,8 +176,8 @@ const rooms = [
     layout: roomLayouts.room1,
     title: "Sorrisi",
     artworks: [
-      { src: "./sorrisi-1.jpg", label: "Foto 1", caption: "Dopo ore di attesa, incontri e fisioterapia, una madre stringe il proprio bambino in un momento di calma sotto gli alberi di Makanjira." },
-      { src: "./sorrisi-2.jpg", label: "Foto 2", caption: "I sorrisi dei bambini della scuola di Makanjira, fieri di mostrarci i loro quaderni e felici di condividere con noi un piccolo pezzo della loro giornata." }
+      { src: "./assets/photos/sorrisi-1.jpg", label: "Foto 1", caption: "Dopo ore di attesa, incontri e fisioterapia, una madre stringe il proprio bambino in un momento di calma sotto gli alberi di Makanjira." },
+      { src: "./assets/photos/sorrisi-2.jpg", label: "Foto 2", caption: "I sorrisi dei bambini della scuola di Makanjira, fieri di mostrarci i loro quaderni e felici di condividere con noi un piccolo pezzo della loro giornata." }
     ],
     text:
       "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza."
@@ -190,13 +190,13 @@ const rooms = [
   },
   {
     hall: 2,
-    backdrop: "./sala5.jpg",
+    backdrop: "./assets/museum/sala5.jpg",
     layout: roomLayouts.room4,
     title: "Il pullman.",
     artworks: [
-      { src: "./pullman-1.jpg", label: "Foto 1", caption: "" },
-      { src: "./pullman-2.jpg", label: "Foto 2", caption: "" },
-      { src: "./pullman-3.jpg", label: "Foto 3", caption: "" }
+      { src: "./assets/photos/pullman-1.jpg", label: "Foto 1", caption: "" },
+      { src: "./assets/photos/pullman-2.jpg", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/pullman-3.jpg", label: "Foto 3", caption: "" }
     ],
     text:
       "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero è già un modo di prendersi cura."
