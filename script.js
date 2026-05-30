@@ -271,6 +271,11 @@ const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 const lightboxOverlay = document.getElementById("lightboxOverlay");
 const lightboxCaption = document.getElementById("lightboxCaption");
+const mobileZone = document.getElementById("mobileZone");
+const mobileZoneThumbs = document.getElementById("mobileZoneThumbs");
+const mobileZoneSummary = document.getElementById("mobileZoneSummary");
+const mobileZoneDetails = document.getElementById("mobileZoneDetails");
+const mobileZoneToggle = document.getElementById("mobileZoneToggle");
 
 let currentRoomIndex = 0;
 let isTransitioning = false;
@@ -305,6 +310,16 @@ lightboxImage.addEventListener("click", closeLightbox);
 artworksContainer.addEventListener("click", (e) => {
   const artwork = e.target.closest("[data-lightbox-src]");
   if (artwork) openLightbox(artwork.dataset.lightboxSrc, artwork.dataset.lightboxAlt, artwork.dataset.lightboxCaption);
+});
+
+mobileZoneThumbs.addEventListener("click", (e) => {
+  const thumb = e.target.closest("[data-lightbox-src]");
+  if (thumb) openLightbox(thumb.dataset.lightboxSrc, thumb.dataset.lightboxAlt, thumb.dataset.lightboxCaption);
+});
+
+mobileZoneToggle.addEventListener("click", () => {
+  const isOpen = mobileZoneToggle.classList.toggle("is-open");
+  mobileZoneDetails.hidden = !isOpen;
 });
 
 // ── Swipe mobile ──────────────────────────────────────────────────────────────
@@ -528,6 +543,31 @@ function renderRoom(index) {
 
   prevRoomButton.disabled = false;
   updateProgress(index);
+
+  // Mobile zone (portrait only, shown via CSS)
+  mobileZone.hidden = isCorridor;
+  if (!isCorridor) {
+    const thumbs = (room.artworks || []).filter(a => a.src);
+    mobileZoneThumbs.hidden = !thumbs.length;
+    mobileZoneThumbs.innerHTML = thumbs.map(a => {
+      const captionAttr = a.caption ? ` data-lightbox-caption="${a.caption.replace(/"/g, '&quot;')}"` : "";
+      return `<button class="artwork-thumb" data-lightbox-src="${a.src}" data-lightbox-alt="${room.title} — ${a.label}"${captionAttr} type="button">
+        <img src="${a.src}" alt="" loading="lazy">
+        <span class="artwork-thumb__hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </span>
+      </button>`;
+    }).join("");
+
+    const { summary, details } = splitRoomText(room.text || "");
+    mobileZoneSummary.textContent = summary;
+    mobileZoneDetails.textContent = details;
+    mobileZoneDetails.hidden = true;
+    mobileZoneToggle.classList.remove("is-open");
+    mobileZoneToggle.hidden = !details;
+  }
 }
 
 function openTour(index = 0) {

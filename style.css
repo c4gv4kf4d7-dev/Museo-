@@ -1318,51 +1318,156 @@ a {
   }
 }
 
-/* ── Mobile layout (max 640px) ───────────────────────────────────────────── */
+/* ── Mobile portrait: two-zone layout (iPhone vertical) ─────────────────── */
 
-@media (max-width: 640px) {
+.mobile-zone { display: none; }
 
-  /* Bottone indietro: icona sola, in basso a sinistra */
+@media (max-width: 500px) and (orientation: portrait) {
+
+  /* Zona 1: stanza a rapporto 16:10 fisso */
+  .museum-app--tour .gallery-room,
+  .museum-app--tour .gallery-room__shell {
+    min-height: unset !important;
+  }
+  .gallery-room__shell {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  /* Nascondi controlli flottanti dentro la stanza */
+  .gallery-room__wall--right,
+  .artwork__zoom-btn {
+    display: none !important;
+  }
+
+  /* Bottone indietro: solo icona, centrato verticalmente a sinistra */
+  .wall-nav__eyebrow { display: none; }
   .gallery-room__wall--left {
+    top: 50%;
+    bottom: auto;
     left: 10px;
-    bottom: 14px;
+    transform: translateY(-50%);
   }
 
-  .wall-nav__eyebrow {
-    display: none;
-  }
-
-  /* Box testo: in basso a destra, sopra il "Vai avanti" */
-  .gallery-room__wall--right {
-    right: 10px;
-    bottom: 64px;
-    width: min(54vw, 188px);
-  }
-
-  /* "Vai avanti": basso al centro */
+  /* "Vai avanti": barra fissa in basso */
   .room-actions {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     top: auto !important;
-    bottom: 14px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    transform: none !important;
+    display: flex !important;
+    justify-content: center;
+    padding: 12px 20px max(16px, env(safe-area-inset-bottom, 16px));
+    background: rgba(14, 11, 8, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 20;
   }
 
   .button--dark {
-    min-height: 40px;
-    min-width: 112px;
-    padding: 8px 14px;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
+    width: 100%;
+    max-width: 320px;
+    min-height: 44px;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
   }
 
-  /* "Guarda da vicino": leggermente più piccolo */
-  .artwork__zoom-btn {
-    font-size: 0.56rem;
-    padding: 3px 8px 3px 6px;
+  /* Spazio in fondo per la barra fissa */
+  .tour-screen { padding-bottom: 76px; }
+
+  /* Zona 2: visible sotto la stanza */
+  .mobile-zone {
+    display: block;
+    background: rgba(248, 244, 239, 0.98);
+    border-radius: 0 0 14px 14px;
+    overflow: hidden;
   }
 
-  /* Room header: font leggermente più piccolo */
-  .room-header__title {
-    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  /* Thumbnails foto */
+  .mobile-zone__thumbs {
+    display: flex;
+    gap: 8px;
+    padding: 14px 14px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .artwork-thumb {
+    flex: 0 0 auto;
+    width: 82px;
+    height: 82px;
+    border: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  }
+
+  .artwork-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .artwork-thumb__hint {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.52);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+  /* Testo descrittivo */
+  .mobile-zone__text-area {
+    padding: 14px 16px 18px;
+  }
+
+  .mobile-zone__summary {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: #2a231c;
+  }
+
+  .mobile-zone__details {
+    margin: 8px 0 0;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: #2a231c;
+    white-space: pre-line;
+  }
+
+  .mobile-zone__toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #7a5c38;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .mobile-zone__toggle svg {
+    transition: transform 260ms ease;
+  }
+
+  .mobile-zone__toggle.is-open svg {
+    transform: rotate(180deg);
   }
 }
