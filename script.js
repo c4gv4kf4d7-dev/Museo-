@@ -284,6 +284,7 @@ const mobileCardPrev = document.getElementById("mobileCardPrev");
 const mobileCardNext = document.getElementById("mobileCardNext");
 const mobileCardNextLabel = document.getElementById("mobileCardNextLabel");
 const mobileCardCounter = document.getElementById("mobileCardCounter");
+const mobileCardDots = document.getElementById("mobileCardDots");
 
 let currentRoomIndex = 0;
 let isTransitioning = false;
@@ -330,6 +331,19 @@ mobileCardToggle.addEventListener("click", () => {
   mobileCardDetails.hidden = !isOpen;
   mobileCardToggleLabel.textContent = isOpen ? "Mostra meno" : "Leggi tutto";
 });
+
+mobileCardPhotos.addEventListener("scroll", () => {
+  const dots = mobileCardDots.querySelectorAll(".mobile-card__dot");
+  if (!dots.length) return;
+  const cards = mobileCardPhotos.querySelectorAll(".artwork-card");
+  const center = mobileCardPhotos.scrollLeft + mobileCardPhotos.offsetWidth / 2;
+  let closest = 0, minDist = Infinity;
+  cards.forEach((card, i) => {
+    const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
+    if (dist < minDist) { minDist = dist; closest = i; }
+  });
+  dots.forEach((dot, i) => dot.classList.toggle("is-active", i === closest));
+}, { passive: true });
 
 mobileCardPrev.addEventListener("click", () => {
   if (currentRoomIndex === 0) backToMenu();
@@ -579,6 +593,10 @@ function renderMobileCard(index, isCorridor) {
     mobileCardTitle.textContent = room.title;
 
     const photos = (room.artworks || []).filter(a => a.src);
+    mobileCardDots.innerHTML = photos.length > 1
+      ? photos.map((_, i) => `<span class="mobile-card__dot${i === 0 ? " is-active" : ""}"></span>`).join("")
+      : "";
+
     mobileCardPhotos.innerHTML = photos.map(a => {
       const captionAttr = a.caption ? ` data-lightbox-caption="${a.caption.replace(/"/g, '&quot;')}"` : "";
       return `<button class="artwork-card" data-lightbox-src="${a.src}" data-lightbox-alt="${room.title} — ${a.label}"${captionAttr} type="button">

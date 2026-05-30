@@ -1430,6 +1430,32 @@ a {
     display: none;
   }
 
+  .mobile-card__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .mobile-card__dots:empty {
+    display: none;
+  }
+
+  .mobile-card__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(100, 78, 50, 0.22);
+    transition: background 220ms ease, transform 220ms ease;
+    flex-shrink: 0;
+  }
+
+  .mobile-card__dot.is-active {
+    background: rgba(100, 78, 50, 0.82);
+    transform: scale(1.25);
+  }
+
   .artwork-card {
     flex: 0 0 auto;
     width: 60vw;
