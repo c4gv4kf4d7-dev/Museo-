@@ -1367,8 +1367,8 @@ a {
   /* Hero: foto stanza croppata in alto */
   .mobile-card__hero {
     position: relative;
-    height: 42svh;
-    min-height: 240px;
+    height: 35svh;
+    min-height: 200px;
     background-size: cover;
     background-position: center;
     flex-shrink: 0;
@@ -1544,8 +1544,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 12px 18px max(14px, env(safe-area-inset-bottom, 14px));
+    gap: 10px;
+    padding: 8px 16px max(10px, env(safe-area-inset-bottom, 10px));
     background: rgba(247, 243, 237, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -1557,13 +1557,13 @@ a {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    min-height: 46px;
-    padding: 0 16px;
+    min-height: 40px;
+    padding: 0 14px;
     border: 1px solid rgba(120, 94, 63, 0.28);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.7);
     color: #2a231c;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
     cursor: pointer;
   }
@@ -1578,11 +1578,11 @@ a {
     border-color: transparent;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 0 20px;
+    padding: 0 18px;
   }
 
   .mobile-card__nav-counter {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #6f5c44;
