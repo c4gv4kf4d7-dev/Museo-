@@ -95,7 +95,11 @@ const roomLayouts = {
     action: { x: 50, y: 86.4 }
   },
   room4: {
-    frames: [],
+    frames: [
+      { x: 0, y: 0, w: 0, h: 0, btnX: 30, btnY: 79.3 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 52, btnY: 79.3 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 74, btnY: 79.3 }
+    ],
     plaque: { x: 82.4, y: 73.2, w: 14.2 },
     prev: { x: 83, y: 17, w: 12 },
     action: { x: 50, y: 85.8 }
