@@ -271,11 +271,19 @@ const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 const lightboxOverlay = document.getElementById("lightboxOverlay");
 const lightboxCaption = document.getElementById("lightboxCaption");
-const mobileZone = document.getElementById("mobileZone");
-const mobileZoneThumbs = document.getElementById("mobileZoneThumbs");
-const mobileZoneSummary = document.getElementById("mobileZoneSummary");
-const mobileZoneDetails = document.getElementById("mobileZoneDetails");
-const mobileZoneToggle = document.getElementById("mobileZoneToggle");
+const mobileCard = document.getElementById("mobileCard");
+const mobileCardHero = document.getElementById("mobileCardHero");
+const mobileCardIndex = document.getElementById("mobileCardIndex");
+const mobileCardTitle = document.getElementById("mobileCardTitle");
+const mobileCardPhotos = document.getElementById("mobileCardPhotos");
+const mobileCardSummary = document.getElementById("mobileCardSummary");
+const mobileCardDetails = document.getElementById("mobileCardDetails");
+const mobileCardToggle = document.getElementById("mobileCardToggle");
+const mobileCardToggleLabel = mobileCardToggle.querySelector(".mobile-card__toggle-label");
+const mobileCardPrev = document.getElementById("mobileCardPrev");
+const mobileCardNext = document.getElementById("mobileCardNext");
+const mobileCardNextLabel = document.getElementById("mobileCardNextLabel");
+const mobileCardCounter = document.getElementById("mobileCardCounter");
 
 let currentRoomIndex = 0;
 let isTransitioning = false;
@@ -312,15 +320,23 @@ artworksContainer.addEventListener("click", (e) => {
   if (artwork) openLightbox(artwork.dataset.lightboxSrc, artwork.dataset.lightboxAlt, artwork.dataset.lightboxCaption);
 });
 
-mobileZoneThumbs.addEventListener("click", (e) => {
-  const thumb = e.target.closest("[data-lightbox-src]");
-  if (thumb) openLightbox(thumb.dataset.lightboxSrc, thumb.dataset.lightboxAlt, thumb.dataset.lightboxCaption);
+mobileCardPhotos.addEventListener("click", (e) => {
+  const card = e.target.closest("[data-lightbox-src]");
+  if (card) openLightbox(card.dataset.lightboxSrc, card.dataset.lightboxAlt, card.dataset.lightboxCaption);
 });
 
-mobileZoneToggle.addEventListener("click", () => {
-  const isOpen = mobileZoneToggle.classList.toggle("is-open");
-  mobileZoneDetails.hidden = !isOpen;
+mobileCardToggle.addEventListener("click", () => {
+  const isOpen = mobileCardToggle.classList.toggle("is-open");
+  mobileCardDetails.hidden = !isOpen;
+  mobileCardToggleLabel.textContent = isOpen ? "Mostra meno" : "Leggi tutto";
 });
+
+mobileCardPrev.addEventListener("click", () => {
+  if (currentRoomIndex === 0) backToMenu();
+  else performTransition(currentRoomIndex - 1);
+});
+
+mobileCardNext.addEventListener("click", handleNextAction);
 
 // ── Swipe mobile ──────────────────────────────────────────────────────────────
 
@@ -543,31 +559,62 @@ function renderRoom(index) {
 
   prevRoomButton.disabled = false;
   updateProgress(index);
+  renderMobileCard(index, isCorridor);
+}
 
-  // Mobile zone (portrait only, shown via CSS)
-  mobileZone.hidden = isCorridor;
-  if (!isCorridor) {
-    const thumbs = (room.artworks || []).filter(a => a.src);
-    mobileZoneThumbs.hidden = !thumbs.length;
-    mobileZoneThumbs.innerHTML = thumbs.map(a => {
+function renderMobileCard(index, isCorridor) {
+  const room = rooms[index];
+  mobileCardHero.style.backgroundImage = `url("${room.backdrop}")`;
+
+  if (isCorridor) {
+    mobileCardIndex.textContent = room.eyebrow || "Corridoio";
+    mobileCardTitle.textContent = room.nextTitle || "";
+    mobileCardPhotos.innerHTML = "";
+    mobileCardSummary.textContent = "";
+    mobileCardDetails.textContent = "";
+    mobileCardDetails.hidden = true;
+    mobileCardToggle.hidden = true;
+  } else {
+    mobileCardIndex.textContent = `Sala ${room.hall}`;
+    mobileCardTitle.textContent = room.title;
+
+    const photos = (room.artworks || []).filter(a => a.src);
+    mobileCardPhotos.innerHTML = photos.map(a => {
       const captionAttr = a.caption ? ` data-lightbox-caption="${a.caption.replace(/"/g, '&quot;')}"` : "";
-      return `<button class="artwork-thumb" data-lightbox-src="${a.src}" data-lightbox-alt="${room.title} — ${a.label}"${captionAttr} type="button">
+      return `<button class="artwork-card" data-lightbox-src="${a.src}" data-lightbox-alt="${room.title} — ${a.label}"${captionAttr} type="button">
         <img src="${a.src}" alt="" loading="lazy">
-        <span class="artwork-thumb__hint" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
-          </svg>
+        <span class="artwork-card__hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          Guarda
         </span>
       </button>`;
     }).join("");
 
     const { summary, details } = splitRoomText(room.text || "");
-    mobileZoneSummary.textContent = summary;
-    mobileZoneDetails.textContent = details;
-    mobileZoneDetails.hidden = true;
-    mobileZoneToggle.classList.remove("is-open");
-    mobileZoneToggle.hidden = !details;
+    mobileCardSummary.textContent = summary;
+    mobileCardDetails.textContent = details;
+    mobileCardDetails.hidden = true;
+    mobileCardToggle.classList.remove("is-open");
+    mobileCardToggleLabel.textContent = "Leggi tutto";
+    mobileCardToggle.hidden = !details;
   }
+
+  // Navigazione
+  mobileCardPrev.disabled = false;
+  if (room.donate) {
+    mobileCardNextLabel.textContent = "Dona";
+  } else if (index >= rooms.length - 1) {
+    mobileCardNextLabel.textContent = "Fine";
+  } else {
+    mobileCardNextLabel.textContent = "Avanti";
+  }
+
+  const pos = nonCorridorRooms.indexOf(room) + 1;
+  mobileCardCounter.textContent = isCorridor ? "" : `${pos} / ${nonCorridorRooms.length}`;
+
+  // Reset scroll del corpo
+  const body = mobileCard.querySelector(".mobile-card__body");
+  if (body) body.scrollTop = 0;
 }
 
 function openTour(index = 0) {
