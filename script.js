@@ -95,7 +95,7 @@ const roomLayouts = {
     action: { x: 50, y: 86.4 }
   },
   room4: {
-    frames: [{ x: 34.4, y: 35.6, w: 39.4, h: 23.8 }],
+    frames: [],
     plaque: { x: 82.4, y: 73.2, w: 14.2 },
     prev: { x: 83, y: 17, w: 12 },
     action: { x: 50, y: 85.8 }
@@ -193,6 +193,11 @@ const rooms = [
     backdrop: "./assets/museum/sala5.jpg",
     layout: roomLayouts.room4,
     title: "Il pullman.",
+    artworks: [
+      { src: "./pullman-1.jpg", label: "Foto 1", caption: "" },
+      { src: "./pullman-2.jpg", label: "Foto 2", caption: "" },
+      { src: "./pullman-3.jpg", label: "Foto 3", caption: "" }
+    ],
     text:
       "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero è già un modo di prendersi cura."
   },
