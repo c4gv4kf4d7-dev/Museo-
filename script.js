@@ -33,7 +33,7 @@ const menuAreas = [
       </svg>
     `,
     items: [
-      { text: "Le ragazze", roomIndex: 5 },
+      { text: "Il pullman", roomIndex: 5 },
       { text: "Le parole", roomIndex: 6 },
       { text: "Il futuro", roomIndex: 7 }
     ]
@@ -192,7 +192,7 @@ const rooms = [
     hall: 2,
     backdrop: "./assets/museum/sala5.jpg",
     layout: roomLayouts.room4,
-    title: "Le ragazze.",
+    title: "Il pullman.",
     text:
       "Una grande parete, un solo quadro, un tempo più lento. In Malawi abbiamo imparato che ascoltare davvero è già un modo di prendersi cura."
   },
