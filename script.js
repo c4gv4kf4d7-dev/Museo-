@@ -1,5 +1,5 @@
 const GOFUNDME_URL = "https://www.gofundme.com/f/children-of-malawi-63cqk?attribution_id=sl:8d1cd865-19c2-4b9d-8ee7-491e37da54ad&lang=en_US&ts=1776781151&utm_campaign=man_sharesheet_dash&utm_content=amp20_t1&utm_medium=customer&utm_source=copy_link";
-const ENTRANCE_URL = "./assets/museum/menu.jpg";
+const ENTRANCE_URL = "./assets/museum/menu.webp";
 const menuAreas = [
   {
     label: "Sala 1",
@@ -144,106 +144,106 @@ const roomLayouts = {
 const rooms = [
   {
     hall: 1,
-    backdrop: "./assets/museum/sala1.jpg",
+    backdrop: "./assets/museum/sala1.webp",
     layout: roomLayouts.room1c,
     title: "Comunità",
     artworks: [
-      { src: "./assets/photos/comunita-1.jpg", label: "Foto 1", caption: "Un bambino di Namwera trasporta un sacco da 10 kg di mais ricevuto durante la distribuzione. Per la sua famiglia significa cibo per le settimane a venire." },
-      { src: "./assets/photos/comunita-2.jpg", label: "Foto 2", caption: "Un'anziana della comunità partecipa agli incontri di Tiyende Pamodzi. Anche gli anziani hanno un ruolo fondamentale nel sostenere le famiglie più vulnerabili e nel trasmettere solidarietà tra generazioni." },
-      { src: "./assets/photos/comunita-3.jpg", label: "Foto 3", caption: "Con il mais raccolto avvolto nel chitenje, il tradizionale telo malawiano, le madri percorrono chilometri a piedi per tornare ai propri villaggi." }
+      { src: "./assets/photos/comunita-1.webp", label: "Foto 1", caption: "Un bambino di Namwera trasporta un sacco da 10 kg di mais ricevuto durante la distribuzione. Per la sua famiglia significa cibo per le settimane a venire." },
+      { src: "./assets/photos/comunita-2.webp", label: "Foto 2", caption: "Un'anziana della comunità partecipa agli incontri di Tiyende Pamodzi. Anche gli anziani hanno un ruolo fondamentale nel sostenere le famiglie più vulnerabili e nel trasmettere solidarietà tra generazioni." },
+      { src: "./assets/photos/comunita-3.webp", label: "Foto 3", caption: "Con il mais raccolto avvolto nel chitenje, il tradizionale telo malawiano, le madri percorrono chilometri a piedi per tornare ai propri villaggi." }
     ],
     text:
       "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla."
   },
   {
     hall: 1,
-    backdrop: "./assets/museum/sala2.jpg",
+    backdrop: "./assets/museum/sala2.webp",
     layout: roomLayouts.room2,
     title: "Mais",
     artworks: [
-      { src: "./assets/photos/mais-1.jpg", label: "Foto 1", caption: "Ludovica consegna un sacco a un membro della comunità seguendo il tradizionale rituale locale. In risposta riceve un inchino e una preghiera di ringraziamento, un gesto semplice che racconta il valore di ciò che viene donato." },
-      { src: "./assets/photos/mais-2.jpg", label: "Foto 2", caption: "Sul pickup di Tiyende Pamodzi, accanto a una piccola parte dei 400 sacchi di mais destinati a 200 famiglie del distretto di Namwera." }
+      { src: "./assets/photos/mais-1.webp", label: "Foto 1", caption: "Ludovica consegna un sacco a un membro della comunità seguendo il tradizionale rituale locale. In risposta riceve un inchino e una preghiera di ringraziamento, un gesto semplice che racconta il valore di ciò che viene donato." },
+      { src: "./assets/photos/mais-2.webp", label: "Foto 2", caption: "Sul pickup di Tiyende Pamodzi, accanto a una piccola parte dei 400 sacchi di mais destinati a 200 famiglie del distretto di Namwera." }
     ],
     text:
       "Insieme ai volontari di Tiyende Pamodzi abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte famiglie vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto."
   },
   {
     hall: 1,
-    backdrop: "./assets/museum/sala3.jpg",
+    backdrop: "./assets/museum/sala3.webp",
     layout: roomLayouts.room3,
     title: "La forza delle donne",
     artworks: [
-      { src: "./assets/photos/donne-1.jpg", label: "Foto 1", caption: "Makanjira, vicino al confine con il Mozambico. Ogni mese le famiglie si riuniscono per gli incontri di Tiyende Pamodzi, un momento di supporto, condivisione e formazione dedicato ai bambini con disabilità." },
-      { src: "./assets/photos/donne-2.jpg", label: "Foto 2", caption: "Una giovane madre tiene in braccio il proprio figlio durante la visita del fisioterapista, che ogni mese raggiunge il villaggio per seguire i bambini con disabilità." }
+      { src: "./assets/photos/donne-1.webp", label: "Foto 1", caption: "Makanjira, vicino al confine con il Mozambico. Ogni mese le famiglie si riuniscono per gli incontri di Tiyende Pamodzi, un momento di supporto, condivisione e formazione dedicato ai bambini con disabilità." },
+      { src: "./assets/photos/donne-2.webp", label: "Foto 2", caption: "Una giovane madre tiene in braccio il proprio figlio durante la visita del fisioterapista, che ogni mese raggiunge il villaggio per seguire i bambini con disabilità." }
     ],
     text:
       "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa."
   },
   {
     hall: 1,
-    backdrop: "./assets/museum/sala4.jpg",
+    backdrop: "./assets/museum/sala4.webp",
     layout: roomLayouts.room1,
     title: "Sorrisi",
     artworks: [
-      { src: "./assets/photos/sorrisi-1.jpg", label: "Foto 1", caption: "Dopo ore di attesa, incontri e fisioterapia, una madre stringe il proprio bambino in un momento di calma sotto gli alberi di Makanjira." },
-      { src: "./assets/photos/sorrisi-2.jpg", label: "Foto 2", caption: "I sorrisi dei bambini della scuola di Makanjira, fieri di mostrarci i loro quaderni e felici di condividere con noi un piccolo pezzo della loro giornata." }
+      { src: "./assets/photos/sorrisi-1.webp", label: "Foto 1", caption: "Dopo ore di attesa, incontri e fisioterapia, una madre stringe il proprio bambino in un momento di calma sotto gli alberi di Makanjira." },
+      { src: "./assets/photos/sorrisi-2.webp", label: "Foto 2", caption: "I sorrisi dei bambini della scuola di Makanjira, fieri di mostrarci i loro quaderni e felici di condividere con noi un piccolo pezzo della loro giornata." }
     ],
     text:
       "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza."
   },
   {
     corridor: true,
-    backdrop: "./assets/museum/corridoio1.png",
-    backdropMobile: "./assets/museum/corridoio-verticale1.png",
+    backdrop: "./assets/museum/corridoio1.webp",
+    backdropMobile: "./assets/museum/corridoio-verticale1.webp",
     eyebrow: "Stai per visitare la Sala 2",
     nextTitle: "Istituto Saint John"
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala5.jpg",
+    backdrop: "./assets/museum/sala5.webp",
     layout: roomLayouts.room4,
     title: "Il pullman.",
     artworks: [
-      { src: "./assets/photos/pullman-1.jpg", label: "Foto 1", caption: "Il viaggio è appena iniziato. Alcuni bambini piangono, altri si lasciano contagiare dal pianto. Altri ancora cantano a squarciagola la stessa filastrocca che accompagna ogni mattina il tragitto verso la Saint John." },
-      { src: "./assets/photos/pullman-2.jpg", label: "Foto 2", caption: "Ad ogni fermata le mamme si stringono a decine attorno alle porte del pullman e sollevano i propri bambini verso l'interno per assicurargli un posto. Hanno camminato per chilometri prima dell'alba e non vogliono perdere l'occasione di mandare i figli a scuola." },
-      { src: "./assets/photos/pullman-3.jpg", label: "Foto 3", caption: "Una bambina cerca conforto tra le braccia di Elisa mentre prova ad abituarsi alla giornata lontano dalla sua mamma. I bambini continuano a salire ad ogni fermata e, nel giro di pochi minuti, l'autobus si riempirà di voci, giochi e piccoli passeggeri diretti a scuola." }
+      { src: "./assets/photos/pullman-1.webp", label: "Foto 1", caption: "Il viaggio è appena iniziato. Alcuni bambini piangono, altri si lasciano contagiare dal pianto. Altri ancora cantano a squarciagola la stessa filastrocca che accompagna ogni mattina il tragitto verso la Saint John." },
+      { src: "./assets/photos/pullman-2.webp", label: "Foto 2", caption: "Ad ogni fermata le mamme si stringono a decine attorno alle porte del pullman e sollevano i propri bambini verso l'interno per assicurargli un posto. Hanno camminato per chilometri prima dell'alba e non vogliono perdere l'occasione di mandare i figli a scuola." },
+      { src: "./assets/photos/pullman-3.webp", label: "Foto 3", caption: "Una bambina cerca conforto tra le braccia di Elisa mentre prova ad abituarsi alla giornata lontano dalla sua mamma. I bambini continuano a salire ad ogni fermata e, nel giro di pochi minuti, l'autobus si riempirà di voci, giochi e piccoli passeggeri diretti a scuola." }
     ],
     text:
       "All'alba il pullman della Saint John percorre chilometri di strade sterrate per raccogliere i bambini dei villaggi.\nLa scuola, fondata da Padre Kimu, offre gratuitamente istruzione e almeno un pasto al giorno.\nSu un autobus da 70 posti viaggiano spesso fino a 200 bambini.\nOgni sedile, ogni corridoio, ogni angolo racconta una straordinaria voglia di imparare."
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala6.jpg",
+    backdrop: "./assets/museum/sala6.webp",
     layout: roomLayouts.room5,
     title: "Futuro.",
     artworks: [
-      { src: "./assets/photos/futuro-1.jpg", label: "Foto 1", caption: "Un sorriso tra le mura della Saint John. Ogni giorno questi bambini imparano, giocano e scoprono il mondo, costruendo passo dopo passo il proprio futuro." },
-      { src: "./assets/photos/futuro-2.jpg", label: "Foto 2", caption: "In un luogo dove molti arrivano da villaggi diversi, la scuola diventa anche un posto dove trovare amici. A volte il futuro inizia con un semplice abbraccio." },
-      { src: "./assets/photos/futuro-3.jpg", label: "Foto 3", caption: "Dietro ogni uniforme c'è una storia ancora tutta da scrivere." },
-      { src: "./assets/photos/futuro-4.jpg", label: "Foto 4", caption: "Non tutti i futuri iniziano col sorriso. Qualcuno comincia protestando molto energicamente contro la scuola del mattino." }
+      { src: "./assets/photos/futuro-1.webp", label: "Foto 1", caption: "Un sorriso tra le mura della Saint John. Ogni giorno questi bambini imparano, giocano e scoprono il mondo, costruendo passo dopo passo il proprio futuro." },
+      { src: "./assets/photos/futuro-2.webp", label: "Foto 2", caption: "In un luogo dove molti arrivano da villaggi diversi, la scuola diventa anche un posto dove trovare amici. A volte il futuro inizia con un semplice abbraccio." },
+      { src: "./assets/photos/futuro-3.webp", label: "Foto 3", caption: "Dietro ogni uniforme c'è una storia ancora tutta da scrivere." },
+      { src: "./assets/photos/futuro-4.webp", label: "Foto 4", caption: "Non tutti i futuri iniziano col sorriso. Qualcuno comincia protestando molto energicamente contro la scuola del mattino." }
     ],
     text: "La sala si chiama \"Futuro\" perché tutto inizia da qui. Tra canzoni, giochi, colori e nuove parole, i bambini dell'asilo Saint John costruiscono le basi del loro domani. I piccoli disegni che decorano le aule sono il segno concreto di questa crescita quotidiana."
   },
   {
     hall: 2,
-    backdrop: "./assets/museum/sala7.jpg",
+    backdrop: "./assets/museum/sala7.webp",
     layout: roomLayouts.room6,
     title: "Le ragazze del S.John",
     artworks: [
-      { src: "./assets/photos/ragazze-1.jpg", label: "Foto 1", caption: "Quel giorno non abbiamo insegnato matematica o grammatica. Abbiamo parlato di emozioni, ascoltato suoni, riconosciuto profumi e scoperto il mondo attraverso i cinque sensi. Lei non si è persa nemmeno un istante." },
-      { src: "./assets/photos/ragazze-2.jpg", label: "Foto 2", caption: "Con Faith abbiamo scoperto che la timidezza e la determinazione possono convivere nello stesso sorriso. Studiando le storie di donne che hanno cambiato il mondo, abbiamo provato a mostrare alle ragazze della Saint John che anche il loro futuro può essere scritto da loro stesse." },
-      { src: "./assets/photos/ragazze-3.jpg", label: "Foto 3", caption: "Disegni, colori, giochi e canzoni. Per qualche ora l'aula si è riempita di risate, curiosità e piccoli gesti di amicizia, proprio come quello catturato in questa fotografia." },
-      { src: "./assets/photos/ragazze-4.jpg", label: "Foto 4", caption: "Ispirate dalla storia di Rita Levi-Montalcini, le studentesse hanno scritto di una difficoltà affrontata e del percorso che le ha portate a scegliere ciò che ritenevano giusto. Un esercizio di scrittura, ma anche di consapevolezza." }
+      { src: "./assets/photos/ragazze-1.webp", label: "Foto 1", caption: "Quel giorno non abbiamo insegnato matematica o grammatica. Abbiamo parlato di emozioni, ascoltato suoni, riconosciuto profumi e scoperto il mondo attraverso i cinque sensi. Lei non si è persa nemmeno un istante." },
+      { src: "./assets/photos/ragazze-2.webp", label: "Foto 2", caption: "Con Faith abbiamo scoperto che la timidezza e la determinazione possono convivere nello stesso sorriso. Studiando le storie di donne che hanno cambiato il mondo, abbiamo provato a mostrare alle ragazze della Saint John che anche il loro futuro può essere scritto da loro stesse." },
+      { src: "./assets/photos/ragazze-3.webp", label: "Foto 3", caption: "Disegni, colori, giochi e canzoni. Per qualche ora l'aula si è riempita di risate, curiosità e piccoli gesti di amicizia, proprio come quello catturato in questa fotografia." },
+      { src: "./assets/photos/ragazze-4.webp", label: "Foto 4", caption: "Ispirate dalla storia di Rita Levi-Montalcini, le studentesse hanno scritto di una difficoltà affrontata e del percorso che le ha portate a scegliere ciò che ritenevano giusto. Un esercizio di scrittura, ma anche di consapevolezza." }
     ],
     text: "Alla S.John le ragazze non studiano soltanto. Vivono insieme, condividono responsabilità, imparano a prendersi cura di sé e delle altre. Padre Kimu ha voluto una scuola che offrisse loro ciò che troppo spesso viene negato: tempo per crescere, un'istruzione e la possibilità di scegliere il proprio futuro."
   },
   {
     corridor: true,
-    backdrop: "./assets/museum/corridoio2.jpg"
+    backdrop: "./assets/museum/corridoio2.webp"
   },
   {
     hall: 3,
-    backdrop: "./assets/museum/sala8.jpg",
+    backdrop: "./assets/museum/sala8.webp",
     layout: roomLayouts.room7,
     title: "La pioggia.",
     text:
@@ -251,7 +251,7 @@ const rooms = [
   },
   {
     hall: 3,
-    backdrop: "./assets/museum/sala9.jpg",
+    backdrop: "./assets/museum/sala9.webp",
     layout: roomLayouts.room8,
     title: "Grazie.",
     text:
@@ -259,7 +259,7 @@ const rooms = [
   },
   {
     hall: 3,
-    backdrop: "./assets/museum/sala10.jpg",
+    backdrop: "./assets/museum/sala10.webp",
     layout: roomLayouts.room9,
     title: "Correre.",
     text:
@@ -603,7 +603,8 @@ function renderRoom(index) {
 
 function renderMobileCard(index, isCorridor) {
   const room = rooms[index];
-  const heroSrc = (isCorridor && room.backdropMobile) ? room.backdropMobile : room.backdrop;
+  const mobileBackdrop = room.backdropMobile || room.backdrop.replace(/\.webp$/, '-mobile.webp');
+  const heroSrc = isCorridor ? (room.backdropMobile || mobileBackdrop) : mobileBackdrop;
   mobileCardHero.style.backgroundImage = `url("${heroSrc}")`;
   mobileCard.classList.toggle("mobile-card--corridor", isCorridor);
 
