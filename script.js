@@ -34,7 +34,7 @@ const menuAreas = [
     `,
     items: [
       { text: "Il pullman", roomIndex: 5 },
-      { text: "Le parole", roomIndex: 6 },
+      { text: "Futuro", roomIndex: 6 },
       { text: "Il futuro", roomIndex: 7 }
     ]
   },
@@ -210,9 +210,14 @@ const rooms = [
     hall: 2,
     backdrop: "./assets/museum/sala6.jpg",
     layout: roomLayouts.room5,
-    title: "Le parole.",
-    text:
-      "Le aperture laterali ricordano che il volontariato non si esaurisce in una sola scena. Ogni gesto apre sempre un passaggio verso qualcos'altro."
+    title: "Futuro.",
+    artworks: [
+      { src: "./assets/photos/futuro-1.jpg", label: "Foto 1", caption: "" },
+      { src: "./assets/photos/futuro-2.jpg", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/futuro-3.jpg", label: "Foto 3", caption: "" },
+      { src: "./assets/photos/futuro-4.jpg", label: "Foto 4", caption: "" }
+    ],
+    text: ""
   },
   {
     hall: 2,
