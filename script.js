@@ -106,8 +106,8 @@ const roomLayouts = {
   },
   room5: {
     frames: [
-      { x: 0, y: 0, w: 0, h: 0, btnX: 53.2, btnY: 54 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 53.2, btnY: 54 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 42, btnY: 53.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 63, btnY: 53.2 },
       { x: 0, y: 0, w: 0, h: 0, btnX: 45, btnY: 93 },
       { x: 0, y: 0, w: 0, h: 0, btnX: 65, btnY: 93 }
     ],
