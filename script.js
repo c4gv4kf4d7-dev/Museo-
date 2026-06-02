@@ -217,12 +217,12 @@ const rooms = [
     layout: roomLayouts.room5,
     title: "Futuro.",
     artworks: [
-      { src: "./assets/photos/futuro-1.jpg", label: "Foto 1", caption: "" },
-      { src: "./assets/photos/futuro-2.jpg", label: "Foto 2", caption: "" },
-      { src: "./assets/photos/futuro-3.jpg", label: "Foto 3", caption: "" },
-      { src: "./assets/photos/futuro-4.jpg", label: "Foto 4", caption: "" }
+      { src: "./assets/photos/futuro-1.jpg", label: "Foto 1", caption: "Un sorriso tra le mura della Saint John. Ogni giorno questi bambini imparano, giocano e scoprono il mondo, costruendo passo dopo passo il proprio futuro." },
+      { src: "./assets/photos/futuro-2.jpg", label: "Foto 2", caption: "In un luogo dove molti arrivano da villaggi diversi, la scuola diventa anche un posto dove trovare amici. A volte il futuro inizia con un semplice abbraccio." },
+      { src: "./assets/photos/futuro-3.jpg", label: "Foto 3", caption: "Dietro ogni uniforme c'è una storia ancora tutta da scrivere." },
+      { src: "./assets/photos/futuro-4.jpg", label: "Foto 4", caption: "Non tutti i futuri iniziano col sorriso. Qualcuno comincia protestando molto energicamente contro la scuola del mattino." }
     ],
-    text: ""
+    text: "La sala si chiama \"Futuro\" perché tutto inizia da qui. Tra canzoni, giochi, colori e nuove parole, i bambini dell'asilo Saint John costruiscono le basi del loro domani. I piccoli disegni che decorano le aule sono il segno concreto di questa crescita quotidiana."
   },
   {
     hall: 2,
