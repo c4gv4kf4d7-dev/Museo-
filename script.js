@@ -230,12 +230,12 @@ const rooms = [
     layout: roomLayouts.room6,
     title: "Le ragazze del S.John",
     artworks: [
-      { src: "./assets/photos/ragazze-1.jpg", label: "Foto 1", caption: "" },
-      { src: "./assets/photos/ragazze-2.jpg", label: "Foto 2", caption: "" },
-      { src: "./assets/photos/ragazze-3.jpg", label: "Foto 3", caption: "" },
-      { src: "./assets/photos/ragazze-4.jpg", label: "Foto 4", caption: "" }
+      { src: "./assets/photos/ragazze-1.jpg", label: "Foto 1", caption: "Quel giorno non abbiamo insegnato matematica o grammatica. Abbiamo parlato di emozioni, ascoltato suoni, riconosciuto profumi e scoperto il mondo attraverso i cinque sensi. Lei non si è persa nemmeno un istante." },
+      { src: "./assets/photos/ragazze-2.jpg", label: "Foto 2", caption: "Con Faith abbiamo scoperto che la timidezza e la determinazione possono convivere nello stesso sorriso. Studiando le storie di donne che hanno cambiato il mondo, abbiamo provato a mostrare alle ragazze della Saint John che anche il loro futuro può essere scritto da loro stesse." },
+      { src: "./assets/photos/ragazze-3.jpg", label: "Foto 3", caption: "Disegni, colori, giochi e canzoni. Per qualche ora l'aula si è riempita di risate, curiosità e piccoli gesti di amicizia, proprio come quello catturato in questa fotografia." },
+      { src: "./assets/photos/ragazze-4.jpg", label: "Foto 4", caption: "Ispirate dalla storia di Rita Levi-Montalcini, le studentesse hanno scritto di una difficoltà affrontata e del percorso che le ha portate a scegliere ciò che ritenevano giusto. Un esercizio di scrittura, ma anche di consapevolezza." }
     ],
-    text: ""
+    text: "Alla S.John le ragazze non studiano soltanto. Vivono insieme, condividono responsabilità, imparano a prendersi cura di sé e delle altre. Padre Kimu ha voluto una scuola che offrisse loro ciò che troppo spesso viene negato: tempo per crescere, un'istruzione e la possibilità di scegliere il proprio futuro."
   },
   {
     corridor: true,
