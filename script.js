@@ -35,7 +35,7 @@ const menuAreas = [
     items: [
       { text: "Il pullman", roomIndex: 5 },
       { text: "Futuro", roomIndex: 6 },
-      { text: "Il futuro", roomIndex: 7 }
+      { text: "Le ragazze del S.John", roomIndex: 7 }
     ]
   },
   {
@@ -228,9 +228,14 @@ const rooms = [
     hall: 2,
     backdrop: "./assets/museum/sala7.jpg",
     layout: roomLayouts.room6,
-    title: "Il futuro.",
-    text:
-      "In questa stanza la luce entra con decisione, come molti momenti vissuti sul campo. Anche nella fatica c'erano chiarezza, bellezza e gratitudine."
+    title: "Le ragazze del S.John.",
+    artworks: [
+      { src: "./assets/photos/ragazze-1.jpg", label: "Foto 1", caption: "" },
+      { src: "./assets/photos/ragazze-2.jpg", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/ragazze-3.jpg", label: "Foto 3", caption: "" },
+      { src: "./assets/photos/ragazze-4.jpg", label: "Foto 4", caption: "" }
+    ],
+    text: ""
   },
   {
     corridor: true,
