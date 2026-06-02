@@ -277,8 +277,9 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #5f4c36;
-  font-size: 0.78rem;
+  color: #3d2e1e;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 .menu-meta-link {
@@ -327,10 +328,10 @@ a {
 
 .menu-credit {
   margin: 0;
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 0.06em;
-  color: #7a6248;
+  color: #5a4830;
   line-height: 1.55;
   text-align: left;
 }
