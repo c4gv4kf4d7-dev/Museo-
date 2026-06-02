@@ -228,7 +228,7 @@ const rooms = [
     hall: 2,
     backdrop: "./assets/museum/sala7.jpg",
     layout: roomLayouts.room6,
-    title: "Le ragazze del S.John.",
+    title: "Le ragazze del S.John",
     artworks: [
       { src: "./assets/photos/ragazze-1.jpg", label: "Foto 1", caption: "" },
       { src: "./assets/photos/ragazze-2.jpg", label: "Foto 2", caption: "" },
