@@ -202,7 +202,7 @@ const rooms = [
     hall: 2,
     backdrop: "./assets/museum/sala5.webp",
     layout: roomLayouts.room4,
-    title: "Il pullman.",
+    title: "Il pullman",
     artworks: [
       { src: "./assets/photos/pullman-1.webp", label: "Foto 1", caption: "Il viaggio è appena iniziato. Alcuni bambini piangono, altri si lasciano contagiare dal pianto. Altri ancora cantano a squarciagola la stessa filastrocca che accompagna ogni mattina il tragitto verso la Saint John." },
       { src: "./assets/photos/pullman-2.webp", label: "Foto 2", caption: "Ad ogni fermata le mamme si stringono a decine attorno alle porte del pullman e sollevano i propri bambini verso l'interno per assicurargli un posto. Hanno camminato per chilometri prima dell'alba e non vogliono perdere l'occasione di mandare i figli a scuola." },
@@ -215,7 +215,7 @@ const rooms = [
     hall: 2,
     backdrop: "./assets/museum/sala6.webp",
     layout: roomLayouts.room5,
-    title: "Futuro.",
+    title: "Futuro",
     artworks: [
       { src: "./assets/photos/futuro-1.webp", label: "Foto 1", caption: "Un sorriso tra le mura della Saint John. Ogni giorno questi bambini imparano, giocano e scoprono il mondo, costruendo passo dopo passo il proprio futuro." },
       { src: "./assets/photos/futuro-2.webp", label: "Foto 2", caption: "In un luogo dove molti arrivano da villaggi diversi, la scuola diventa anche un posto dove trovare amici. A volte il futuro inizia con un semplice abbraccio." },
@@ -245,7 +245,7 @@ const rooms = [
     hall: 3,
     backdrop: "./assets/museum/sala8.webp",
     layout: roomLayouts.room7,
-    title: "La pioggia.",
+    title: "La pioggia",
     text:
       "Una sala essenziale, quasi silenziosa. È il ricordo di tutte le volte in cui non serviva fare molto, ma soltanto esserci con continuità."
   },
@@ -253,7 +253,7 @@ const rooms = [
     hall: 3,
     backdrop: "./assets/museum/sala9.webp",
     layout: roomLayouts.room8,
-    title: "Grazie.",
+    title: "Grazie",
     text:
       "Una grande immagine centrale per custodire il senso di questi tre anni. Non solo attività, ma un legame che continua a interrogarci e a chiamarci."
   },
@@ -261,7 +261,7 @@ const rooms = [
     hall: 3,
     backdrop: "./assets/museum/sala10.webp",
     layout: roomLayouts.room9,
-    title: "Correre.",
+    title: "Correre",
     text:
       "Qui il racconto si apre al prossimo passo. La raccolta fondi nasce da questo: non chiudere il museo nel ricordo, ma trasformarlo in un nuovo anno di presenza.",
     donate: true
