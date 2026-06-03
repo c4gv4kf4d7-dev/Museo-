@@ -1325,7 +1325,7 @@ a {
 
 @media (max-width: 500px) and (orientation: portrait) {
 
-  /* Menu: scrollabile con peek della seconda card */
+  /* Menu: scrollabile */
   .menu-screen {
     overflow-y: auto;
     overflow-x: hidden;
@@ -1336,8 +1336,37 @@ a {
   }
 
   .menu-card--guide {
-    max-height: 88svh;
-    overflow: hidden;
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* Freccia scroll hint */
+  .menu-scroll-hint {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 4px;
+    opacity: 1;
+    transition: opacity 400ms ease;
+  }
+
+  .menu-scroll-hint.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .menu-scroll-hint__arrow {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(100, 76, 48, 0.7);
+    animation: scroll-bounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
   }
 
   /* Nascondi il render museo desktop e la topbar progress */

@@ -317,6 +317,13 @@ let isTransitioning = false;
 menuDonateButton.href = GOFUNDME_URL;
 menuScreen.style.setProperty("--entrance-backdrop", `url("${ENTRANCE_URL}")`);
 
+const menuScrollHint = document.getElementById("menuScrollHint");
+if (menuScrollHint) {
+  menuScreen.addEventListener("scroll", () => {
+    if (menuScreen.scrollTop > 30) menuScrollHint.classList.add("is-hidden");
+  }, { passive: true });
+}
+
 // ── Lightbox ──────────────────────────────────────────────────────────────────
 
 function openLightbox(src, alt, caption) {
