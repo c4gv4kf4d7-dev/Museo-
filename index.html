@@ -22,12 +22,6 @@
     <main class="museum-app">
       <section class="menu-screen" id="menuScreen" aria-labelledby="menuTitle">
 
-        <div class="menu-tabs" id="menuTabs" role="tablist" aria-hidden="true">
-          <button class="menu-tab is-active" data-tab="0" type="button" role="tab">Benvenuto</button>
-          <button class="menu-tab" data-tab="1" type="button" role="tab">Le sale</button>
-          <span class="menu-tabs__slider" aria-hidden="true"></span>
-        </div>
-
         <div class="menu-pages" id="menuPages">
         <article class="menu-card menu-card--guide">
           <p class="menu-card__eyebrow">Guida del percorso</p>
@@ -65,7 +59,10 @@
 
           <div class="menu-screen__actions">
             <button class="button button--primary" id="startTourButton">
-              Inizia il percorso
+              Inizia la visita guidata
+            </button>
+            <button class="button button--ghost" id="showRoomsButton" type="button">
+              Scegli una sala dalla mappa
             </button>
           </div>
 
@@ -106,9 +103,10 @@
         </article>
         </div>
 
-        <div class="menu-pagedots" id="menuPageDots" aria-hidden="true">
-          <span class="menu-pagedots__dot is-active"></span>
-          <span class="menu-pagedots__dot"></span>
+        <div class="menu-tabs" id="menuTabs" role="tablist" aria-hidden="true">
+          <button class="menu-tab is-active" data-tab="0" type="button" role="tab">Benvenuto</button>
+          <button class="menu-tab" data-tab="1" type="button" role="tab">Le sale</button>
+          <span class="menu-tabs__slider" aria-hidden="true"></span>
         </div>
       </section>
 

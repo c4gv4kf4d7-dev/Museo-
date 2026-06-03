@@ -113,6 +113,11 @@ a {
   display: none;
 }
 
+/* Pulsante ghost: solo mobile portrait, nascosto altrove */
+.button--ghost {
+  display: none;
+}
+
 /* Wrapper pagine: trasparente alla griglia desktop */
 .menu-pages {
   display: contents;
@@ -1336,70 +1341,16 @@ a {
 
 @media (max-width: 500px) and (orientation: portrait) {
 
-  /* Menu come guida sfogliabile */
+  /* Menu: layout a pagine */
   .menu-screen {
     overflow: hidden;
     border-radius: 26px;
     min-height: 0;
     height: calc(100svh - 28px);
     padding: 14px 14px 12px;
-    gap: 0;
+    gap: 10px;
     display: flex;
     flex-direction: column;
-  }
-
-  /* Header a schede tipo segmented control */
-  .menu-tabs {
-    position: relative;
-    display: flex;
-    gap: 0;
-    background: rgba(248, 242, 233, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 999px;
-    padding: 5px;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 6px 20px rgba(42, 30, 15, 0.14), inset 0 1px 0 rgba(255,255,255,0.6);
-    flex-shrink: 0;
-    margin-bottom: 14px;
-  }
-
-  /* Pillola scorrevole sotto il tab attivo */
-  .menu-tabs__slider {
-    position: absolute;
-    top: 5px;
-    bottom: 5px;
-    left: 5px;
-    width: calc(50% - 5px);
-    border-radius: 999px;
-    background: linear-gradient(180deg, #3a2d1c, #241a0f);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.28);
-    transition: transform 320ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    z-index: 0;
-  }
-
-  .menu-tabs[data-active="1"] .menu-tabs__slider {
-    transform: translateX(100%);
-  }
-
-  .menu-tab {
-    position: relative;
-    z-index: 1;
-    flex: 1;
-    padding: 11px 12px;
-    border: none;
-    border-radius: 999px;
-    background: transparent;
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: #8a6f4f;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    transition: color 280ms ease;
-  }
-
-  .menu-tab.is-active {
-    color: #f7efe2;
   }
 
   /* Contenitore pagine: scroll orizzontale con snap */
@@ -1415,9 +1366,7 @@ a {
     margin: 0 -14px;
   }
 
-  .menu-pages::-webkit-scrollbar {
-    display: none;
-  }
+  .menu-pages::-webkit-scrollbar { display: none; }
 
   .menu-card--guide,
   .menu-card--areas {
@@ -1431,27 +1380,69 @@ a {
     margin: 0 14px;
   }
 
-  /* Dots indicatori pagina */
-  .menu-pagedots {
+  /* Tabs in basso: navigazione pagine */
+  .menu-tabs {
+    position: relative;
     display: flex;
-    justify-content: center;
-    gap: 7px;
-    padding: 12px 0 4px;
     flex-shrink: 0;
-  }
-
-  .menu-pagedots__dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba(120, 95, 60, 0.3);
-    transition: width 280ms ease, background 280ms ease;
-  }
-
-  .menu-pagedots__dot.is-active {
-    width: 22px;
+    background: rgba(245, 238, 226, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 999px;
-    background: rgba(58, 45, 28, 0.85);
+    padding: 5px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 4px 18px rgba(42, 30, 15, 0.13), inset 0 1px 0 rgba(255,255,255,0.55);
+  }
+
+  .menu-tabs__slider {
+    position: absolute;
+    top: 5px; bottom: 5px; left: 5px;
+    width: calc(50% - 5px);
+    border-radius: 999px;
+    background: linear-gradient(160deg, #3a2d1c, #1e140a);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+
+  .menu-tabs[data-active="1"] .menu-tabs__slider {
+    transform: translateX(100%);
+  }
+
+  .menu-tab {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 12px 8px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #8a6f4f;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: color 280ms ease;
+  }
+
+  .menu-tab.is-active { color: #f5ece0; }
+
+  /* Pulsante ghost: solo mobile portrait */
+  .button--ghost {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    border: 1.5px solid rgba(100, 76, 48, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 252, 246, 0.45);
+    color: #5a4228;
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    margin-top: 10px;
   }
 
   /* Nascondi il render museo desktop e la topbar progress */

@@ -321,28 +321,31 @@ menuScreen.style.setProperty("--entrance-backdrop", `url("${ENTRANCE_URL}")`);
 // ── Menu mobile: guida sfogliabile a pagine ────────────────────────────────────
 const menuTabs = document.getElementById("menuTabs");
 const menuPages = document.getElementById("menuPages");
-const menuPageDots = document.getElementById("menuPageDots");
+const showRoomsButton = document.getElementById("showRoomsButton");
 
 if (menuTabs && menuPages) {
   const tabButtons = [...menuTabs.querySelectorAll(".menu-tab")];
-  const dots = menuPageDots ? [...menuPageDots.querySelectorAll(".menu-pagedots__dot")] : [];
 
   const setActivePage = (i) => {
     menuTabs.dataset.active = String(i);
     tabButtons.forEach((t, idx) => t.classList.toggle("is-active", idx === i));
-    dots.forEach((d, idx) => d.classList.toggle("is-active", idx === i));
   };
 
-  // Click sui tab → scorri alla pagina
+  const goToPage = (i) => {
+    menuPages.scrollTo({ left: i * menuPages.clientWidth, behavior: "smooth" });
+    setActivePage(i);
+  };
+
   menuTabs.addEventListener("click", e => {
     const tab = e.target.closest(".menu-tab");
     if (!tab) return;
-    const i = Number(tab.dataset.tab);
-    menuPages.scrollTo({ left: i * menuPages.clientWidth, behavior: "smooth" });
-    setActivePage(i);
+    goToPage(Number(tab.dataset.tab));
   });
 
-  // Swipe → aggiorna tab e dots
+  if (showRoomsButton) {
+    showRoomsButton.addEventListener("click", () => goToPage(1));
+  }
+
   let scrollRaf = null;
   menuPages.addEventListener("scroll", () => {
     if (scrollRaf) return;
