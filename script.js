@@ -321,11 +321,19 @@ menuScreen.style.setProperty("--entrance-backdrop", `url("${ENTRANCE_URL}")`);
 // ── Menu mobile: guida sfogliabile a pagine ────────────────────────────────────
 const menuPages = document.getElementById("menuPages");
 const showRoomsButton = document.getElementById("showRoomsButton");
+const backToGuideButton = document.getElementById("backToGuideButton");
 
-if (menuPages && showRoomsButton) {
-  showRoomsButton.addEventListener("click", () => {
-    menuPages.scrollTo({ left: menuPages.clientWidth, behavior: "smooth" });
-  });
+if (menuPages) {
+  if (showRoomsButton) {
+    showRoomsButton.addEventListener("click", () => {
+      menuPages.scrollTo({ left: menuPages.clientWidth, behavior: "smooth" });
+    });
+  }
+  if (backToGuideButton) {
+    backToGuideButton.addEventListener("click", () => {
+      menuPages.scrollTo({ left: 0, behavior: "smooth" });
+    });
+  }
 }
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────
