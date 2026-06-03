@@ -319,42 +319,13 @@ menuDonateButton.href = GOFUNDME_URL;
 menuScreen.style.setProperty("--entrance-backdrop", `url("${ENTRANCE_URL}")`);
 
 // ── Menu mobile: guida sfogliabile a pagine ────────────────────────────────────
-const menuTabs = document.getElementById("menuTabs");
 const menuPages = document.getElementById("menuPages");
 const showRoomsButton = document.getElementById("showRoomsButton");
 
-if (menuTabs && menuPages) {
-  const tabButtons = [...menuTabs.querySelectorAll(".menu-tab")];
-
-  const setActivePage = (i) => {
-    menuTabs.dataset.active = String(i);
-    tabButtons.forEach((t, idx) => t.classList.toggle("is-active", idx === i));
-  };
-
-  const goToPage = (i) => {
-    menuPages.scrollTo({ left: i * menuPages.clientWidth, behavior: "smooth" });
-    setActivePage(i);
-  };
-
-  menuTabs.addEventListener("click", e => {
-    const tab = e.target.closest(".menu-tab");
-    if (!tab) return;
-    goToPage(Number(tab.dataset.tab));
+if (menuPages && showRoomsButton) {
+  showRoomsButton.addEventListener("click", () => {
+    menuPages.scrollTo({ left: menuPages.clientWidth, behavior: "smooth" });
   });
-
-  if (showRoomsButton) {
-    showRoomsButton.addEventListener("click", () => goToPage(1));
-  }
-
-  let scrollRaf = null;
-  menuPages.addEventListener("scroll", () => {
-    if (scrollRaf) return;
-    scrollRaf = requestAnimationFrame(() => {
-      scrollRaf = null;
-      const i = Math.round(menuPages.scrollLeft / menuPages.clientWidth);
-      setActivePage(i);
-    });
-  }, { passive: true });
 }
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────

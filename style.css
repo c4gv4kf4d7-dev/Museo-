@@ -1380,53 +1380,6 @@ a {
     margin: 0 14px;
   }
 
-  /* Tabs in basso: navigazione pagine */
-  .menu-tabs {
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    background: rgba(245, 238, 226, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    border-radius: 999px;
-    padding: 5px;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 18px rgba(42, 30, 15, 0.13), inset 0 1px 0 rgba(255,255,255,0.55);
-  }
-
-  .menu-tabs__slider {
-    position: absolute;
-    top: 5px; bottom: 5px; left: 5px;
-    width: calc(50% - 5px);
-    border-radius: 999px;
-    background: linear-gradient(160deg, #3a2d1c, #1e140a);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 0;
-  }
-
-  .menu-tabs[data-active="1"] .menu-tabs__slider {
-    transform: translateX(100%);
-  }
-
-  .menu-tab {
-    position: relative;
-    z-index: 1;
-    flex: 1;
-    padding: 12px 8px;
-    border: none;
-    border-radius: 999px;
-    background: transparent;
-    font-size: 0.86rem;
-    font-weight: 700;
-    color: #8a6f4f;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: color 280ms ease;
-  }
-
-  .menu-tab.is-active { color: #f5ece0; }
-
   /* Pulsante ghost: solo mobile portrait */
   .button--ghost {
     display: flex;
