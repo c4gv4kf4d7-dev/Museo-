@@ -239,7 +239,8 @@ const rooms = [
   },
   {
     corridor: true,
-    backdrop: "./assets/museum/corridoio2.webp"
+    backdrop: "./assets/museum/corridoio2.webp",
+    backdropMobile: "./assets/museum/corridoio-verticale2.webp"
   },
   {
     hall: 3,
