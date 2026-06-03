@@ -336,78 +336,12 @@ a {
   max-width: 420px;
 }
 
-.menu-map__svg {
+.menu-map picture,
+.menu-map__img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.map-room {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.map-room__hit {
-  fill: transparent;
-  transition: fill 0.18s ease;
-}
-
-.map-room__name {
-  font-family: "Manrope", sans-serif;
-  font-weight: 600;
-  fill: #33312a;
-  transition: fill 0.18s ease;
-  pointer-events: none;
-}
-
-.map-room__underline {
-  stroke: var(--map-accent, #9c3d33);
-  stroke-width: 3;
-  stroke-linecap: round;
-  opacity: 0;
-  transition: opacity 0.18s ease;
-  pointer-events: none;
-}
-
-.map-room:hover .map-room__hit,
-.map-room:focus-visible .map-room__hit {
-  fill: rgba(255, 255, 255, 0.4);
-}
-
-.map-room:hover .map-room__name,
-.map-room:focus-visible .map-room__name {
-  fill: var(--map-accent, #9c3d33);
-}
-
-.map-room:hover .map-room__underline,
-.map-room:focus-visible .map-room__underline {
-  opacity: 1;
-}
-
-.map-room:focus {
-  outline: none;
-}
-
-.map-sala-label {
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  font-size: 26px;
-  letter-spacing: 0.04em;
-}
-
-.map-sala-name {
-  font-family: "Manrope", sans-serif;
-  font-weight: 700;
-  font-size: 23px;
-  letter-spacing: 0.06em;
-}
-
-.map-gate-label {
-  font-family: "Manrope", sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: 0.18em;
-  fill: #5a5a4c;
+  border-radius: 14px;
 }
 
 .menu-areas {
