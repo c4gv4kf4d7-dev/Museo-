@@ -1394,7 +1394,9 @@ a {
   }
 
   .menu-card--guide .menu-meta-link {
-    min-height: 50px;
+    min-height: 44px;
+    font-size: 0.8rem;
+    padding: 0 16px;
   }
 
   /* Contenitore pagine: scroll orizzontale con snap */
