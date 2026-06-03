@@ -270,6 +270,7 @@ const rooms = [
 ];
 
 const roomList = document.getElementById("roomList");
+const menuMap = document.getElementById("menuMap");
 const museumApp = document.querySelector(".museum-app");
 const menuScreen = document.getElementById("menuScreen");
 const tourScreen = document.getElementById("tourScreen");
@@ -558,6 +559,205 @@ function renderRoomList() {
   });
 }
 
+function renderMuseumMap() {
+  if (!menuMap) return;
+
+  const W = "#52553f"; // wall stroke
+  const wall = 3;
+
+  // Colori sale (coerenti con i badge del menu)
+  const sala3Fill = "#d9dcc1";
+  const sala2Fill = "#bdd2e8";
+  const sala1Fill = "#f0dbab";
+  const amenityFill = "#e4ded0";
+  const sala3Accent = "#6f8a2e";
+  const sala2Accent = "#2e83cb";
+  const sala1Accent = "#cf9d27";
+
+  // Stanze cliccabili: nome + area di click + posizione etichetta
+  const mapRooms = [
+    { i: 9, name: "La pioggia", tx: 498, ty: 300, hx: 480, hy: 218, hw: 290, hh: 132, accent: sala3Accent },
+    { i: 10, name: "Grazie", tx: 498, ty: 428, hx: 480, hy: 350, hw: 290, hh: 130, accent: sala3Accent },
+    { i: 11, name: "Correre", tx: 498, ty: 556, hx: 480, hy: 480, hw: 290, hh: 150, accent: sala3Accent },
+    { i: 5, name: "Il pullman", tx: 498, ty: 716, hx: 480, hy: 648, hw: 350, hh: 122, accent: sala2Accent },
+    { i: 6, name: "Futuro", tx: 498, ty: 858, hx: 480, hy: 770, hw: 350, hh: 144, accent: sala2Accent },
+    { i: 7, name: "Le ragazze del S.John", tx: 498, ty: 990, hx: 480, hy: 914, hw: 350, hh: 130, accent: sala2Accent },
+    { i: 0, name: "Comunità", tx: 498, ty: 1122, hx: 480, hy: 1058, hw: 335, hh: 110, accent: sala1Accent },
+    { i: 1, name: "Mais", tx: 498, ty: 1228, hx: 480, hy: 1170, hw: 335, hh: 94, accent: sala1Accent },
+    { i: 2, name: "La forza delle donne", tx: 498, ty: 1322, hx: 480, hy: 1266, hw: 335, hh: 94, accent: sala1Accent },
+    { i: 3, name: "Sorrisi", tx: 498, ty: 1420, hx: 480, hy: 1362, hw: 335, hh: 96, accent: sala1Accent }
+  ];
+
+  const longNames = new Set(["Le ragazze del S.John", "La forza delle donne"]);
+
+  const roomGroups = mapRooms
+    .map((r) => {
+      const fs = longNames.has(r.name) ? 26 : 31;
+      return `
+        <g class="map-room" data-room-index="${r.i}" role="button" tabindex="0"
+           aria-label="Vai alla sala ${r.name}" style="--map-accent:${r.accent}">
+          <rect class="map-room__hit" x="${r.hx}" y="${r.hy}" width="${r.hw}" height="${r.hh}" rx="8"/>
+          <text class="map-room__name" x="${r.tx}" y="${r.ty}" font-size="${fs}">${r.name}</text>
+          <line class="map-room__underline" x1="${r.tx}" y1="${r.ty + 14}" x2="${r.tx + 24}" y2="${r.ty + 14}"/>
+        </g>`;
+    })
+    .join("");
+
+  // Icone badge (riuso stile menu, stroke bianco)
+  const badgeIcon = (cx, cy, paths) => `
+    <g transform="translate(${cx - 26},${cy - 26}) scale(2.17)" fill="none"
+       stroke="#fdfbf4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      ${paths}
+    </g>`;
+
+  const peopleIcon = badgeIcon(404, 412, `
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>`);
+  const bookIcon = badgeIcon(396, 800, `
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>`);
+  const dropIcon = badgeIcon(396, 1172, `
+    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>`);
+
+  // Piccole icone servizi (decorative)
+  const amenityIcon = (type, cx, cy) => {
+    const s = "#7a7a66";
+    if (type === "wc") {
+      const fig = (px) => `
+        <circle cx="${px}" cy="${cy - 12}" r="5" fill="${s}"/>
+        <path d="M${px - 6} ${cy + 13} L${px - 4} ${cy - 2} a4 4 0 0 1 8 0 L${px + 6} ${cy + 13} Z" fill="${s}"/>`;
+      return fig(cx - 12) + fig(cx + 12);
+    }
+    if (type === "cafe") {
+      return `<g fill="none" stroke="${s}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M${cx - 16} ${cy - 12} h26 v12 a13 13 0 0 1 -26 0 z"/>
+        <path d="M${cx + 10} ${cy - 8} h7 a6 6 0 0 1 0 12 h-3"/>
+        <path d="M${cx - 16} ${cy + 16} h26"/></g>`;
+    }
+    if (type === "gift") {
+      return `<g fill="none" stroke="${s}" stroke-width="3" stroke-linejoin="round">
+        <rect x="${cx - 16}" y="${cy - 4}" width="32" height="20" rx="2"/>
+        <path d="M${cx - 18} ${cy - 12} h36 v8 h-36 z"/>
+        <path d="M${cx} ${cy - 12} v28"/>
+        <path d="M${cx} ${cy - 12} c-8 -10 -16 -2 0 0 c8 -10 16 -2 0 0z" fill="${s}"/></g>`;
+    }
+    if (type === "wheel") {
+      return `<g fill="none" stroke="${s}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="${cx - 4}" cy="${cy - 16}" r="4" fill="${s}"/>
+        <path d="M${cx - 6} ${cy - 8} v12 h12"/>
+        <circle cx="${cx - 2}" cy="${cy + 8}" r="11"/>
+        <path d="M${cx + 8} ${cy + 4} l6 12"/></g>`;
+    }
+    if (type === "hanger") {
+      return `<g fill="none" stroke="${s}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M${cx} ${cy - 14} a5 5 0 0 1 5 5 c0 4 -5 4 -5 8"/>
+        <path d="M${cx} ${cy + 3} L${cx - 20} ${cy + 16} h40 Z"/></g>`;
+    }
+    if (type === "info") {
+      return `<g fill="none" stroke="${s}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="${cx}" cy="${cy}" r="15"/>
+        <path d="M${cx} ${cy - 4} v9"/>
+        <circle cx="${cx}" cy="${cy - 9}" r="1.6" fill="${s}" stroke="none"/></g>`;
+    }
+    return "";
+  };
+
+  const amenityTile = (x, y, w, h, type) => {
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+    return `<g>
+      <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="${amenityFill}" stroke="${W}" stroke-width="${wall}"/>
+      ${amenityIcon(type, cx, cy)}
+    </g>`;
+  };
+
+  const svg = `
+    <svg viewBox="0 0 1024 1560" xmlns="http://www.w3.org/2000/svg" class="menu-map__svg" role="img">
+      <!-- USCITA -->
+      <g class="map-exit">
+        <text x="620" y="118" text-anchor="middle" class="map-gate-label">USCITA</text>
+        <path d="M620 205 V148" fill="none" stroke="#3a3a32" stroke-width="4" stroke-linecap="round"/>
+        <path d="M620 138 l-9 14 h18 z" fill="#3a3a32"/>
+      </g>
+
+      <!-- Blocchi sale -->
+      <rect x="330" y="215" width="440" height="415" rx="4" fill="${sala3Fill}" stroke="${W}" stroke-width="${wall}"/>
+      <rect x="345" y="645" width="485" height="400" rx="4" fill="${sala2Fill}" stroke="${W}" stroke-width="${wall}"/>
+      <rect x="330" y="1058" width="485" height="400" rx="4" fill="${sala1Fill}" stroke="${W}" stroke-width="${wall}"/>
+
+      <!-- Muri separatori interni -->
+      <line x1="478" y1="215" x2="478" y2="630" stroke="${W}" stroke-width="${wall}"/>
+      <line x1="478" y1="645" x2="478" y2="1045" stroke="${W}" stroke-width="${wall}"/>
+      <line x1="478" y1="1058" x2="478" y2="1458" stroke="${W}" stroke-width="${wall}"/>
+
+      <line x1="478" y1="350" x2="770" y2="350" stroke="${W}" stroke-width="${wall}"/>
+      <line x1="478" y1="480" x2="770" y2="480" stroke="${W}" stroke-width="${wall}"/>
+
+      <line x1="478" y1="770" x2="830" y2="770" stroke="${W}" stroke-width="${wall}"/>
+      <line x1="478" y1="914" x2="830" y2="914" stroke="${W}" stroke-width="${wall}"/>
+
+      <line x1="478" y1="1168" x2="815" y2="1168" stroke="${W}" stroke-width="${wall}"/>
+      <line x1="478" y1="1264" x2="815" y2="1264" stroke="${W}" stroke-width="${wall}"/>
+      <line x1="478" y1="1360" x2="815" y2="1360" stroke="${W}" stroke-width="${wall}"/>
+
+      <!-- Servizi (decorativi) -->
+      ${amenityTile(852, 232, 108, 106, "wc")}
+      ${amenityTile(852, 350, 108, 116, "cafe")}
+      ${amenityTile(852, 478, 108, 116, "gift")}
+      ${amenityTile(852, 828, 108, 96, "wc")}
+      ${amenityTile(852, 936, 108, 104, "wheel")}
+      ${amenityTile(852, 1072, 108, 96, "hanger")}
+      ${amenityTile(852, 1182, 108, 96, "info")}
+      ${amenityTile(852, 1294, 108, 96, "wheel")}
+
+      <!-- Percorso -->
+      <path class="map-route"
+        d="M600 1512 V1430 H497 V1135 H800 V662 H497 V420 H800 V300 H620 V150"
+        fill="none" stroke="#9c3d33" stroke-width="4"
+        stroke-dasharray="2 16" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+
+      <!-- Badge sale -->
+      <circle cx="404" cy="412" r="46" fill="${sala3Accent}"/>${peopleIcon}
+      <text x="404" y="500" text-anchor="middle" class="map-sala-label" fill="${sala3Accent}">SALA 3</text>
+      <text x="404" y="524" text-anchor="middle" class="map-sala-name" fill="${sala3Accent}">IL POZZO</text>
+
+      <circle cx="396" cy="800" r="46" fill="${sala2Accent}"/>${bookIcon}
+      <text x="396" y="888" text-anchor="middle" class="map-sala-label" fill="${sala2Accent}">SALA 2</text>
+      <text x="396" y="912" text-anchor="middle" class="map-sala-name" fill="${sala2Accent}">ISTITUTO</text>
+      <text x="396" y="934" text-anchor="middle" class="map-sala-name" fill="${sala2Accent}">SAINT JOHN</text>
+
+      <circle cx="396" cy="1172" r="46" fill="${sala1Accent}"/>${dropIcon}
+      <text x="396" y="1260" text-anchor="middle" class="map-sala-label" fill="${sala1Accent}">SALA 1</text>
+      <text x="396" y="1284" text-anchor="middle" class="map-sala-name" fill="${sala1Accent}">TIYENDE</text>
+      <text x="396" y="1306" text-anchor="middle" class="map-sala-name" fill="${sala1Accent}">PAMODZI</text>
+
+      <!-- Stanze cliccabili -->
+      ${roomGroups}
+
+      <!-- INGRESSO -->
+      <g>
+        <path d="M600 1512 V1468" fill="none" stroke="#3a3a32" stroke-width="4" stroke-linecap="round"/>
+        <path d="M600 1458 l-9 14 h18 z" fill="#3a3a32"/>
+        <text x="600" y="1548" text-anchor="middle" class="map-gate-label">INGRESSO</text>
+      </g>
+    </svg>`;
+
+  menuMap.innerHTML = svg;
+
+  menuMap.querySelectorAll(".map-room").forEach((node) => {
+    const idx = Number(node.dataset.roomIndex);
+    node.addEventListener("click", () => openTour(idx));
+    node.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openTour(idx);
+      }
+    });
+  });
+}
+
 function renderRoom(index) {
   const room = rooms[index];
   const isCorridor = Boolean(room.corridor);
@@ -786,6 +986,7 @@ nextRoomButton.addEventListener("click", handleNextAction);
 })();
 
 renderRoomList();
+renderMuseumMap();
 renderRoom(0);
 
 if (window.location.hash === "#sala1") {
