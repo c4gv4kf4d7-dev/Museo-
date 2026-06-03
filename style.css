@@ -1325,48 +1325,70 @@ a {
 
 @media (max-width: 500px) and (orientation: portrait) {
 
-  /* Menu: scrollabile */
+  /* Tab bar */
+  .menu-tabs {
+    display: flex;
+    gap: 0;
+    background: rgba(255, 252, 245, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    padding: 4px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(42, 30, 15, 0.12);
+    flex-shrink: 0;
+  }
+
+  .menu-tab {
+    flex: 1;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #7a6248;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 220ms ease, color 220ms ease;
+  }
+
+  .menu-tab.is-active {
+    background: rgba(40, 30, 18, 0.88);
+    color: #f5ede0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+  }
+
+  /* Menu: layout a tab */
   .menu-screen {
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     border-radius: 24px;
     min-height: 0;
-    padding: 14px 14px 0;
-    gap: 14px;
+    height: calc(100svh - 28px);
+    padding: 12px 12px 12px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
   }
 
-  .menu-card--guide {
-    max-height: none;
-    overflow: visible;
+  .menu-card--guide,
+  .menu-card--areas {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: opacity 200ms ease, transform 200ms ease;
   }
 
-  /* Freccia scroll hint */
+  /* Card nascosta (tab inattivo) */
+  .menu-screen[data-active-tab="areas"] .menu-card--guide,
+  .menu-screen[data-active-tab="guide"] .menu-card--areas {
+    display: none;
+  }
+
+  /* Freccia scroll hint — nascosta in modalità tab */
   .menu-scroll-hint {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0 4px;
-    opacity: 1;
-    transition: opacity 400ms ease;
-  }
-
-  .menu-scroll-hint.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .menu-scroll-hint__arrow {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(100, 76, 48, 0.7);
-    animation: scroll-bounce 1.6s ease-in-out infinite;
-  }
-
-  @keyframes scroll-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
+    display: none;
   }
 
   /* Nascondi il render museo desktop e la topbar progress */

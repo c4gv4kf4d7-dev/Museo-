@@ -324,6 +324,18 @@ if (menuScrollHint) {
   }, { passive: true });
 }
 
+const menuTabs = document.getElementById("menuTabs");
+if (menuTabs) {
+  menuScreen.dataset.activeTab = "guide";
+  menuTabs.addEventListener("click", e => {
+    const tab = e.target.closest(".menu-tab");
+    if (!tab) return;
+    menuTabs.querySelectorAll(".menu-tab").forEach(t => t.classList.remove("is-active"));
+    tab.classList.add("is-active");
+    menuScreen.dataset.activeTab = tab.dataset.tab;
+  });
+}
+
 // ── Lightbox ──────────────────────────────────────────────────────────────────
 
 function openLightbox(src, alt, caption) {
