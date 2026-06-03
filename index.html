@@ -22,11 +22,13 @@
     <main class="museum-app">
       <section class="menu-screen" id="menuScreen" aria-labelledby="menuTitle">
 
-        <div class="menu-tabs" id="menuTabs" aria-hidden="true">
-          <button class="menu-tab is-active" data-tab="guide" type="button">Benvenuto</button>
-          <button class="menu-tab" data-tab="areas" type="button">Capitoli</button>
+        <div class="menu-tabs" id="menuTabs" role="tablist" aria-hidden="true">
+          <button class="menu-tab is-active" data-tab="0" type="button" role="tab">Benvenuto</button>
+          <button class="menu-tab" data-tab="1" type="button" role="tab">Le sale</button>
+          <span class="menu-tabs__slider" aria-hidden="true"></span>
         </div>
 
+        <div class="menu-pages" id="menuPages">
         <article class="menu-card menu-card--guide">
           <p class="menu-card__eyebrow">Guida del percorso</p>
           <div class="menu-card__divider"></div>
@@ -85,14 +87,6 @@
           </div>
         </article>
 
-        <div class="menu-scroll-hint" id="menuScrollHint" aria-hidden="true">
-          <span class="menu-scroll-hint__arrow">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-          </span>
-        </div>
-
         <article class="menu-card menu-card--areas">
           <p class="menu-card__eyebrow">Le aree e le sale</p>
           <div class="menu-card__divider"></div>
@@ -110,6 +104,12 @@
             </div>
           </div>
         </article>
+        </div>
+
+        <div class="menu-pagedots" id="menuPageDots" aria-hidden="true">
+          <span class="menu-pagedots__dot is-active"></span>
+          <span class="menu-pagedots__dot"></span>
+        </div>
       </section>
 
       <section class="tour-screen hidden" id="tourScreen" aria-live="polite">

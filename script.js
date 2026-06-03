@@ -317,23 +317,40 @@ let isTransitioning = false;
 menuDonateButton.href = GOFUNDME_URL;
 menuScreen.style.setProperty("--entrance-backdrop", `url("${ENTRANCE_URL}")`);
 
-const menuScrollHint = document.getElementById("menuScrollHint");
-if (menuScrollHint) {
-  menuScreen.addEventListener("scroll", () => {
-    if (menuScreen.scrollTop > 30) menuScrollHint.classList.add("is-hidden");
-  }, { passive: true });
-}
-
+// ── Menu mobile: guida sfogliabile a pagine ────────────────────────────────────
 const menuTabs = document.getElementById("menuTabs");
-if (menuTabs) {
-  menuScreen.dataset.activeTab = "guide";
+const menuPages = document.getElementById("menuPages");
+const menuPageDots = document.getElementById("menuPageDots");
+
+if (menuTabs && menuPages) {
+  const tabButtons = [...menuTabs.querySelectorAll(".menu-tab")];
+  const dots = menuPageDots ? [...menuPageDots.querySelectorAll(".menu-pagedots__dot")] : [];
+
+  const setActivePage = (i) => {
+    menuTabs.dataset.active = String(i);
+    tabButtons.forEach((t, idx) => t.classList.toggle("is-active", idx === i));
+    dots.forEach((d, idx) => d.classList.toggle("is-active", idx === i));
+  };
+
+  // Click sui tab → scorri alla pagina
   menuTabs.addEventListener("click", e => {
     const tab = e.target.closest(".menu-tab");
     if (!tab) return;
-    menuTabs.querySelectorAll(".menu-tab").forEach(t => t.classList.remove("is-active"));
-    tab.classList.add("is-active");
-    menuScreen.dataset.activeTab = tab.dataset.tab;
+    const i = Number(tab.dataset.tab);
+    menuPages.scrollTo({ left: i * menuPages.clientWidth, behavior: "smooth" });
+    setActivePage(i);
   });
+
+  // Swipe → aggiorna tab e dots
+  let scrollRaf = null;
+  menuPages.addEventListener("scroll", () => {
+    if (scrollRaf) return;
+    scrollRaf = requestAnimationFrame(() => {
+      scrollRaf = null;
+      const i = Math.round(menuPages.scrollLeft / menuPages.clientWidth);
+      setActivePage(i);
+    });
+  }, { passive: true });
 }
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────
