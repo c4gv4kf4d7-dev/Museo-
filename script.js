@@ -240,7 +240,9 @@ const rooms = [
   {
     corridor: true,
     backdrop: "./assets/museum/corridoio2.webp",
-    backdropMobile: "./assets/museum/corridoio-verticale2.webp"
+    backdropMobile: "./assets/museum/corridoio-verticale2.webp",
+    eyebrow: "Stai per visitare la Sala 3",
+    nextTitle: "Il Pozzo"
   },
   {
     hall: 3,
