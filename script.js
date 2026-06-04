@@ -50,7 +50,7 @@ const menuAreas = [
     `,
     items: [
       { text: "La pioggia", roomIndex: 9 },
-      { text: "Grazie", roomIndex: 10 },
+      { text: "Gratitudine", roomIndex: 10 },
       { text: "Correre", roomIndex: 11 }
     ]
   }
@@ -275,7 +275,7 @@ const rooms = [
     hall: 3,
     backdrop: "./assets/museum/sala9.webp",
     layout: roomLayouts.room8,
-    title: "Grazie",
+    title: "Gratitudine",
     artworks: [
       { src: "./assets/photos/grazie-1.webp", label: "Foto 1", caption: "" },
       { src: "./assets/photos/grazie-2.webp", label: "Foto 2", caption: "" },
