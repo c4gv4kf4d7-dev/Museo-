@@ -264,12 +264,12 @@ const rooms = [
     layout: roomLayouts.room7,
     title: "La pioggia",
     artworks: [
-      { src: "./assets/photos/pioggia-1.webp", label: "Foto 1", caption: "" },
-      { src: "./assets/photos/pioggia-2.webp", label: "Foto 2", caption: "" },
-      { src: "./assets/photos/pioggia-3.webp", label: "Foto 3", caption: "" }
+      { src: "./assets/photos/pioggia-1.webp", label: "Foto 1", caption: "Dalla porta di casa osservano la festa. Fuori, la pioggia batte sulla terra rossa e sul nuovo pozzo appena inaugurato. Mentre il villaggio si riempie di canti e danze, questa famiglia resta sulla soglia, spettatrice di un momento che molti hanno vissuto come una benedizione." },
+      { src: "./assets/photos/pioggia-2.webp", label: "Foto 2", caption: "La pioggia arriva all'improvviso durante l'inaugurazione del pozzo. Fabio, Marco e Sergio si uniscono alle danze del villaggio. Tra risate, musica e fango, l'acqua viene festeggiata due volte: quella che cade dal cielo e quella che, da quel giorno, sarà disponibile per tutti." },
+      { src: "./assets/photos/pioggia-3.webp", label: "Foto 3", caption: "La festa è finita, ma il vero risultato è questo. Mentre il cielo si apre dopo il temporale, il nuovo pozzo entra subito in funzione. Bambini e adulti si alternano alla pompa, trasformando un'opera appena inaugurata in una risorsa concreta per l'intera comunità." }
     ],
     text:
-      "Una sala essenziale, quasi silenziosa. È il ricordo di tutte le volte in cui non serviva fare molto, ma soltanto esserci con continuità."
+      "Per un villaggio che aveva sempre vissuto la fatica della ricerca dell'acqua, quel giorno accadde qualcosa di speciale. Mentre inauguravamo il nuovo pozzo costruito grazie alle donazioni raccolte in Italia, una pioggia torrenziale iniziò a cadere sul villaggio. Gli abitanti la accolsero come un dono del cielo. Noi ci unimmo a loro, ballando sotto l'acqua fino a sera."
   },
   {
     hall: 3,
@@ -277,13 +277,13 @@ const rooms = [
     layout: roomLayouts.room8,
     title: "Gratitudine",
     artworks: [
-      { src: "./assets/photos/grazie-1.webp", label: "Foto 1", caption: "" },
-      { src: "./assets/photos/grazie-2.webp", label: "Foto 2", caption: "" },
-      { src: "./assets/photos/grazie-3.webp", label: "Foto 3", caption: "" },
-      { src: "./assets/photos/grazie-4.webp", label: "Foto 4", caption: "" }
+      { src: "./assets/photos/grazie-1.webp", label: "Foto 1", caption: "Le donne del villaggio ci hanno accolto con canti e balli come avevano fatto un anno prima, durante l'inaugurazione del pozzo. Con emozione abbiamo riconosciuto molti degli stessi volti. E anche loro si ricordavano di noi." },
+      { src: "./assets/photos/grazie-2.webp", label: "Foto 2", caption: "Un bambino tra le braccia di sua madre. Dietro questa immagine c'è un cambiamento concreto: acqua pulita per bere, coltivazioni più produttive e una comunità più forte. Le basi per crescere in salute." },
+      { src: "./assets/photos/grazie-3.webp", label: "Foto 3", caption: "Per la maggior parte di noi è un gesto automatico. Qui, per molti anni, è stato un privilegio. L'acqua pulita che scorre da questo pozzo significa meno malattie, più salute e più tempo da dedicare alla vita." },
+      { src: "./assets/photos/grazie-4.webp", label: "Foto 4", caption: "Per i più piccoli, il cambiamento non si misura in metri di tubature o litri d'acqua. Si misura nella possibilità di crescere più sani, più forti e con maggiori opportunità." }
     ],
     text:
-      "Una grande immagine centrale per custodire il senso di questi tre anni. Non solo attività, ma un legame che continua a interrogarci e a chiamarci."
+      "Questa sala racconta la gratitudine che abbiamo vissuto un anno dopo, tornando nel villaggio per vedere come il pozzo avesse cambiato la vita del villaggio. Ad accoglierci sono state le donne più anziane della comunità, con canti, balli e sorrisi che non avevano bisogno di traduzione. Un ringraziamento che passava dai gesti, dalla musica e dalla gioia condivisa."
   },
   {
     hall: 3,
@@ -291,13 +291,13 @@ const rooms = [
     layout: roomLayouts.room9,
     title: "Correre",
     artworks: [
-      { src: "./assets/photos/correre-1.webp", label: "Foto 1", caption: "" },
-      { src: "./assets/photos/correre-2.webp", label: "Foto 2", caption: "" },
-      { src: "./assets/photos/correre-3.webp", label: "Foto 3", caption: "" },
-      { src: "./assets/photos/correre-4.webp", label: "Foto 4", caption: "" }
+      { src: "./assets/photos/correre-1.webp", label: "Foto 1", caption: "Una ruota, un coperchio e una strada di terra. Bastano poche cose per trasformare il tragitto verso casa in un gioco. In Malawi l'infanzia corre veloce, tra fantasia, polvere e libertà." },
+      { src: "./assets/photos/correre-2.webp", label: "Foto 2", caption: "Ci vedevano arrivare da lontano e iniziavano a correre. In pochi minuti eravamo circondati da decine di bambini curiosi, sorridenti e pieni di energia. Per loro eravamo i \"Mzungu\", i visitatori venuti da lontano." },
+      { src: "./assets/photos/correre-3.webp", label: "Foto 3", caption: "Prima del pozzo, molte donne del villaggio percorrevano ogni giorno chilometri di strade come questa per raggiungere una fonte d'acqua. Un viaggio lungo, spesso sotto il sole, con pesanti secchi da riportare a casa." },
+      { src: "./assets/photos/correre-4.webp", label: "Foto 4", caption: "Quando era il momento di andare via, la visita non finiva davvero. I bambini continuavano a seguirci lungo la strada, correndo più veloce che potevano per restare con noi ancora un po'." }
     ],
     text:
-      "Qui il racconto si apre al prossimo passo. La raccolta fondi nasce da questo: non chiudere il museo nel ricordo, ma trasformarlo in un nuovo anno di presenza."
+      "\"Mzungu! Mzungu!\" gridavano. \"Uomo bianco\" in chichewa. Appena ci vedevano arrivare, decine di bambini iniziavano a correre dietro di noi tra la polvere e i baobab, cantando e ridendo. Per loro eravamo una novità, una presenza insolita che trasformava una giornata qualunque in un momento di festa."
   },
   {
     corridor: true,
