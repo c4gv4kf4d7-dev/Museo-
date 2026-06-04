@@ -1555,6 +1555,22 @@ a {
     margin: 0 14px;
   }
 
+  /* Mappa: sotto la lista delle sale e senza riquadro */
+  .menu-card--areas .menu-areas {
+    order: 1;
+  }
+  .menu-card--areas .menu-map {
+    order: 2;
+    margin: 26px auto 8px;
+  }
+  .menu-card--areas .menu-areas__footer {
+    order: 3;
+  }
+  .menu-map picture,
+  .menu-map__img {
+    border-radius: 0;
+  }
+
   /* Pulsante ghost: solo mobile portrait */
   .button--ghost {
     display: flex;
