@@ -123,35 +123,35 @@ const roomLayouts = {
   },
   room7: {
     frames: [
-      { x: 0, y: 0, w: 0, h: 0, btnX: 30, btnY: 77 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 52, btnY: 77 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 74, btnY: 77 }
+      { x: 0, y: 0, w: 0, h: 0, btnX: 33, btnY: 73 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 47, btnY: 73 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 62, btnY: 66 }
     ],
     plaque: { x: 18.2, y: 74, w: 15.8 },
     prev: { x: 86, y: 16.8, w: 11 },
-    action: { x: 50, y: 85.8 }
+    action: { x: 50, y: 88 }
   },
   room8: {
     frames: [
-      { x: 0, y: 0, w: 0, h: 0, btnX: 42, btnY: 53.2 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 63, btnY: 53.2 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 45, btnY: 93 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 65, btnY: 93 }
+      { x: 0, y: 0, w: 0, h: 0, btnX: 48, btnY: 40 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 35, btnY: 75 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 49, btnY: 75 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 63, btnY: 75 }
     ],
     plaque: { x: 82.8, y: 72.8, w: 14.5 },
     prev: { x: 14, y: 16.6, w: 16 },
-    action: { x: 55, y: 95 }
+    action: { x: 50, y: 90 }
   },
   room9: {
     frames: [
-      { x: 0, y: 0, w: 0, h: 0, btnX: 42, btnY: 53.2 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 63, btnY: 53.2 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 45, btnY: 93 },
-      { x: 0, y: 0, w: 0, h: 0, btnX: 65, btnY: 93 }
+      { x: 0, y: 0, w: 0, h: 0, btnX: 31, btnY: 55 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 49, btnY: 55 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 66, btnY: 55 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 48, btnY: 80 }
     ],
     plaque: { x: 18.4, y: 73.8, w: 15.8 },
     prev: { x: 14, y: 16.3, w: 16 },
-    action: { x: 50, y: 85.8 }
+    action: { x: 50, y: 92 }
   }
 };
 
@@ -301,7 +301,7 @@ const rooms = [
   },
   {
     corridor: true,
-    donate: true,
+    exit: true,
     backdrop: "./assets/museum/uscita.webp",
     backdropMobile: "./assets/museum/uscita-verticale.webp"
   }
@@ -331,6 +331,11 @@ const travelOverlay = document.getElementById("travelOverlay");
 const corridorSign = document.getElementById("corridorSign");
 const corridorEyebrow = document.getElementById("corridorEyebrow");
 const corridorTitle = document.getElementById("corridorTitle");
+const exitOverlay = document.getElementById("exitOverlay");
+const exitShareButton = document.getElementById("exitShareButton");
+const exitDonateButton = document.getElementById("exitDonateButton");
+const exitMenuButton = document.getElementById("exitMenuButton");
+const exitShareFeedback = document.getElementById("exitShareFeedback");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
@@ -611,6 +616,17 @@ function renderRoom(index) {
   const isCorridor = Boolean(room.corridor);
 
   currentRoomIndex = index;
+
+  if (room.exit) {
+    exitOverlay.style.setProperty("--exit-bg", `url("${room.backdrop}")`);
+    exitOverlay.style.setProperty("--exit-bg-mobile", `url("${room.backdropMobile || room.backdrop}")`);
+    exitShareFeedback.hidden = true;
+    exitOverlay.classList.remove("hidden");
+    updateProgress(index);
+    return;
+  }
+  exitOverlay.classList.add("hidden");
+
   galleryRoom.classList.toggle("gallery-room--corridor", isCorridor);
   galleryRoom.style.setProperty("--room-backdrop", `url("${room.backdrop}")`);
   galleryRoom.style.setProperty("--room-backdrop-fit", "cover");
@@ -753,7 +769,9 @@ function backToMenu() {
   if (isTransitioning) return;
   museumApp.classList.remove("museum-app--tour");
   tourScreen.classList.add("hidden");
+  exitOverlay.classList.add("hidden");
   menuScreen.classList.remove("hidden");
+  if (menuPages) menuPages.scrollTo({ left: 0 });
   if (window.location.hash) {
     history.replaceState(null, "", window.location.pathname);
   }
@@ -792,6 +810,31 @@ function handleNextAction() {
 
 startTourButton.addEventListener("click", () => openTour(0));
 backToMenuButton.addEventListener("click", backToMenu);
+
+exitDonateButton.href = GOFUNDME_URL;
+exitMenuButton.addEventListener("click", backToMenu);
+exitShareButton.addEventListener("click", async () => {
+  const shareData = {
+    title: "Museo Malawi",
+    text: "Un museo virtuale dedicato a tre anni di volontariato in Malawi.",
+    url: window.location.origin + window.location.pathname
+  };
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      /* condivisione annullata */
+    }
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(shareData.url);
+    exitShareFeedback.hidden = false;
+    setTimeout(() => { exitShareFeedback.hidden = true; }, 2600);
+  } catch (err) {
+    window.prompt("Copia il link del museo:", shareData.url);
+  }
+});
 prevRoomButton.addEventListener("click", () => {
   if (currentRoomIndex === 0) {
     backToMenu();
