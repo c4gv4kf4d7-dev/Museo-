@@ -122,19 +122,33 @@ const roomLayouts = {
     action: { x: 50, y: 85.8 }
   },
   room7: {
-    frames: [{ x: 49.8, y: 39.2, w: 38.8, h: 23.5 }],
+    frames: [
+      { x: 0, y: 0, w: 0, h: 0, btnX: 30, btnY: 77 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 52, btnY: 77 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 74, btnY: 77 }
+    ],
     plaque: { x: 18.2, y: 74, w: 15.8 },
     prev: { x: 86, y: 16.8, w: 11 },
     action: { x: 50, y: 85.8 }
   },
   room8: {
-    frames: [{ x: 49.6, y: 37.8, w: 39.8, h: 23.8 }],
+    frames: [
+      { x: 0, y: 0, w: 0, h: 0, btnX: 42, btnY: 53.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 63, btnY: 53.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 45, btnY: 93 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 65, btnY: 93 }
+    ],
     plaque: { x: 82.8, y: 72.8, w: 14.5 },
     prev: { x: 14, y: 16.6, w: 16 },
-    action: { x: 50, y: 85.8 }
+    action: { x: 55, y: 95 }
   },
   room9: {
-    frames: [{ x: 50, y: 37.2, w: 41.8, h: 24.6 }],
+    frames: [
+      { x: 0, y: 0, w: 0, h: 0, btnX: 42, btnY: 53.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 63, btnY: 53.2 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 45, btnY: 93 },
+      { x: 0, y: 0, w: 0, h: 0, btnX: 65, btnY: 93 }
+    ],
     plaque: { x: 18.4, y: 73.8, w: 15.8 },
     prev: { x: 14, y: 16.3, w: 16 },
     action: { x: 50, y: 85.8 }
@@ -249,6 +263,11 @@ const rooms = [
     backdrop: "./assets/museum/sala8.webp",
     layout: roomLayouts.room7,
     title: "La pioggia",
+    artworks: [
+      { src: "./assets/photos/pioggia-1.webp", label: "Foto 1", caption: "" },
+      { src: "./assets/photos/pioggia-2.webp", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/pioggia-3.webp", label: "Foto 3", caption: "" }
+    ],
     text:
       "Una sala essenziale, quasi silenziosa. È il ricordo di tutte le volte in cui non serviva fare molto, ma soltanto esserci con continuità."
   },
@@ -257,6 +276,12 @@ const rooms = [
     backdrop: "./assets/museum/sala9.webp",
     layout: roomLayouts.room8,
     title: "Grazie",
+    artworks: [
+      { src: "./assets/photos/grazie-1.webp", label: "Foto 1", caption: "" },
+      { src: "./assets/photos/grazie-2.webp", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/grazie-3.webp", label: "Foto 3", caption: "" },
+      { src: "./assets/photos/grazie-4.webp", label: "Foto 4", caption: "" }
+    ],
     text:
       "Una grande immagine centrale per custodire il senso di questi tre anni. Non solo attività, ma un legame che continua a interrogarci e a chiamarci."
   },
@@ -265,9 +290,20 @@ const rooms = [
     backdrop: "./assets/museum/sala10.webp",
     layout: roomLayouts.room9,
     title: "Correre",
+    artworks: [
+      { src: "./assets/photos/correre-1.webp", label: "Foto 1", caption: "" },
+      { src: "./assets/photos/correre-2.webp", label: "Foto 2", caption: "" },
+      { src: "./assets/photos/correre-3.webp", label: "Foto 3", caption: "" },
+      { src: "./assets/photos/correre-4.webp", label: "Foto 4", caption: "" }
+    ],
     text:
-      "Qui il racconto si apre al prossimo passo. La raccolta fondi nasce da questo: non chiudere il museo nel ricordo, ma trasformarlo in un nuovo anno di presenza.",
-    donate: true
+      "Qui il racconto si apre al prossimo passo. La raccolta fondi nasce da questo: non chiudere il museo nel ricordo, ma trasformarlo in un nuovo anno di presenza."
+  },
+  {
+    corridor: true,
+    donate: true,
+    backdrop: "./assets/museum/uscita.webp",
+    backdropMobile: "./assets/museum/uscita-verticale.webp"
   }
 ];
 
@@ -597,11 +633,17 @@ function renderRoom(index) {
     roomIndex.textContent = "";
     roomTitle.textContent = "";
     roomCopyBox.hidden = true;
-    nextRoomButton.textContent = "Entra nella prossima sala";
-    nextRoomButton.dataset.mode = "next";
-    corridorEyebrow.textContent = room.eyebrow || "";
-    corridorTitle.textContent = room.nextTitle || "";
-    corridorSign.hidden = false;
+    if (room.donate) {
+      nextRoomButton.textContent = "Vai a GoFundMe";
+      nextRoomButton.dataset.mode = "donate";
+      corridorSign.hidden = true;
+    } else {
+      nextRoomButton.textContent = "Entra nella prossima sala";
+      nextRoomButton.dataset.mode = "next";
+      corridorEyebrow.textContent = room.eyebrow || "";
+      corridorTitle.textContent = room.nextTitle || "";
+      corridorSign.hidden = false;
+    }
   } else {
     corridorSign.hidden = true;
     roomCopyBox.hidden = false;
