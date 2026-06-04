@@ -605,10 +605,13 @@ function renderRoomList() {
 function renderMuseumMap() {
   if (!menuMap) return;
   menuMap.innerHTML = `
-    <picture>
-      <source srcset="./assets/museum/mappa-verticale1.webp" media="(orientation: portrait) and (max-width: 700px)" />
-      <img class="menu-map__img" src="./assets/museum/mappa1.webp" alt="Mappa del museo" loading="lazy" />
-    </picture>`;
+    <p class="menu-map__title">Mappa delle sale</p>
+    <div class="menu-map__frame">
+      <picture>
+        <source srcset="./assets/museum/mappa-verticale1.webp" media="(orientation: portrait) and (max-width: 700px)" />
+        <img class="menu-map__img" src="./assets/museum/mappa1.webp" alt="Mappa del museo" loading="lazy" />
+      </picture>
+    </div>`;
 }
 
 function renderRoom(index) {
