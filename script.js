@@ -381,6 +381,19 @@ if (menuPages) {
   }
 }
 
+// ── Menu intro expand ─────────────────────────────────────────────────────────
+const menuIntroToggle = document.getElementById("menuIntroToggle");
+const menuIntroDetails = document.getElementById("menuIntroDetails");
+const menuIntroToggleLabel = document.getElementById("menuIntroToggleLabel");
+
+if (menuIntroToggle) {
+  menuIntroToggle.addEventListener("click", () => {
+    const isOpen = menuIntroToggle.classList.toggle("is-open");
+    menuIntroDetails.hidden = !isOpen;
+    menuIntroToggleLabel.textContent = isOpen ? "Mostra meno" : "Leggi tutto";
+  });
+}
+
 // ── Lightbox ──────────────────────────────────────────────────────────────────
 
 function openLightbox(src, alt, caption) {
