@@ -1814,6 +1814,25 @@ a {
     transform: scale(1.25);
   }
 
+  .mobile-card__scroll-hint {
+    margin: 7px 0 0;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(90, 66, 40, 0.62);
+  }
+
+  .mobile-card__scroll-hint[hidden] {
+    display: none;
+  }
+
+  .mobile-card__scroll-hint span {
+    color: rgba(90, 66, 40, 0.82);
+    font-weight: 800;
+    padding: 0 2px;
+  }
+
   .artwork-card {
     flex: 0 0 auto;
     width: 52vw;

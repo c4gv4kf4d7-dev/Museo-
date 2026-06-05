@@ -355,6 +355,7 @@ const mobileCardNext = document.getElementById("mobileCardNext");
 const mobileCardNextLabel = document.getElementById("mobileCardNextLabel");
 const mobileCardCounter = document.getElementById("mobileCardCounter");
 const mobileCardDots = document.getElementById("mobileCardDots");
+const mobileCardScrollHint = document.getElementById("mobileCardScrollHint");
 
 let currentRoomIndex = 0;
 let isTransitioning = false;
@@ -708,6 +709,7 @@ function renderMobileCard(index, isCorridor) {
     mobileCardDetails.textContent = "";
     mobileCardDetails.hidden = true;
     mobileCardToggle.hidden = true;
+    mobileCardScrollHint.hidden = true;
   } else {
     mobileCardIndex.textContent = `Sala ${room.hall}`;
     mobileCardTitle.textContent = room.title;
@@ -727,6 +729,12 @@ function renderMobileCard(index, isCorridor) {
         </span>
       </button>`;
     }).join("");
+
+    // Riparti sempre dalla prima foto a sinistra
+    mobileCardPhotos.scrollLeft = 0;
+    requestAnimationFrame(() => { mobileCardPhotos.scrollLeft = 0; });
+
+    mobileCardScrollHint.hidden = photos.length <= 1;
 
     const { summary, details } = splitRoomText(room.text || "");
     mobileCardSummary.textContent = summary;
