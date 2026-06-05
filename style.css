@@ -235,6 +235,10 @@ a {
   line-height: 1.66;
 }
 
+.menu-intro--clickable {
+  cursor: pointer;
+}
+
 .menu-intro > .menu-card__intro:first-child {
   margin-top: 0;
 }
@@ -247,17 +251,24 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  margin-top: 10px;
+  margin-top: 12px;
   padding: 0;
   border: 0;
   background: transparent;
-  color: #8a6a40;
+  color: #6a4f2c;
   font-family: "Manrope", sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
   cursor: pointer;
+}
+
+.menu-intro__toggle:hover {
+  color: #4a3415;
 }
 
 .menu-intro__toggle svg {

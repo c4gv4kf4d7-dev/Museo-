@@ -651,11 +651,27 @@ if (menuPages) {
 
 // ── Menu intro expand ─────────────────────────────────────────────────────────
 
+const menuIntro = document.querySelector(".menu-intro");
+
+function toggleMenuIntro() {
+  const isOpen = menuIntroToggle.classList.toggle("is-open");
+  menuIntroDetails.hidden = !isOpen;
+  menuIntroToggleLabel.textContent = isOpen ? t("showLess") : t("readMore");
+}
+
 if (menuIntroToggle) {
-  menuIntroToggle.addEventListener("click", () => {
-    const isOpen = menuIntroToggle.classList.toggle("is-open");
-    menuIntroDetails.hidden = !isOpen;
-    menuIntroToggleLabel.textContent = isOpen ? t("showLess") : t("readMore");
+  menuIntroToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenuIntro();
+  });
+}
+
+// Clic sul testo dell'intro per espandere/ridurre
+if (menuIntro) {
+  menuIntro.classList.add("menu-intro--clickable");
+  menuIntro.addEventListener("click", (e) => {
+    if (e.target.closest(".menu-intro__toggle")) return;
+    toggleMenuIntro();
   });
 }
 
