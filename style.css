@@ -1295,7 +1295,7 @@ a {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 24px 24px clamp(28px, 7vh, 64px);
+  padding: 24px 24px clamp(16px, 4vh, 36px);
   background-image:
     linear-gradient(rgba(10, 7, 4, 0.12), rgba(10, 7, 4, 0.34)),
     var(--exit-bg, none);
@@ -1306,11 +1306,6 @@ a {
 .exit-overlay__banner {
   width: min(90vw, 380px);
   text-align: center;
-  padding: 1.5rem 1.5rem 1.4rem;
-  background: rgba(14, 10, 6, 0.26);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(220, 200, 165, 0.16);
-  border-radius: 6px;
 }
 
 .exit-overlay__eyebrow {
@@ -1321,6 +1316,7 @@ a {
   text-transform: uppercase;
   color: rgba(235, 222, 200, 0.92);
   margin: 0 0 0.45rem;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.6);
 }
 
 .exit-overlay__rule {
@@ -1332,11 +1328,12 @@ a {
 
 .exit-overlay__title {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-size: clamp(1.35rem, 3.2vw, 1.75rem);
   font-weight: 600;
   color: rgba(248, 242, 230, 0.99);
-  margin: 0 0 1.2rem;
+  margin: 0 0 0.8rem;
   line-height: 1.08;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.55);
 }
 
 .exit-overlay__actions {
@@ -1350,14 +1347,14 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  min-height: 46px;
-  padding: 0 20px;
+  min-height: 38px;
+  padding: 0 16px;
   border-radius: 999px;
   border: 1px solid rgba(220, 200, 165, 0.32);
   background: rgba(245, 238, 224, 0.08);
   color: rgba(245, 238, 224, 0.96);
   font-family: "Manrope", sans-serif;
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   cursor: pointer;
