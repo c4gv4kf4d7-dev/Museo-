@@ -1639,6 +1639,12 @@ a {
 
 @media (max-width: 500px) and (orientation: portrait) {
 
+  /* App container: usa l'altezza del viewport visibile (no spazio morto sotto) */
+  .museum-app:not(.museum-app--tour) {
+    min-height: 100svh;
+    padding: 14px 8px 14px;
+  }
+
   /* Menu: layout a pagine */
   .menu-screen {
     overflow: hidden;
