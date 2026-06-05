@@ -605,14 +605,56 @@ function renderRoomList() {
 
 function renderMuseumMap() {
   if (!menuMap) return;
+
+  // Aree cliccabili (left, top, width, height in % dell'immagine) → indice stanza
+  const desktopSpots = [
+    { i: 0, x: 5, y: 36, w: 12.7, h: 15.5 },
+    { i: 1, x: 17.7, y: 36, w: 12.7, h: 15.5 },
+    { i: 2, x: 5, y: 51.5, w: 12.7, h: 15 },
+    { i: 3, x: 17.7, y: 51.5, w: 12.7, h: 15 },
+    { i: 5, x: 33.8, y: 36, w: 9.2, h: 20 },
+    { i: 6, x: 43.2, y: 36, w: 10.6, h: 20 },
+    { i: 7, x: 54, y: 36, w: 10.2, h: 20 },
+    { i: 9, x: 67.7, y: 36, w: 8.5, h: 20 },
+    { i: 10, x: 76.3, y: 36, w: 9, h: 20 },
+    { i: 11, x: 85.4, y: 36, w: 8.1, h: 20 }
+  ];
+  const mobileSpots = [
+    { i: 9, x: 8, y: 16.5, w: 27, h: 14 },
+    { i: 10, x: 35, y: 16.5, w: 29, h: 14 },
+    { i: 11, x: 64, y: 16.5, w: 28, h: 14 },
+    { i: 5, x: 8, y: 47.5, w: 27, h: 14 },
+    { i: 6, x: 35, y: 47.5, w: 29, h: 14 },
+    { i: 7, x: 64, y: 47.5, w: 28, h: 14 },
+    { i: 0, x: 8, y: 75.5, w: 41, h: 7.5 },
+    { i: 1, x: 49, y: 75.5, w: 43, h: 7.5 },
+    { i: 2, x: 8, y: 83, w: 41, h: 7.5 },
+    { i: 3, x: 49, y: 83, w: 43, h: 7.5 }
+  ];
+
+  const spotButtons = (spots) => spots.map((s) => {
+    const title = (rooms[s.i] && rooms[s.i].title) || "";
+    return `<button class="menu-map__hotspot" type="button" data-room-index="${s.i}"
+      style="left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%"
+      aria-label="Vai alla sala ${title}"></button>`;
+  }).join("");
+
   menuMap.innerHTML = `
     <p class="menu-map__title">Mappa delle sale</p>
     <div class="menu-map__frame">
-      <picture>
-        <source srcset="./assets/museum/mappa-verticale1.webp" media="(orientation: portrait) and (max-width: 700px)" />
-        <img class="menu-map__img" src="./assets/museum/mappa1.webp" alt="Mappa del museo" loading="lazy" />
-      </picture>
+      <div class="menu-map__stage">
+        <picture>
+          <source srcset="./assets/museum/mappa-verticale1.webp" media="(orientation: portrait) and (max-width: 700px)" />
+          <img class="menu-map__img" src="./assets/museum/mappa1.webp" alt="Mappa del museo" loading="lazy" />
+        </picture>
+        <div class="menu-map__hotspots menu-map__hotspots--desktop">${spotButtons(desktopSpots)}</div>
+        <div class="menu-map__hotspots menu-map__hotspots--mobile">${spotButtons(mobileSpots)}</div>
+      </div>
     </div>`;
+
+  menuMap.querySelectorAll(".menu-map__hotspot").forEach((btn) => {
+    btn.addEventListener("click", () => openTour(Number(btn.dataset.roomIndex)));
+  });
 }
 
 function renderRoom(index) {
