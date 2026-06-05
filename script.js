@@ -1071,6 +1071,8 @@ function renderMobileCard(index, isCorridor) {
     requestAnimationFrame(() => { mobileCardPhotos.scrollLeft = 0; });
 
     mobileCardPhotoNav.hidden = photos.length <= 1;
+    const scrollHintEl = document.getElementById("mobileCardScrollHint");
+    if (scrollHintEl) scrollHintEl.hidden = photos.length < 3;
 
     const { summary, details } = splitRoomText(tl(room, "text") || "");
     mobileCardSummary.textContent = summary;
