@@ -1203,7 +1203,7 @@ function applyLang() {
   if (visitTimeSpan) visitTimeSpan.textContent = t("visitTime");
 
   // Tour screen static
-  if (backToMenuButton) backToMenuButton.textContent = t("backToMenu");
+  if (backToMenuButton) backToMenuButton.setAttribute("aria-label", t("backToMenu"));
 
   const prevEyebrow = document.querySelector(".wall-nav__eyebrow");
   if (prevEyebrow) prevEyebrow.textContent = t("prevRoom");

@@ -683,6 +683,22 @@ a {
   cursor: pointer;
 }
 
+.topbar-link--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.topbar-link--icon svg {
+  display: block;
+}
+
+.topbar-link--icon:hover {
+  transform: translateY(-1px);
+  opacity: 0.72;
+}
+
 .tour-progress {
   display: grid;
   gap: 8px;
