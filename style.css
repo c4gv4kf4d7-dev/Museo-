@@ -150,8 +150,44 @@ a {
 }
 
 .menu-card--guide {
+  position: relative;
   padding: 34px 28px 28px;
 }
+
+.lang-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 4px;
+  z-index: 5;
+}
+
+.lang-btn {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 94, 63, 0.28);
+  background: transparent;
+  color: rgba(47, 40, 34, 0.55);
+  font-family: "Manrope", sans-serif;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.lang-btn.is-active {
+  background: rgba(47, 40, 34, 0.9);
+  color: #f5ece0;
+  border-color: rgba(47, 40, 34, 0.9);
+}
+
+.lang-btn:hover:not(.is-active) {
+  background: rgba(47, 40, 34, 0.08);
+  color: #2f2822;
+}
+
 
 .menu-card--areas {
   display: flex;

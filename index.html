@@ -24,6 +24,10 @@
 
         <div class="menu-pages" id="menuPages">
         <article class="menu-card menu-card--guide">
+          <div class="lang-toggle" id="langToggle">
+            <button class="lang-btn is-active" id="langItaBtn" type="button" aria-pressed="true">ITA</button>
+            <button class="lang-btn" id="langEngBtn" type="button" aria-pressed="false">ENG</button>
+          </div>
           <p class="menu-card__eyebrow">Guida del percorso</p>
           <div class="menu-card__divider"></div>
           <h1 class="menu-card__headline" id="menuTitle">
@@ -264,20 +268,20 @@
             <h2 class="exit-overlay__title">Grazie per la visita</h2>
             <div class="exit-overlay__actions">
               <button class="exit-action" id="exitShareButton" type="button">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
                   <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>
                 </svg>
                 <span>Condividi</span>
               </button>
               <a class="exit-action exit-action--primary" id="exitDonateButton" href="#" target="_blank" rel="noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M12 20.2C7.2 16.8 4 13.7 4 9.9C4 7.4 5.9 5.6 8.3 5.6C9.9 5.6 11.2 6.4 12 7.8C12.8 6.4 14.1 5.6 15.7 5.6C18.1 5.6 20 7.4 20 9.9C20 13.7 16.8 16.8 12 20.2Z"/>
                 </svg>
                 <span>Sostieni il progetto</span>
               </a>
               <button class="exit-action" id="exitMenuButton" type="button">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
                 </svg>
                 <span>Menù principale</span>
