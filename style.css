@@ -1814,7 +1814,7 @@ a {
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 18px 18px 16px;
+    padding: 16px 18px 12px;
   }
 
   /* Foto come card */
@@ -1823,7 +1823,7 @@ a {
     gap: 10px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin: 16px -18px 0;
+    margin: 12px -18px 0;
     padding: 0 18px 4px;
     scroll-snap-type: x mandatory;
   }
@@ -1832,21 +1832,33 @@ a {
     display: none;
   }
 
-  .mobile-card__dots {
+  /* Riga unica: scritta al centro, puntini a destra */
+  .mobile-card__photonav {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    margin-top: 10px;
+    min-height: 14px;
+    margin-top: 8px;
   }
 
-  .mobile-card__dots:empty {
+  .mobile-card__photonav[hidden] {
     display: none;
   }
 
+  .mobile-card__dots {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
   .mobile-card__dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: rgba(100, 78, 50, 0.22);
     transition: background 220ms ease, transform 220ms ease;
@@ -1859,16 +1871,12 @@ a {
   }
 
   .mobile-card__scroll-hint {
-    margin: 7px 0 0;
+    margin: 0;
     text-align: center;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    color: rgba(90, 66, 40, 0.62);
-  }
-
-  .mobile-card__scroll-hint[hidden] {
-    display: none;
+    letter-spacing: 0.03em;
+    color: rgba(90, 66, 40, 0.6);
   }
 
   .mobile-card__scroll-hint span {
@@ -1879,8 +1887,8 @@ a {
 
   .artwork-card {
     flex: 0 0 auto;
-    width: 52vw;
-    max-width: 210px;
+    width: 49vw;
+    max-width: 200px;
     aspect-ratio: 3 / 4;
     border: 0;
     border-radius: 12px;
