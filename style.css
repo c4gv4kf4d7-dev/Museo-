@@ -685,13 +685,23 @@ a {
 
 .topbar-link--icon {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2px;
   transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
 .topbar-link--icon svg {
   display: block;
+}
+
+.topbar-link__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .topbar-link--icon:hover {
