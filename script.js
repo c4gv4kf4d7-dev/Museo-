@@ -1,11 +1,8 @@
 const GOFUNDME_URL = "https://www.gofundme.com/f/children-of-malawi-63cqk?attribution_id=sl:8d1cd865-19c2-4b9d-8ee7-491e37da54ad&lang=en_US&ts=1776781151&utm_campaign=man_sharesheet_dash&utm_content=amp20_t1&utm_medium=customer&utm_source=copy_link";
 const ENTRANCE_URL = "./assets/museum/menu.webp";
 
-// ▼▼▼ NEWSLETTER: incolla qui il tuo endpoint Formspree (es. "https://formspree.io/f/abcdwxyz")
-//     Crea un account gratuito su https://formspree.io, crea un form e copia l'URL "f/..." qui sotto.
-//     Finché resta vuoto, il form mostra un messaggio di "non ancora attivo".
-const NEWSLETTER_ENDPOINT = "";
-// ▲▲▲
+// Endpoint Formspree per l'iscrizione "resta aggiornato" (foto/video dai prossimi viaggi).
+const NEWSLETTER_ENDPOINT = "https://formspree.io/f/mbdvkknn";
 
 // ── Internazionalizzazione ─────────────────────────────────────────────────────
 
