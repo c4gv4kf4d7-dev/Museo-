@@ -12,7 +12,7 @@ const NEWSLETTER_ENDPOINT = "";
 const STRINGS = {
   it: {
     menuEyebrow: "Guida del percorso",
-    menuHeadline: "In Malawi<br />tra storie,<br />persone e cambiamenti reali.",
+    menuHeadline: "Museo della<br />Terra Rossa",
     introP1: "Un viaggio in Malawi tra volti, vita quotidiana e ricerca di futuro. Ogni sala di questo museo raccoglie incontri e momenti che ci hanno cambiato.",
     introP2: "Siamo Fabio, Lorenzo e Valentina e cinque anni fa abbiamo fatto una scelta: non restare a guardare. Da allora non ci siamo mai fermati.",
     introD1: "Abbiamo scelto il Malawi grazie ad Aleimar e ai suoi progetti nel paese, insieme abbiamo trasportato cibo, contribuito alla costruzione di pozzi, installato pompe per l'irrigazione. Abbiamo lavorato nelle scuole, condotto laboratori creativi e percorsi di empowerment femminile, perché investire sulle ragazze significa costruire un futuro migliore per tutta la comunità.",
@@ -61,7 +61,7 @@ const STRINGS = {
   },
   en: {
     menuEyebrow: "Tour Guide",
-    menuHeadline: "In Malawi<br />among stories,<br />people and real changes.",
+    menuHeadline: "Terra Rossa<br />Museum",
     introP1: "A journey through Malawi among faces, everyday life and the search for a future. Every room in this museum holds encounters and moments that changed us.",
     introP2: "We are Fabio, Lorenzo and Valentina, and five years ago we made a choice: not to stand by and watch. We have never stopped since.",
     introD1: "We chose Malawi thanks to Aleimar and its projects in the country. Together we transported food, contributed to building wells and installed irrigation pumps. We worked in schools, led creative workshops and women's empowerment programmes, because investing in girls means building a better future for the whole community.",
