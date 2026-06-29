@@ -91,7 +91,7 @@ a {
   padding: 20px;
   border-radius: 34px;
   background:
-    linear-gradient(180deg, rgba(22, 20, 18, 0.04), rgba(22, 20, 18, 0.10)),
+    linear-gradient(180deg, rgba(245, 240, 232, 0.32), rgba(245, 240, 232, 0.42)),
     var(--entrance-backdrop) center / cover no-repeat,
     linear-gradient(180deg, #e8e0d5, #ddd3c6);
   box-shadow: var(--shadow-xl);
