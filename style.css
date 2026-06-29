@@ -414,80 +414,6 @@ a {
   border: 1px solid rgba(126, 97, 63, 0.28);
 }
 
-.menu-map {
-  margin: 0 auto 30px;
-  width: 100%;
-  max-width: 420px;
-}
-
-.menu-map__title {
-  margin: 0 0 14px;
-  text-align: center;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #2d241b;
-}
-
-.menu-map__frame {
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 14px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.menu-map__stage {
-  position: relative;
-  line-height: 0;
-}
-
-.menu-map picture,
-.menu-map__img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.menu-map__hotspots {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.menu-map__hotspots--mobile {
-  display: none;
-}
-
-.menu-map__hotspot {
-  position: absolute;
-  padding: 0;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  background: transparent;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: background 0.16s ease, border-color 0.16s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.menu-map__hotspot:hover,
-.menu-map__hotspot:focus-visible {
-  background: rgba(255, 255, 255, 0.28);
-  border-color: rgba(120, 158, 78, 0.55);
-  outline: none;
-}
-
-/* Le hotspot seguono l'immagine mostrata dal <picture> (mappa verticale) */
-@media (orientation: portrait) and (max-width: 700px) {
-  .menu-map__hotspots--desktop {
-    display: none;
-  }
-  .menu-map__hotspots--mobile {
-    display: block;
-  }
-}
-
 .menu-areas {
   display: grid;
   gap: 28px;
@@ -1857,26 +1783,11 @@ a {
     margin: 0 14px;
   }
 
-  /* Mappa: sotto la lista delle sale */
   .menu-card--areas .menu-areas {
     order: 1;
   }
-  .menu-card--areas .menu-map {
-    order: 2;
-    margin: 26px auto 8px;
-  }
   .menu-card--areas .menu-areas__footer {
     order: 3;
-  }
-  .menu-map__title {
-    font-size: 1.6rem;
-    color: #f3ece0;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
-  }
-  .menu-map__frame {
-    border-color: rgba(255, 255, 255, 0.55);
-    background: transparent;
-    padding: 0;
   }
 
   /* Pulsante ghost: solo mobile portrait */
