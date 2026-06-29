@@ -1,6 +1,12 @@
 const GOFUNDME_URL = "https://www.gofundme.com/f/children-of-malawi-63cqk?attribution_id=sl:8d1cd865-19c2-4b9d-8ee7-491e37da54ad&lang=en_US&ts=1776781151&utm_campaign=man_sharesheet_dash&utm_content=amp20_t1&utm_medium=customer&utm_source=copy_link";
 const ENTRANCE_URL = "./assets/museum/menu.webp";
 
+// ▼▼▼ NEWSLETTER: incolla qui il tuo endpoint Formspree (es. "https://formspree.io/f/abcdwxyz")
+//     Crea un account gratuito su https://formspree.io, crea un form e copia l'URL "f/..." qui sotto.
+//     Finché resta vuoto, il form mostra un messaggio di "non ancora attivo".
+const NEWSLETTER_ENDPOINT = "";
+// ▲▲▲
+
 // ── Internazionalizzazione ─────────────────────────────────────────────────────
 
 const STRINGS = {
@@ -41,6 +47,12 @@ const STRINGS = {
     enlargedPhoto: "Foto ingrandita",
     copyPrompt: "Copia il link del museo:",
     shareText: "Un museo virtuale dedicato a tre anni di volontariato in Malawi.",
+    signupLabel: "Lascia la tua email per ricevere foto e video dai prossimi viaggi",
+    signupPlaceholder: "La tua email",
+    signupSubmit: "Iscriviti",
+    signupOk: "Grazie! Ti aggiorneremo presto.",
+    signupErr: "Qualcosa è andato storto, riprova.",
+    signupInvalid: "Inserisci un'email valida.",
     roomProgress: (pos, total) => `Stanza ${pos} di ${total}`,
     roomIndex: (hall) => `Sala ${hall}`,
     goToRoomLabel: (title) => `Vai alla sala ${title}`,
@@ -84,6 +96,12 @@ const STRINGS = {
     enlargedPhoto: "Enlarged photo",
     copyPrompt: "Copy the museum link:",
     shareText: "A virtual museum dedicated to three years of volunteering in Malawi.",
+    signupLabel: "Leave your email to receive photos and videos from our next trips",
+    signupPlaceholder: "Your email",
+    signupSubmit: "Subscribe",
+    signupOk: "Thank you! We'll keep you posted.",
+    signupErr: "Something went wrong, please try again.",
+    signupInvalid: "Please enter a valid email.",
     roomProgress: (pos, total) => `Room ${pos} of ${total}`,
     roomIndex: (hall) => `Room ${hall}`,
     goToRoomLabel: (title) => `Go to room ${title}`,
@@ -596,6 +614,11 @@ const exitShareButton = document.getElementById("exitShareButton");
 const exitDonateButton = document.getElementById("exitDonateButton");
 const exitMenuButton = document.getElementById("exitMenuButton");
 const exitShareFeedback = document.getElementById("exitShareFeedback");
+const exitSignupForm = document.getElementById("exitSignupForm");
+const exitSignupLabel = document.getElementById("exitSignupLabel");
+const exitSignupEmail = document.getElementById("exitSignupEmail");
+const exitSignupSubmit = document.getElementById("exitSignupSubmit");
+const exitSignupFeedback = document.getElementById("exitSignupFeedback");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
@@ -960,6 +983,7 @@ function renderRoom(index) {
     exitOverlay.style.setProperty("--exit-bg", `url("${room.backdrop}")`);
     exitOverlay.style.setProperty("--exit-bg-mobile", `url("${room.backdropMobile || room.backdrop}")`);
     exitShareFeedback.hidden = true;
+    if (exitSignupFeedback) exitSignupFeedback.hidden = true;
     exitOverlay.classList.remove("hidden");
     updateProgress(index);
     return;
@@ -1235,6 +1259,12 @@ function applyLang() {
 
   if (exitShareFeedback) exitShareFeedback.textContent = t("linkCopied");
 
+  // Iscrizione newsletter
+  if (exitSignupLabel) exitSignupLabel.textContent = t("signupLabel");
+  if (exitSignupEmail) exitSignupEmail.setAttribute("placeholder", t("signupPlaceholder"));
+  if (exitSignupEmail) exitSignupEmail.setAttribute("aria-label", t("signupPlaceholder"));
+  if (exitSignupSubmit) exitSignupSubmit.setAttribute("aria-label", t("signupSubmit"));
+
   // Lightbox
   lightbox.setAttribute("aria-label", t("enlargedPhoto"));
   lightboxClose.setAttribute("aria-label", t("closePhoto"));
@@ -1283,6 +1313,51 @@ exitShareButton.addEventListener("click", async () => {
     window.prompt(t("copyPrompt"), shareData.url);
   }
 });
+
+// ── Iscrizione newsletter (form statico → Formspree) ───────────────────────────
+function showSignupFeedback(message, ok) {
+  exitSignupFeedback.textContent = message;
+  exitSignupFeedback.hidden = false;
+  exitSignupFeedback.classList.toggle("is-error", !ok);
+  exitSignupFeedback.classList.toggle("is-ok", ok);
+}
+
+if (exitSignupForm) {
+  exitSignupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = exitSignupEmail.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!valid) {
+      showSignupFeedback(t("signupInvalid"), false);
+      exitSignupEmail.focus();
+      return;
+    }
+    if (!NEWSLETTER_ENDPOINT) {
+      // Endpoint non ancora configurato: avvisa in console e mostra errore gentile.
+      console.warn("NEWSLETTER_ENDPOINT non configurato: incolla l'URL Formspree in script.js");
+      showSignupFeedback(t("signupErr"), false);
+      return;
+    }
+    exitSignupSubmit.disabled = true;
+    try {
+      const res = await fetch(NEWSLETTER_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ email, lang: currentLang, source: "museo-malawi" })
+      });
+      if (res.ok) {
+        exitSignupForm.reset();
+        showSignupFeedback(t("signupOk"), true);
+      } else {
+        showSignupFeedback(t("signupErr"), false);
+      }
+    } catch (err) {
+      showSignupFeedback(t("signupErr"), false);
+    } finally {
+      exitSignupSubmit.disabled = false;
+    }
+  });
+}
 
 prevRoomButton.addEventListener("click", () => {
   if (currentRoomIndex === 0) { backToMenu(); return; }
