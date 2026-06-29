@@ -19,7 +19,7 @@ const STRINGS = {
     guideTitle: "Come muoversi",
     guideText: "Segui il percorso dall'inizio oppure scegli liberamente una sala. Prenditi il tuo tempo.",
     startTour: "Inizia la visita guidata",
-    showRooms: "Scegli una sala dalla mappa",
+    showRooms: "Scegli una sala",
     helpProject: "Aiuta il progetto a continuare",
     welcome: "Benvenuto",
     areasTitle: "Le aree e le sale",
@@ -68,7 +68,7 @@ const STRINGS = {
     guideTitle: "How to navigate",
     guideText: "Follow the path from the beginning or freely choose a room. Take your time.",
     startTour: "Start the guided tour",
-    showRooms: "Choose a room from the map",
+    showRooms: "Choose a room",
     helpProject: "Help the project continue",
     welcome: "Welcome",
     areasTitle: "Areas and rooms",
@@ -1252,7 +1252,6 @@ function applyLang() {
 
   // Re-render dynamic content
   renderRoomList();
-  renderMuseumMap();
 
   if (!tourScreen.classList.contains("hidden")) {
     renderRoom(currentRoomIndex);
@@ -1389,7 +1388,6 @@ nextRoomButton.addEventListener("click", handleNextAction);
 // ── Init ──────────────────────────────────────────────────────────────────────
 
 renderRoomList();
-renderMuseumMap();
 renderRoom(0);
 applyLang();
 
