@@ -796,49 +796,29 @@ document.addEventListener("keydown", (e) => {
 // ── Rendering ─────────────────────────────────────────────────────────────────
 
 function buildArtworkMarkup(room) {
-  const artworks = room.artworks || [];
-  if (!artworks.length) return "";
+  // Riga di tasti auto-generata: un tasto "Foto N" per ogni foto della sala.
+  // Niente coordinate per-foto → sempre allineati, mai mancanti o sovrapposti.
+  const photos = (room.artworks || []).filter((a) => a.src);
+  if (!photos.length) return "";
 
-  const figures = artworks.map((artwork, index) => {
-    const frame = room.layout.frames[index];
-    if (!frame) return "";
+  const buttons = photos.map((artwork, index) => {
     const caption = tl(artwork, "caption");
     const captionAttr = caption ? ` data-lightbox-caption="${caption.replace(/"/g, "&quot;")}"` : "";
     const altText = `${tl(room, "title")} — ${t("photoLabel", index + 1)}`;
-    const lightboxAttrs = artwork.src
-      ? `data-lightbox-src="${artwork.src}" data-lightbox-alt="${altText}"${captionAttr}`
-      : "";
-    const inner = artwork.src
-      ? `<img class="artwork__hittarget" src="${artwork.src}" alt="" aria-hidden="true" loading="lazy">`
-      : `<div class="artwork__empty"></div>`;
-    return `<figure class="artwork${artwork.src ? " artwork--has-photo" : ""}" style="--art-x:${frame.x}%; --art-y:${frame.y}%; --art-w:${frame.w}%; --art-h:${frame.h}%" ${lightboxAttrs}><div class="artwork__frame">${inner}</div></figure>`;
-  }).join("");
-
-  const buttons = artworks.map((artwork, index) => {
-    const frame = room.layout.frames[index];
-    if (!frame || !artwork.src) return "";
-    const bx = frame.btnX ?? frame.x;
-    const by = frame.btnY ?? (frame.y + frame.h / 2 + 5);
-    const caption = tl(artwork, "caption");
-    const captionAttr = caption ? `\n        data-lightbox-caption="${caption.replace(/"/g, "&quot;")}"` : "";
-    const altText = `${tl(room, "title")} — ${t("photoLabel", index + 1)}`;
-    return `
-      <button
-        class="artwork__zoom-btn"
-        style="left:${bx}%;top:${by}%;"
+    return `<button
+        class="artwork-zoom"
+        type="button"
         data-lightbox-src="${artwork.src}"
         data-lightbox-alt="${altText}"${captionAttr}
-        type="button"
       >
-        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
         </svg>
-        ${t("lookCloser")}
-      </button>
-    `;
+        ${t("photoLabel", index + 1)}
+      </button>`;
   }).join("");
 
-  return figures + buttons;
+  return `<div class="artwork-zoom-row">${buttons}</div>`;
 }
 
 const nonCorridorRooms = rooms.filter(r => !r.corridor);
@@ -993,6 +973,10 @@ function renderRoom(index) {
   galleryRoom.style.setProperty("--room-backdrop-position", "center center");
   galleryRoom.style.setProperty("--action-x", isCorridor ? "50%" : `${room.layout.action.x}%`);
   galleryRoom.style.setProperty("--action-y", isCorridor ? "88%" : `${room.layout.action.y}%`);
+  // Riga dei tasti "Foto N" ancorata sopra il tasto "Vai avanti"
+  if (!isCorridor) {
+    galleryRoom.style.setProperty("--zoomrow-y", `${room.layout.action.y - 9}%`);
+  }
 
   if (!isCorridor) {
     galleryRoom.style.setProperty("--plaque-x", `${room.layout.plaque.x}%`);

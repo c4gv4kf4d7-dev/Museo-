@@ -1020,6 +1020,50 @@ a {
   z-index: 1;
 }
 
+/* Riga di tasti "Foto N" auto-generata, ancorata sopra il tasto "Vai avanti" */
+.artwork-zoom-row {
+  position: absolute;
+  left: 50%;
+  top: var(--zoomrow-y, 80%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 86%;
+  z-index: 3;
+}
+
+.artwork-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(14, 10, 6, 0.62);
+  color: rgba(245, 238, 224, 0.94);
+  border: 1px solid rgba(220, 200, 165, 0.28);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+
+.artwork-zoom:hover {
+  background: rgba(40, 30, 18, 0.85);
+  color: #fff5e1;
+  transform: translateY(-1px);
+}
+
+.artwork-zoom svg {
+  flex-shrink: 0;
+}
+
 .artwork {
   position: absolute;
   left: var(--art-x);
