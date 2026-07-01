@@ -39,6 +39,8 @@ const STRINGS = {
     mainMenu: "Menù principale",
     linkCopied: "Link copiato negli appunti",
     closePhoto: "Chiudi foto",
+    prevPhoto: "Foto precedente",
+    nextPhoto: "Foto successiva",
     enlargedPhoto: "Foto ingrandita",
     copyPrompt: "Copia il link del museo:",
     shareText: "Terra Rossa: un viaggio in Malawi tra volti, vita quotidiana e ricerca di futuro.",
@@ -85,6 +87,8 @@ const STRINGS = {
     mainMenu: "Main menu",
     linkCopied: "Link copied to clipboard",
     closePhoto: "Close photo",
+    prevPhoto: "Previous photo",
+    nextPhoto: "Next photo",
     enlargedPhoto: "Enlarged photo",
     copyPrompt: "Copy the museum link:",
     shareText: "Terra Rossa: a journey through Malawi among faces, everyday life and the search for a future.",
@@ -189,7 +193,8 @@ const roomLayouts = {
     ],
     plaque: { x: 17.5, y: 76.8, w: 21 },
     prev: { x: 14, y: 16, w: 16 },
-    action: { x: 50, y: 86.4 }
+    action: { x: 50, y: 86.4 },
+    zoomY: 81
   },
   room1c: {
     frames: [
@@ -227,7 +232,8 @@ const roomLayouts = {
     ],
     plaque: { x: 82.4, y: 73.2, w: 14.2 },
     prev: { x: 83, y: 17, w: 12 },
-    action: { x: 50, y: 85.8 }
+    action: { x: 50, y: 85.8 },
+    zoomY: 79.5
   },
   room5: {
     frames: [
@@ -238,7 +244,8 @@ const roomLayouts = {
     ],
     plaque: { x: 18.6, y: 74.2, w: 16.5 },
     prev: { x: 13, y: 16.4, w: 16 },
-    action: { x: 55, y: 95 }
+    action: { x: 55, y: 95 },
+    zoomY: 91
   },
   room6: {
     frames: [{ x: 49.8, y: 37.4, w: 30.2, h: 24.4 }],
@@ -612,6 +619,8 @@ const exitSignupFeedback = document.getElementById("exitSignupFeedback");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
 const lightboxOverlay = document.getElementById("lightboxOverlay");
 const lightboxCaption = document.getElementById("lightboxCaption");
 const mobileCard = document.getElementById("mobileCard");
@@ -690,12 +699,39 @@ if (menuIntro) {
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────
 
+// Galleria del lightbox: le foto della sala corrente, per navigare con le frecce
+let lightboxGallery = [];
+let lightboxIndex = -1;
+let lightboxRoom = null;
+let lightboxReturnFocus = null;
+
 function openLightbox(src, alt, caption) {
   lightboxImage.src = src;
   lightboxImage.alt = alt || "";
   lightboxCaption.textContent = caption || "";
+
+  const room = rooms[currentRoomIndex];
+  const photos = (!tourScreen.classList.contains("hidden") && room && room.artworks)
+    ? room.artworks.filter((a) => a.src)
+    : [];
+  lightboxIndex = photos.findIndex((a) => a.src === src);
+  lightboxGallery = lightboxIndex >= 0 ? photos : [];
+  lightboxRoom = lightboxIndex >= 0 ? room : null;
+  lightboxPrev.hidden = lightboxNext.hidden = lightboxGallery.length < 2;
+
+  lightboxReturnFocus = document.activeElement;
   lightbox.classList.remove("hidden");
   document.body.style.overflow = "hidden";
+  lightboxClose.focus();
+}
+
+function stepLightbox(delta) {
+  if (lightboxGallery.length < 2) return;
+  lightboxIndex = (lightboxIndex + delta + lightboxGallery.length) % lightboxGallery.length;
+  const a = lightboxGallery[lightboxIndex];
+  lightboxImage.src = a.src;
+  lightboxImage.alt = `${tl(lightboxRoom, "title")} — ${t("photoLabel", lightboxIndex + 1)}`;
+  lightboxCaption.textContent = tl(a, "caption") || "";
 }
 
 function closeLightbox() {
@@ -705,12 +741,18 @@ function closeLightbox() {
     lightbox.classList.remove("is-closing");
     lightboxImage.src = "";
     document.body.style.overflow = "";
+    if (lightboxReturnFocus && typeof lightboxReturnFocus.focus === "function") {
+      lightboxReturnFocus.focus();
+      lightboxReturnFocus = null;
+    }
   }, 260);
 }
 
 lightboxClose.addEventListener("click", closeLightbox);
 lightboxOverlay.addEventListener("click", closeLightbox);
 lightboxImage.addEventListener("click", closeLightbox);
+lightboxPrev.addEventListener("click", () => stepLightbox(-1));
+lightboxNext.addEventListener("click", () => stepLightbox(1));
 
 artworksContainer.addEventListener("click", (e) => {
   const artwork = e.target.closest("[data-lightbox-src]");
@@ -776,6 +818,8 @@ galleryRoom.addEventListener("touchend", (e) => {
 document.addEventListener("keydown", (e) => {
   if (!lightbox.classList.contains("hidden")) {
     if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") stepLightbox(-1);
+    if (e.key === "ArrowRight") stepLightbox(1);
     return;
   }
   if (tourScreen.classList.contains("hidden")) return;
@@ -914,9 +958,9 @@ function renderRoom(index) {
   galleryRoom.style.setProperty("--room-backdrop-position", "center center");
   galleryRoom.style.setProperty("--action-x", isCorridor ? "50%" : `${room.layout.action.x}%`);
   galleryRoom.style.setProperty("--action-y", isCorridor ? "88%" : `${room.layout.action.y}%`);
-  // Riga dei tasti "Foto N" ancorata sopra il tasto "Vai avanti"
+  // Riga dei tasti "Foto N": sopra "Vai avanti", oppure a quota zoomY dove il muro è affollato
   if (!isCorridor) {
-    galleryRoom.style.setProperty("--zoomrow-y", `${room.layout.action.y - 9}%`);
+    galleryRoom.style.setProperty("--zoomrow-y", `${room.layout.zoomY ?? (room.layout.action.y - 9)}%`);
   }
 
   if (!isCorridor) {
@@ -1191,6 +1235,8 @@ function applyLang() {
   // Lightbox
   lightbox.setAttribute("aria-label", t("enlargedPhoto"));
   lightboxClose.setAttribute("aria-label", t("closePhoto"));
+  lightboxPrev.setAttribute("aria-label", t("prevPhoto"));
+  lightboxNext.setAttribute("aria-label", t("nextPhoto"));
 
   // Re-render dynamic content
   renderRoomList();
@@ -1294,8 +1340,10 @@ roomCopyToggle.addEventListener("click", (e) => {
   roomCopyToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-roomCopyBox.addEventListener("click", () => {
+roomCopyBox.addEventListener("click", (e) => {
   if (!roomCopyBox.classList.contains("is-open")) return;
+  // Il testo espanso è scorrevole: un clic lì non deve chiudere il box
+  if (e.target.closest(".room-copy__details-text")) return;
   roomCopyBox.classList.remove("is-open");
   roomCopyDetails.hidden = true;
   roomCopyToggle.setAttribute("aria-expanded", "false");

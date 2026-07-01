@@ -52,6 +52,12 @@ a {
   display: none !important;
 }
 
+/* Navigazione da tastiera: focus sempre visibile, nel colore del testo dell'elemento */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 .page-grain {
   position: fixed;
   inset: 0;
@@ -686,7 +692,10 @@ a {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--muted);
+  color: rgba(46, 39, 33, 0.88);
+  text-shadow:
+    0 1px 3px rgba(255, 255, 255, 0.85),
+    0 0 14px rgba(255, 255, 255, 0.6);
 }
 
 .tour-progress__track {
@@ -919,6 +928,12 @@ a {
   margin: 0;
   padding-top: 7px;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
+  /* Il testo lungo scorre nel box invece di coprire le foto o uscire dallo schermo */
+  max-height: 32vh;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 210, 195, 0.4) transparent;
 }
 
 .room-copy--details.is-static .room-copy__hint,
@@ -1477,14 +1492,15 @@ a {
 .exit-signup__input {
   flex: 1;
   min-width: 0;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 14px;
   border-radius: 999px;
   border: 1px solid rgba(220, 200, 165, 0.4);
   background: rgba(20, 16, 11, 0.45);
   color: #f5eee0;
   font-family: "Manrope", sans-serif;
-  font-size: 0.82rem;
+  /* 16px: sotto questa soglia iOS fa zoom automatico sul focus */
+  font-size: 16px;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -1708,6 +1724,31 @@ a {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox__nav--prev { left: 18px; }
+.lightbox__nav--next { right: 18px; }
+
 @media (max-width: 640px) {
   .lightbox__content {
     flex-direction: column;
@@ -1724,8 +1765,20 @@ a {
   }
 
   .lightbox__caption {
-    width: 92vw;
+    width: 88vw;
+    text-align: center;
   }
+
+  .lightbox__nav {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+    width: 42px;
+    height: 42px;
+  }
+
+  .lightbox__nav--prev { left: 14px; }
+  .lightbox__nav--next { right: 14px; }
 }
 
 /* ── Mobile portrait: full-screen card (Opzione C) ──────────────────────── */
@@ -1738,6 +1791,12 @@ a {
   .museum-app:not(.museum-app--tour) {
     min-height: 100svh;
     padding: 14px 8px 14px;
+  }
+
+  /* Tasti lingua: area di tocco ≥40px */
+  .lang-btn {
+    padding: 10px 14px;
+    font-size: 0.68rem;
   }
 
   /* Menu: layout a pagine */
