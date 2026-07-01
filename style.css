@@ -1557,6 +1557,83 @@ a {
   color: rgba(244, 198, 180, 0.98);
 }
 
+.exit-guestbook {
+  margin: 0 0 0.9rem;
+  display: grid;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.exit-guestbook__text,
+.exit-guestbook__name {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(220, 200, 165, 0.4);
+  background: rgba(20, 16, 11, 0.45);
+  color: #f5eee0;
+  font-family: "Manrope", sans-serif;
+  /* 16px: sotto questa soglia iOS fa zoom automatico sul focus */
+  font-size: 16px;
+  resize: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.exit-guestbook__name {
+  border-radius: 999px;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.exit-guestbook__text::placeholder,
+.exit-guestbook__name::placeholder {
+  color: rgba(245, 238, 224, 0.5);
+}
+
+.exit-guestbook__text:focus,
+.exit-guestbook__name:focus {
+  outline: none;
+  border-color: #789e4e;
+  background: rgba(20, 16, 11, 0.62);
+}
+
+.exit-guestbook__row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.exit-guestbook__row .exit-guestbook__name {
+  flex: 1;
+  min-width: 0;
+}
+
+.exit-guestbook__send {
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid #789e4e;
+  background: #789e4e;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.exit-guestbook__send:hover {
+  background: #6a8f43;
+  transform: translateY(-1px);
+}
+
+.exit-guestbook__send:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
 .exit-overlay__actions {
   display: flex;
   flex-direction: column;
@@ -1813,16 +1890,27 @@ a {
 
   /* Card Benvenuto compatta: tutto deve stare a schermo */
   .menu-card--guide {
-    padding: 26px 22px 22px;
+    padding: 22px 20px 18px;
   }
 
-  .menu-card--guide .menu-card__headline {
-    font-size: clamp(2.1rem, 8.5vw, 2.7rem);
-    line-height: 1.04;
+  .logo__word {
+    font-size: clamp(1.9rem, 7vw, 2.3rem);
+  }
+
+  .logo__sub {
+    margin-top: 10px;
+  }
+
+  .logo__subtext {
+    font-size: 0.78rem;
   }
 
   .menu-card--guide .menu-card__divider {
-    margin: 14px 0 18px;
+    margin: 12px 0 14px;
+  }
+
+  .menu-intro {
+    margin-top: 14px;
   }
 
   .menu-card--guide .menu-card__intro {
@@ -1830,27 +1918,31 @@ a {
     line-height: 1.5;
   }
 
+  .menu-intro__toggle {
+    margin-top: 8px;
+  }
+
   .menu-card--guide .menu-guide {
-    margin-top: 18px;
-    padding-top: 16px;
+    margin-top: 13px;
+    padding-top: 12px;
   }
 
   .menu-card--guide .menu-screen__actions {
-    margin-top: 18px;
-    gap: 9px;
+    margin-top: 13px;
+    gap: 8px;
   }
 
   .menu-card--guide .menu-screen__actions .button {
-    min-height: 50px;
+    min-height: 48px;
   }
 
   .menu-card--guide .menu-card__meta {
-    margin-top: 14px;
-    padding-top: 14px;
+    margin-top: 10px;
+    padding-top: 10px;
   }
 
   .menu-card--guide .menu-meta-link {
-    min-height: 44px;
+    min-height: 42px;
     font-size: 0.8rem;
     padding: 0 16px;
   }

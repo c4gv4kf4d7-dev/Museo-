@@ -50,6 +50,12 @@ const STRINGS = {
     signupOk: "Grazie! Ti aggiorneremo presto.",
     signupErr: "Qualcosa è andato storto, riprova.",
     signupInvalid: "Inserisci un'email valida.",
+    guestbookToggle: "Lascia un pensiero",
+    guestbookPlaceholder: "Scrivi qui il tuo pensiero…",
+    guestbookName: "Il tuo nome (facoltativo)",
+    guestbookSend: "Invia",
+    guestbookOk: "Grazie! Il tuo pensiero è arrivato a destinazione.",
+    guestbookEmpty: "Scrivi un messaggio prima di inviare.",
     roomProgress: (pos, total) => `Stanza ${pos} di ${total}`,
     roomIndex: (hall) => `Sala ${hall}`,
     areaLabel: (n) => `Sala ${n}`,
@@ -98,6 +104,12 @@ const STRINGS = {
     signupOk: "Thank you! We'll keep you posted.",
     signupErr: "Something went wrong, please try again.",
     signupInvalid: "Please enter a valid email.",
+    guestbookToggle: "Leave a thought",
+    guestbookPlaceholder: "Write your thought here…",
+    guestbookName: "Your name (optional)",
+    guestbookSend: "Send",
+    guestbookOk: "Thank you! Your message has reached us.",
+    guestbookEmpty: "Please write a message before sending.",
     roomProgress: (pos, total) => `Room ${pos} of ${total}`,
     roomIndex: (hall) => `Room ${hall}`,
     areaLabel: (n) => `Area ${n}`,
@@ -616,6 +628,12 @@ const exitSignupLabel = document.getElementById("exitSignupLabel");
 const exitSignupEmail = document.getElementById("exitSignupEmail");
 const exitSignupSubmit = document.getElementById("exitSignupSubmit");
 const exitSignupFeedback = document.getElementById("exitSignupFeedback");
+const guestbookForm = document.getElementById("guestbookForm");
+const guestbookToggle = document.getElementById("guestbookToggle");
+const guestbookMessage = document.getElementById("guestbookMessage");
+const guestbookName = document.getElementById("guestbookName");
+const guestbookSend = document.getElementById("guestbookSend");
+const guestbookFeedback = document.getElementById("guestbookFeedback");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
@@ -960,6 +978,11 @@ function renderRoom(index) {
     exitOverlay.style.setProperty("--exit-bg-mobile", `url("${room.backdropMobile || room.backdrop}")`);
     exitShareFeedback.hidden = true;
     if (exitSignupFeedback) exitSignupFeedback.hidden = true;
+    if (guestbookForm) {
+      guestbookForm.hidden = true;
+      guestbookFeedback.hidden = true;
+      guestbookToggle.setAttribute("aria-expanded", "false");
+    }
     exitOverlay.classList.remove("hidden");
     updateProgress(index);
     return;
@@ -1246,6 +1269,14 @@ function applyLang() {
   if (exitSignupEmail) exitSignupEmail.setAttribute("aria-label", t("signupPlaceholder"));
   if (exitSignupSubmit) exitSignupSubmit.setAttribute("aria-label", t("signupSubmit"));
 
+  // Libro delle firme
+  if (guestbookToggle) {
+    guestbookToggle.querySelector("span").textContent = t("guestbookToggle");
+    guestbookMessage.setAttribute("placeholder", t("guestbookPlaceholder"));
+    guestbookName.setAttribute("placeholder", t("guestbookName"));
+    guestbookSend.textContent = t("guestbookSend");
+  }
+
   // Lightbox
   lightbox.setAttribute("aria-label", t("enlargedPhoto"));
   lightboxClose.setAttribute("aria-label", t("closePhoto"));
@@ -1337,6 +1368,57 @@ if (exitSignupForm) {
       showSignupFeedback(t("signupErr"), false);
     } finally {
       exitSignupSubmit.disabled = false;
+    }
+  });
+}
+
+// ── Libro delle firme (stesso endpoint Formspree, campo source distinto) ──────
+function showGuestbookFeedback(message, ok) {
+  guestbookFeedback.textContent = message;
+  guestbookFeedback.hidden = false;
+  guestbookFeedback.classList.toggle("is-error", !ok);
+  guestbookFeedback.classList.toggle("is-ok", ok);
+}
+
+if (guestbookToggle) {
+  guestbookToggle.addEventListener("click", () => {
+    const open = guestbookForm.hidden;
+    guestbookForm.hidden = !open;
+    guestbookToggle.setAttribute("aria-expanded", String(open));
+    if (open) guestbookMessage.focus();
+  });
+
+  guestbookForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const message = guestbookMessage.value.trim();
+    if (!message) {
+      showGuestbookFeedback(t("guestbookEmpty"), false);
+      guestbookMessage.focus();
+      return;
+    }
+    guestbookSend.disabled = true;
+    try {
+      const res = await fetch(NEWSLETTER_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message,
+          name: guestbookName.value.trim(),
+          lang: currentLang,
+          source: "guestbook",
+          _subject: "Nuova firma dal museo Terra Rossa"
+        })
+      });
+      if (res.ok) {
+        guestbookForm.reset();
+        showGuestbookFeedback(t("guestbookOk"), true);
+      } else {
+        showGuestbookFeedback(t("signupErr"), false);
+      }
+    } catch (err) {
+      showGuestbookFeedback(t("signupErr"), false);
+    } finally {
+      guestbookSend.disabled = false;
     }
   });
 }
