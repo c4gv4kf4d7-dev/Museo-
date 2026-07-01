@@ -56,6 +56,18 @@ const STRINGS = {
     guestbookSend: "Invia",
     guestbookOk: "Grazie! Il tuo pensiero è arrivato a destinazione.",
     guestbookEmpty: "Scrivi un messaggio prima di inviare.",
+    buyPrint: "Acquista la stampa",
+    printTitle: "Acquista una stampa",
+    printSize: "Dimensione",
+    printFrame: "Cornice",
+    printTotal: "Totale",
+    frameNone: "Senza cornice",
+    frameWood: "Legno naturale",
+    frameBlack: "Nera",
+    printCharity: "Spedizione inclusa · 10 € del prezzo sostengono i progetti in Malawi",
+    printNote: "Nessun pagamento adesso: ti contatteremo via email per confermare ordine, pagamento e spedizione.",
+    printSubmit: "Invia la richiesta",
+    printOk: "Richiesta inviata! Ti scriveremo entro pochi giorni.",
     roomProgress: (pos, total) => `Stanza ${pos} di ${total}`,
     roomIndex: (hall) => `Sala ${hall}`,
     areaLabel: (n) => `Sala ${n}`,
@@ -110,6 +122,18 @@ const STRINGS = {
     guestbookSend: "Send",
     guestbookOk: "Thank you! Your message has reached us.",
     guestbookEmpty: "Please write a message before sending.",
+    buyPrint: "Buy a print",
+    printTitle: "Buy a print",
+    printSize: "Size",
+    printFrame: "Frame",
+    printTotal: "Total",
+    frameNone: "No frame",
+    frameWood: "Natural wood",
+    frameBlack: "Black",
+    printCharity: "Shipping included · €10 of the price supports our projects in Malawi",
+    printNote: "No payment now: we will contact you by email to confirm the order, payment and shipping.",
+    printSubmit: "Send request",
+    printOk: "Request sent! We will write to you within a few days.",
     roomProgress: (pos, total) => `Room ${pos} of ${total}`,
     roomIndex: (hall) => `Room ${hall}`,
     areaLabel: (n) => `Area ${n}`,
@@ -143,8 +167,8 @@ const menuAreas = [
   {
     label: "Sala 1", label_en: "Area 1",
     title: "Tiyende Pamodzi", title_en: "Tiyende Pamodzi",
-    accent: "#d6a62d",
-    accentText: "#c28a17",
+    accent: "#c9962e",
+    accentText: "#a87c1d",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -163,8 +187,8 @@ const menuAreas = [
   {
     label: "Sala 2", label_en: "Area 2",
     title: "Istituto Saint John", title_en: "Saint John Institute",
-    accent: "#2e83cb",
-    accentText: "#2d81c7",
+    accent: "#a94b34",
+    accentText: "#a94b34",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
@@ -180,8 +204,8 @@ const menuAreas = [
   {
     label: "Sala 3", label_en: "Area 3",
     title: "Il Pozzo", title_en: "The Well",
-    accent: "#95ad29",
-    accentText: "#89a019",
+    accent: "#8a9a3a",
+    accentText: "#75842e",
     icon: `
       <svg viewBox="0 0 24 24" class="menu-icon-svg" aria-hidden="true">
         <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -639,6 +663,21 @@ const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 const lightboxPrev = document.getElementById("lightboxPrev");
 const lightboxNext = document.getElementById("lightboxNext");
+const lightboxBuy = document.getElementById("lightboxBuy");
+const lightboxBuyLabel = document.getElementById("lightboxBuyLabel");
+const printModal = document.getElementById("printModal");
+const printOverlay = document.getElementById("printOverlay");
+const printClose = document.getElementById("printClose");
+const printThumb = document.getElementById("printThumb");
+const printPhotoName = document.getElementById("printPhotoName");
+const printSizes = document.getElementById("printSizes");
+const printFrames = document.getElementById("printFrames");
+const printTotal = document.getElementById("printTotal");
+const printForm = document.getElementById("printForm");
+const printEmail = document.getElementById("printEmail");
+const printName = document.getElementById("printName");
+const printSubmit = document.getElementById("printSubmit");
+const printFeedback = document.getElementById("printFeedback");
 const lightboxOverlay = document.getElementById("lightboxOverlay");
 const lightboxCaption = document.getElementById("lightboxCaption");
 const mobileCard = document.getElementById("mobileCard");
@@ -736,6 +775,7 @@ function openLightbox(src, alt, caption) {
   lightboxGallery = lightboxIndex >= 0 ? photos : [];
   lightboxRoom = lightboxIndex >= 0 ? room : null;
   lightboxPrev.hidden = lightboxNext.hidden = lightboxGallery.length < 2;
+  lightboxBuy.hidden = !lightboxRoom;
 
   lightboxReturnFocus = document.activeElement;
   lightbox.classList.remove("hidden");
@@ -771,6 +811,124 @@ lightboxOverlay.addEventListener("click", closeLightbox);
 lightboxImage.addEventListener("click", closeLightbox);
 lightboxPrev.addEventListener("click", () => stepLightbox(-1));
 lightboxNext.addEventListener("click", () => stepLightbox(1));
+
+// ── Acquisto stampe ───────────────────────────────────────────────────────────
+// Prezzi tutto compreso (stampa + spedizione) con 10 € destinati ai progetti.
+const PRINT_SIZES = [
+  { id: "20x30", label: "20×30 cm", price: 25 },
+  { id: "30x45", label: "30×45 cm", price: 35 },
+  { id: "50x70", label: "50×70 cm", price: 50 }
+];
+const PRINT_FRAME_ADD = { "20x30": 18, "30x45": 25, "50x70": 35 };
+const PRINT_FRAMES = [
+  { id: "none", labelKey: "frameNone" },
+  { id: "wood", labelKey: "frameWood" },
+  { id: "black", labelKey: "frameBlack" }
+];
+
+let printSelSize = "20x30";
+let printSelFrame = "none";
+let printPhotoInfo = null;
+
+function printOrderTotal() {
+  const size = PRINT_SIZES.find((s) => s.id === printSelSize);
+  const frameAdd = printSelFrame === "none" ? 0 : PRINT_FRAME_ADD[printSelSize];
+  return size.price + frameAdd;
+}
+
+function renderPrintOptions() {
+  printSizes.innerHTML = PRINT_SIZES.map((s) => `
+    <button type="button" class="print-option${s.id === printSelSize ? " is-selected" : ""}" data-size="${s.id}">
+      ${s.label}<small>${s.price} €</small>
+    </button>`).join("");
+  printFrames.innerHTML = PRINT_FRAMES.map((f) => {
+    const add = f.id === "none" ? 0 : PRINT_FRAME_ADD[printSelSize];
+    return `
+    <button type="button" class="print-option${f.id === printSelFrame ? " is-selected" : ""}" data-frame="${f.id}">
+      ${t(f.labelKey)}<small>${add > 0 ? `+${add} €` : "—"}</small>
+    </button>`;
+  }).join("");
+  printTotal.textContent = `${printOrderTotal()} €`;
+
+  printSizes.querySelectorAll("[data-size]").forEach((btn) => {
+    btn.addEventListener("click", () => { printSelSize = btn.dataset.size; renderPrintOptions(); });
+  });
+  printFrames.querySelectorAll("[data-frame]").forEach((btn) => {
+    btn.addEventListener("click", () => { printSelFrame = btn.dataset.frame; renderPrintOptions(); });
+  });
+}
+
+function openPrintModal() {
+  const a = lightboxGallery[lightboxIndex];
+  if (!a || !lightboxRoom) return;
+  const name = `${tl(lightboxRoom, "title")} — ${t("photoLabel", lightboxIndex + 1)}`;
+  printPhotoInfo = { file: a.src.split("/").pop(), name };
+  printThumb.src = a.src.replace(/\.webp$/, "-thumb.webp");
+  printPhotoName.textContent = name;
+  printSelSize = "20x30";
+  printSelFrame = "none";
+  printFeedback.hidden = true;
+  printSubmit.disabled = false;
+  renderPrintOptions();
+  printModal.classList.remove("hidden");
+  printClose.focus();
+}
+
+function closePrintModal() {
+  printModal.classList.add("hidden");
+  if (!lightbox.classList.contains("hidden")) lightboxClose.focus();
+}
+
+function showPrintFeedback(message, ok) {
+  printFeedback.textContent = message;
+  printFeedback.hidden = false;
+  printFeedback.classList.toggle("is-error", !ok);
+  printFeedback.classList.toggle("is-ok", ok);
+}
+
+lightboxBuy.addEventListener("click", openPrintModal);
+printClose.addEventListener("click", closePrintModal);
+printOverlay.addEventListener("click", closePrintModal);
+
+printForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = printEmail.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showPrintFeedback(t("signupInvalid"), false);
+    printEmail.focus();
+    return;
+  }
+  printSubmit.disabled = true;
+  const frame = PRINT_FRAMES.find((f) => f.id === printSelFrame);
+  const size = PRINT_SIZES.find((s) => s.id === printSelSize);
+  try {
+    const res = await fetch(NEWSLETTER_ENDPOINT, {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        name: printName.value.trim(),
+        photo: printPhotoInfo ? `${printPhotoInfo.name} (${printPhotoInfo.file})` : "",
+        size: size.label,
+        frame: t(frame.labelKey),
+        total: `${printOrderTotal()} €`,
+        lang: currentLang,
+        source: "print-order",
+        _subject: "Nuovo ordine stampa — Terra Rossa"
+      })
+    });
+    if (res.ok) {
+      showPrintFeedback(t("printOk"), true);
+      printForm.reset();
+    } else {
+      showPrintFeedback(t("signupErr"), false);
+      printSubmit.disabled = false;
+    }
+  } catch (err) {
+    showPrintFeedback(t("signupErr"), false);
+    printSubmit.disabled = false;
+  }
+});
 
 artworksContainer.addEventListener("click", (e) => {
   const artwork = e.target.closest("[data-lightbox-src]");
@@ -834,6 +992,10 @@ galleryRoom.addEventListener("touchend", (e) => {
 // ── Keyboard navigation ───────────────────────────────────────────────────────
 
 document.addEventListener("keydown", (e) => {
+  if (!printModal.classList.contains("hidden")) {
+    if (e.key === "Escape") closePrintModal();
+    return;
+  }
   if (!lightbox.classList.contains("hidden")) {
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft") stepLightbox(-1);
@@ -1282,6 +1444,19 @@ function applyLang() {
   lightboxClose.setAttribute("aria-label", t("closePhoto"));
   lightboxPrev.setAttribute("aria-label", t("prevPhoto"));
   lightboxNext.setAttribute("aria-label", t("nextPhoto"));
+
+  // Acquisto stampe
+  lightboxBuyLabel.textContent = t("buyPrint");
+  document.getElementById("printTitle").textContent = t("printTitle");
+  document.getElementById("printSizeLabel").textContent = t("printSize");
+  document.getElementById("printFrameLabel").textContent = t("printFrame");
+  document.getElementById("printTotalLabel").textContent = t("printTotal");
+  document.getElementById("printCharity").textContent = t("printCharity");
+  document.getElementById("printNote").textContent = t("printNote");
+  printSubmit.textContent = t("printSubmit");
+  printEmail.setAttribute("placeholder", t("signupPlaceholder"));
+  printName.setAttribute("placeholder", t("guestbookName"));
+  renderPrintOptions();
 
   // Re-render dynamic content
   renderRoomList();

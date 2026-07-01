@@ -497,11 +497,11 @@ a {
 .menu-area__header {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
-  padding: 13px 2px;
+  padding: 14px 2px;
   border: 0;
-  border-bottom: 2px solid var(--area-accent, rgba(184, 145, 75, 0.72));
+  border-bottom: 1px solid color-mix(in srgb, var(--area-accent, #b8914b) 55%, transparent);
   background: transparent;
   cursor: pointer;
   width: 100%;
@@ -530,9 +530,9 @@ a {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--area-accent, #d0a443);
-  color: #fffdf8;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  border: 1.5px solid var(--area-accent, #b8914b);
+  background: rgba(255, 252, 246, 0.55);
+  color: var(--area-accent-text, #8a6a40);
 }
 
 .menu-area__meta {
@@ -542,19 +542,23 @@ a {
 
 .menu-area__label {
   margin: 0;
+  font-family: "Montserrat", "Manrope", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.68rem;
-  font-weight: 800;
+  letter-spacing: 0.2em;
+  font-size: 0.6rem;
+  font-weight: 600;
   color: var(--area-accent-text, #c28823);
 }
 
 .menu-area__title {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.55rem, 4.4vw, 2.1rem);
-  line-height: 1;
-  color: #15120f;
+  font-family: "Montserrat", "Manrope", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(0.98rem, 3vw, 1.22rem);
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1.25;
+  color: #3a2e23;
 }
 
 .room-list {
@@ -578,6 +582,7 @@ a {
   grid-template-columns: 1fr auto;
   gap: 10px;
   align-items: center;
+  text-align: left;
   padding: 12px 14px 12px 16px;
   border: 0;
   border-bottom: 1px solid rgba(179, 160, 137, 0.28);
@@ -600,13 +605,15 @@ a {
 }
 
 .room-list__title {
-  font-size: 0.76rem;
-  font-weight: 500;
-  color: #1b1714;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #2a211a;
 }
 
 .room-list__arrow {
-  color: #7e6646;
+  color: var(--area-accent-text, #7e6646);
   font-size: 0.94rem;
 }
 
@@ -1322,7 +1329,7 @@ a {
   }
 
   .menu-area__title {
-    font-size: clamp(1.72rem, 2.35vw, 2.3rem);
+    font-size: clamp(1.05rem, 1.25vw, 1.3rem);
   }
 
   .menu-screen__panel {
@@ -1825,6 +1832,263 @@ a {
 
 .lightbox__nav--prev { left: 18px; }
 .lightbox__nav--next { right: 18px; }
+
+.lightbox__buy {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(220, 200, 165, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(245, 238, 224, 0.95);
+  font-family: "Manrope", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.lightbox__buy:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(-50%) translateY(-1px);
+}
+
+/* ── Acquisto stampe ─────────────────────────────────────────────────────── */
+
+.print-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  animation: lightboxIn 220ms ease;
+}
+
+.print-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 6, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.print-modal__card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  max-height: 92svh;
+  overflow-y: auto;
+  padding: 26px 24px 22px;
+  border-radius: 22px;
+  background: #f6f1e8;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.print-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(120, 94, 63, 0.25);
+  border-radius: 50%;
+  background: transparent;
+  color: #5a4228;
+  cursor: pointer;
+}
+
+.print-modal__eyebrow {
+  margin: 0 0 2px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a94b34;
+}
+
+.print-modal__title {
+  margin: 0 0 14px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #241c15;
+}
+
+.print-modal__photo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid rgba(120, 94, 63, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 252, 246, 0.7);
+  margin-bottom: 14px;
+}
+
+.print-modal__thumb {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.print-modal__photoname {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3a2e23;
+}
+
+.print-modal__grouplabel {
+  margin: 12px 0 7px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a6a40;
+}
+
+.print-modal__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.print-option {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(120, 94, 63, 0.28);
+  background: rgba(255, 252, 246, 0.7);
+  color: #3a2e23;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.print-option small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.print-option.is-selected {
+  background: #a94b34;
+  border-color: #a94b34;
+  color: #f8f2e6;
+}
+
+.print-modal__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(120, 94, 63, 0.22);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5a4228;
+}
+
+.print-modal__total strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #a94b34;
+}
+
+.print-modal__charity {
+  margin: 4px 0 12px;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: #75842e;
+  font-weight: 600;
+}
+
+.print-modal__form {
+  display: grid;
+  gap: 8px;
+}
+
+.print-modal__input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 94, 63, 0.3);
+  background: #fffdf9;
+  color: #241c15;
+  font-family: "Manrope", sans-serif;
+  /* 16px: evita lo zoom automatico di iOS sul focus */
+  font-size: 16px;
+}
+
+.print-modal__input:focus {
+  outline: none;
+  border-color: #a94b34;
+}
+
+.print-modal__submit {
+  min-height: 48px;
+  border-radius: 999px;
+  border: 0;
+  background: #a94b34;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.print-modal__submit:hover {
+  background: #93402c;
+  transform: translateY(-1px);
+}
+
+.print-modal__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+.print-modal__note {
+  margin: 2px 0 0;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: #6f665d;
+}
+
+.print-modal__form .exit-signup__feedback {
+  text-shadow: none;
+}
+
+.print-modal__form .exit-signup__feedback.is-ok {
+  color: #5c7a1e;
+}
+
+.print-modal__form .exit-signup__feedback.is-error {
+  color: #a94b34;
+}
 
 @media (max-width: 640px) {
   .lightbox__content {

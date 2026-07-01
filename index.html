@@ -366,6 +366,43 @@
         <img class="lightbox__image" id="lightboxImage" src="" alt="" />
         <p class="lightbox__caption" id="lightboxCaption"></p>
       </div>
+      <button class="lightbox__buy" id="lightboxBuy" type="button" hidden>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="10" height="10"/>
+        </svg>
+        <span id="lightboxBuyLabel">Acquista la stampa</span>
+      </button>
+    </div>
+
+    <div class="print-modal hidden" id="printModal" role="dialog" aria-modal="true" aria-labelledby="printTitle">
+      <div class="print-modal__overlay" id="printOverlay"></div>
+      <div class="print-modal__card">
+        <button class="print-modal__close" id="printClose" type="button" aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <p class="print-modal__eyebrow">Terra Rossa</p>
+        <h2 class="print-modal__title" id="printTitle">Acquista una stampa</h2>
+        <div class="print-modal__photo">
+          <img class="print-modal__thumb" id="printThumb" src="" alt="" />
+          <p class="print-modal__photoname" id="printPhotoName"></p>
+        </div>
+        <p class="print-modal__grouplabel" id="printSizeLabel">Dimensione</p>
+        <div class="print-modal__options" id="printSizes"></div>
+        <p class="print-modal__grouplabel" id="printFrameLabel">Cornice</p>
+        <div class="print-modal__options" id="printFrames"></div>
+        <div class="print-modal__total">
+          <span id="printTotalLabel">Totale</span>
+          <strong id="printTotal">25 €</strong>
+        </div>
+        <p class="print-modal__charity" id="printCharity"></p>
+        <form class="print-modal__form" id="printForm" novalidate>
+          <input class="print-modal__input" id="printEmail" type="email" inputmode="email" autocomplete="email" placeholder="La tua email" required />
+          <input class="print-modal__input" id="printName" type="text" autocomplete="name" placeholder="Il tuo nome (facoltativo)" />
+          <button class="print-modal__submit" id="printSubmit" type="submit">Invia la richiesta</button>
+          <p class="print-modal__note" id="printNote"></p>
+          <p class="exit-signup__feedback" id="printFeedback" hidden></p>
+        </form>
+      </div>
     </div>
 
     <script src="./script.js"></script>
