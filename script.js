@@ -41,7 +41,7 @@ const STRINGS = {
     closePhoto: "Chiudi foto",
     enlargedPhoto: "Foto ingrandita",
     copyPrompt: "Copia il link del museo:",
-    shareText: "Un museo virtuale dedicato a tre anni di volontariato in Malawi.",
+    shareText: "Terra Rossa: un viaggio in Malawi tra volti, vita quotidiana e ricerca di futuro.",
     signupLabel: "Lascia la tua email per ricevere foto e video dai prossimi viaggi",
     signupPlaceholder: "La tua email",
     signupSubmit: "Iscriviti",
@@ -87,7 +87,7 @@ const STRINGS = {
     closePhoto: "Close photo",
     enlargedPhoto: "Enlarged photo",
     copyPrompt: "Copy the museum link:",
-    shareText: "A virtual museum dedicated to three years of volunteering in Malawi.",
+    shareText: "Terra Rossa: a journey through Malawi among faces, everyday life and the search for a future.",
     signupLabel: "Leave your email to receive photos and videos from our next trips",
     signupPlaceholder: "Your email",
     signupSubmit: "Subscribe",
@@ -1004,8 +1004,9 @@ function renderMobileCard(index, isCorridor) {
       const caption = tl(a, "caption");
       const captionAttr = caption ? ` data-lightbox-caption="${caption.replace(/"/g, "&quot;")}"` : "";
       const altText = `${tl(room, "title")} — ${t("photoLabel", i + 1)}`;
+      const thumb = a.src.replace(/\.webp$/, "-thumb.webp");
       return `<button class="artwork-card" data-lightbox-src="${a.src}" data-lightbox-alt="${altText}"${captionAttr} type="button">
-        <img src="${a.src}" alt="" loading="lazy">
+        <img src="${thumb}" alt="" loading="lazy">
         <span class="artwork-card__hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
           ${t("lookCloser")}
@@ -1218,7 +1219,7 @@ exitDonateButton.href = GOFUNDME_URL;
 exitMenuButton.addEventListener("click", backToMenu);
 exitShareButton.addEventListener("click", async () => {
   const shareData = {
-    title: "Museo Malawi",
+    title: "Terra Rossa — Museo Fotografico",
     text: t("shareText"),
     url: window.location.origin + window.location.pathname
   };

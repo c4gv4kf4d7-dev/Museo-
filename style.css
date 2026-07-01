@@ -1595,7 +1595,7 @@ a {
   color: rgba(220, 232, 188, 0.95);
 }
 
-@media (max-width: 700px) and (orientation: portrait) {
+@media (max-width: 940px) and (orientation: portrait) {
   .exit-overlay {
     background-image:
       linear-gradient(rgba(10, 7, 4, 0.4), rgba(10, 7, 4, 0.6)),
@@ -1865,6 +1865,13 @@ a {
     letter-spacing: 0.02em;
     cursor: pointer;
   }
+
+}
+
+/* ── Tour mobile/tablet portrait: card a schermo intero ───────────────────
+   Fino a 940px in verticale (include iPad/iPad mini in portrait): il render
+   3D del museo non regge queste proporzioni, si usa la card. */
+@media (max-width: 940px) and (orientation: portrait) {
 
   /* Nascondi il render museo desktop e la topbar progress */
   .museum-app--tour .gallery-room,
