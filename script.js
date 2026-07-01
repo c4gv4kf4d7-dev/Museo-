@@ -870,10 +870,24 @@ function updateProgress(index) {
 
 function splitRoomText(text) {
   const normalized = text.trim();
-  const sentenceMatch = normalized.match(/^(.+?[.!?])(?:\s|$)/s);
-  if (!sentenceMatch) return { summary: normalized, details: "" };
-  const summary = sentenceMatch[1].trim();
-  const details = normalized.slice(summary.length).trim();
+  // Accumula frasi finché il sommario non raggiunge una lunghezza minima:
+  // evita sommari monchi tipo «"Mzungu!» spezzati a metà citazione.
+  const MIN_SUMMARY = 35;
+  const MIN_DETAILS = 30;
+  const re = /(.+?[.!?…]["»”']?)(?:\s+|$)/gs;
+  let summary = "";
+  let cut = 0;
+  let m;
+  while (summary.length < MIN_SUMMARY && (m = re.exec(normalized))) {
+    summary = (summary ? summary + " " : "") + m[1].trim();
+    cut = re.lastIndex;
+  }
+  if (!summary) return { summary: normalized, details: "" };
+  const details = normalized.slice(cut).trim();
+  // Se il resto è troppo corto, non vale un "Leggi tutto": mostra tutto subito
+  if (details.length < MIN_DETAILS) {
+    return { summary: normalized, details: "" };
+  }
   return { summary, details };
 }
 
