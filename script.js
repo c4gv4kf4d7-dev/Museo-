@@ -51,6 +51,10 @@ const STRINGS = {
     signupErr: "Qualcosa è andato storto, riprova.",
     signupInvalid: "Inserisci un'email valida.",
     namePlaceholder: "Il tuo nome (facoltativo)",
+    guestbookPlaceholder: "Lascia un pensiero…",
+    guestbookSend: "Invia",
+    guestbookOk: "Grazie! Il tuo pensiero è arrivato a destinazione.",
+    guestbookEmpty: "Scrivi un messaggio prima di inviare.",
     buyPrint: "Acquista la stampa e sostieni il progetto",
     printTitle: "Acquista una stampa",
     printSize: "Dimensione",
@@ -112,6 +116,10 @@ const STRINGS = {
     signupErr: "Something went wrong, please try again.",
     signupInvalid: "Please enter a valid email.",
     namePlaceholder: "Your name (optional)",
+    guestbookPlaceholder: "Leave a thought…",
+    guestbookSend: "Send",
+    guestbookOk: "Thank you! Your message has reached us.",
+    guestbookEmpty: "Please write a message before sending.",
     buyPrint: "Buy a print and support the project",
     printTitle: "Buy a print",
     printSize: "Size",
@@ -642,6 +650,11 @@ const exitSignupLabel = document.getElementById("exitSignupLabel");
 const exitSignupEmail = document.getElementById("exitSignupEmail");
 const exitSignupSubmit = document.getElementById("exitSignupSubmit");
 const exitSignupFeedback = document.getElementById("exitSignupFeedback");
+const guestbookForm = document.getElementById("guestbookForm");
+const guestbookMessage = document.getElementById("guestbookMessage");
+const guestbookName = document.getElementById("guestbookName");
+const guestbookSend = document.getElementById("guestbookSend");
+const guestbookFeedback = document.getElementById("guestbookFeedback");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
@@ -1124,6 +1137,7 @@ function renderRoom(index) {
     exitOverlay.style.setProperty("--exit-bg-mobile", `url("${room.backdropMobile || room.backdrop}")`);
     exitShareFeedback.hidden = true;
     if (exitSignupFeedback) exitSignupFeedback.hidden = true;
+    if (guestbookFeedback) guestbookFeedback.hidden = true;
     exitOverlay.classList.remove("hidden");
     updateProgress(index);
     return;
@@ -1410,6 +1424,13 @@ function applyLang() {
   if (exitSignupEmail) exitSignupEmail.setAttribute("aria-label", t("signupPlaceholder"));
   if (exitSignupSubmit) exitSignupSubmit.setAttribute("aria-label", t("signupSubmit"));
 
+  // Libro delle firme
+  if (guestbookForm) {
+    guestbookMessage.setAttribute("placeholder", t("guestbookPlaceholder"));
+    guestbookName.setAttribute("placeholder", t("namePlaceholder"));
+    guestbookSend.textContent = t("guestbookSend");
+  }
+
   // Lightbox
   lightbox.setAttribute("aria-label", t("enlargedPhoto"));
   lightboxClose.setAttribute("aria-label", t("closePhoto"));
@@ -1514,6 +1535,50 @@ if (exitSignupForm) {
       showSignupFeedback(t("signupErr"), false);
     } finally {
       exitSignupSubmit.disabled = false;
+    }
+  });
+}
+
+// ── Libro delle firme (stesso endpoint Formspree, campo source distinto) ──────
+function showGuestbookFeedback(message, ok) {
+  guestbookFeedback.textContent = message;
+  guestbookFeedback.hidden = false;
+  guestbookFeedback.classList.toggle("is-error", !ok);
+  guestbookFeedback.classList.toggle("is-ok", ok);
+}
+
+if (guestbookForm) {
+  guestbookForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const message = guestbookMessage.value.trim();
+    if (!message) {
+      showGuestbookFeedback(t("guestbookEmpty"), false);
+      guestbookMessage.focus();
+      return;
+    }
+    guestbookSend.disabled = true;
+    try {
+      const res = await fetch(NEWSLETTER_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message,
+          name: guestbookName.value.trim(),
+          lang: currentLang,
+          source: "guestbook",
+          _subject: "Nuova firma dal museo Terra Rossa"
+        })
+      });
+      if (res.ok) {
+        guestbookForm.reset();
+        showGuestbookFeedback(t("guestbookOk"), true);
+      } else {
+        showGuestbookFeedback(t("signupErr"), false);
+      }
+    } catch (err) {
+      showGuestbookFeedback(t("signupErr"), false);
+    } finally {
+      guestbookSend.disabled = false;
     }
   });
 }

@@ -1564,6 +1564,83 @@ a {
   color: rgba(244, 198, 180, 0.98);
 }
 
+.exit-guestbook {
+  margin: 0 0 0.9rem;
+  display: grid;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.exit-guestbook__text,
+.exit-guestbook__name {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(220, 200, 165, 0.4);
+  background: rgba(20, 16, 11, 0.45);
+  color: #f5eee0;
+  font-family: "Manrope", sans-serif;
+  /* 16px: sotto questa soglia iOS fa zoom automatico sul focus */
+  font-size: 16px;
+  resize: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.exit-guestbook__name {
+  border-radius: 999px;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.exit-guestbook__text::placeholder,
+.exit-guestbook__name::placeholder {
+  color: rgba(245, 238, 224, 0.5);
+}
+
+.exit-guestbook__text:focus,
+.exit-guestbook__name:focus {
+  outline: none;
+  border-color: #789e4e;
+  background: rgba(20, 16, 11, 0.62);
+}
+
+.exit-guestbook__row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.exit-guestbook__row .exit-guestbook__name {
+  flex: 1;
+  min-width: 0;
+}
+
+.exit-guestbook__send {
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid #789e4e;
+  background: #789e4e;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.exit-guestbook__send:hover {
+  background: #6a8f43;
+  transform: translateY(-1px);
+}
+
+.exit-guestbook__send:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
 .exit-overlay__actions {
   display: flex;
   flex-direction: column;
