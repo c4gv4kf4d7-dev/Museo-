@@ -347,8 +347,8 @@ const rooms = [
         caption_en: "With the collected maize wrapped in the chitenje, the traditional Malawian cloth, mothers walk kilometres to return to their villages."
       }
     ],
-    text: "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla.",
-    text_en: "Being a community means caring for those who cannot make it on their own.\nIn Malawi, the Tiyende Pamodzi project chose not to look away: volunteers, families and village chiefs each do their part.\nBecause disability stops being invisible only when someone chooses to see it."
+    text: "Essere una comunità vuol dire prendersi cura di chi non riesce a farcela da solo.\nIn Malawi, il progetto Tyiende Pamodzi di Aleimar ha scelto di non voltarsi dall'altra parte: volontari, famiglie e capi villaggio fanno ciascuno la propria parte.\nPerché la disabilità smette di essere invisibile solo quando qualcuno sceglie di vederla.",
+    text_en: "Being a community means caring for those who cannot make it on their own.\nIn Malawi, Aleimar's Tiyende Pamodzi project chose not to look away: volunteers, families and village chiefs each do their part.\nBecause disability stops being invisible only when someone chooses to see it."
   },
   {
     hall: 1,
@@ -368,8 +368,8 @@ const rooms = [
         caption_en: "On the Tiyende Pamodzi pickup, alongside a small portion of the 400 bags of maize destined for 200 families in the Namwera district."
       }
     ],
-    text: "Insieme ai volontari di Tiyende Pamodzi abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte famiglie vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto.",
-    text_en: "Together with Tiyende Pamodzi volunteers, we delivered 400 bags of maize to 200 families in Namwera with disabled children.\nFor many families, it means being able to cook and eat consistently for the coming weeks.\nAll of this was made possible thanks to Italian donors who supported the project."
+    text: "Insieme ai volontari di Tiyende Pamodzi e Aleimar abbiamo consegnato 400 sacchi di mais a 200 famiglie di Namwera con bambini disabili.\nPer molte famiglie vuol dire poter cucinare e mangiare con continuità nelle prossime settimane.\nTutto questo è stato possibile grazie ai donatori italiani che hanno sostenuto il progetto.",
+    text_en: "Together with Tiyende Pamodzi and Aleimar volunteers, we delivered 400 bags of maize to 200 families in Namwera with disabled children.\nFor many families, it means being able to cook and eat consistently for the coming weeks.\nAll of this was made possible thanks to Italian donors who supported the project."
   },
   {
     hall: 1,
