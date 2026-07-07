@@ -21,6 +21,7 @@ const STRINGS = {
     startTour: "Inizia la visita guidata",
     showRooms: "Scegli una sala",
     helpProject: "Aiuta il progetto a continuare",
+    aleimarBtn: "Scopri Aleimar — aleimar.it",
     welcome: "Benvenuto",
     areasTitle: "Le aree e le sale",
     visitTime: "Tempo consigliato 10–15 minuti",
@@ -86,6 +87,7 @@ const STRINGS = {
     startTour: "Start the guided tour",
     showRooms: "Choose a room",
     helpProject: "Help the project continue",
+    aleimarBtn: "Discover Aleimar — aleimar.it",
     welcome: "Welcome",
     areasTitle: "Areas and rooms",
     visitTime: "Suggested time 10–15 minutes",
@@ -389,8 +391,8 @@ const rooms = [
         caption_en: "A young mother holds her child during the physiotherapist's visit, who reaches the village every month to follow up with children with disabilities."
       }
     ],
-    text: "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa.",
-    text_en: "In many Malawian villages, women bear the greatest burden: raising children with disabilities, often alone, without resources or support.\nTiyende Pamodzi works to ensure no family is left isolated, building a network of physiotherapy, food and constant presence.\nHere the community becomes an extended family, where helping each other is not the exception but a shared responsibility."
+    text: "In molti villaggi del Malawi sono le donne a sostenere il peso più grande: crescere figli con disabilità, spesso da sole, senza risorse e senza supporto.\nTiyende Pamodzi, il progetto di Aleimar, lavora perché nessuna famiglia resti isolata, creando una rete fatta di fisioterapia, cibo e presenza costante.\nQui la comunità diventa una famiglia allargata, dove aiutarsi non è un'eccezione ma una responsabilità condivisa.",
+    text_en: "In many Malawian villages, women bear the greatest burden: raising children with disabilities, often alone, without resources or support.\nTiyende Pamodzi, Aleimar's project, works to ensure no family is left isolated, building a network of physiotherapy, food and constant presence.\nHere the community becomes an extended family, where helping each other is not the exception but a shared responsibility."
   },
   {
     hall: 1,
@@ -410,8 +412,8 @@ const rooms = [
         caption_en: "The smiles of the children at Makanjira school, proud to show us their notebooks and happy to share a small piece of their day with us."
       }
     ],
-    text: "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza.",
-    text_en: "There are smiles you never forget.\nThose of a mother who, despite the hardship, continues to hold her son with pride.\nThose of children who run toward the volunteers' car, turning a simple arrival into a celebration.\nIn Namwera, even in the toughest difficulties, the community continues to choose closeness, mutual support and hope."
+    text: "Ci sono sorrisi che non si dimenticano.\nQuelli di una madre che, nonostante la fatica, continua a stringere suo figlio con orgoglio.\nQuelli dei bambini che corrono incontro alla macchina dei volontari di Aleimar, trasformando un semplice arrivo in una festa.\nA Namwera, anche nelle difficoltà più dure, la comunità continua a scegliere la vicinanza, il sostegno reciproco e la speranza.",
+    text_en: "There are smiles you never forget.\nThose of a mother who, despite the hardship, continues to hold her son with pride.\nThose of children who run toward the Aleimar volunteers' car, turning a simple arrival into a celebration.\nIn Namwera, even in the toughest difficulties, the community continues to choose closeness, mutual support and hope."
   },
   {
     corridor: true,
@@ -445,8 +447,8 @@ const rooms = [
         caption_en: "A little girl seeks comfort in Elisa's arms as she tries to get used to a day away from her mother. Children keep boarding at every stop and, within minutes, the bus will fill with voices, games and little passengers headed to school."
       }
     ],
-    text: "All'alba il pullman della Saint John percorre chilometri di strade sterrate per raccogliere i bambini dei villaggi.\nLa scuola, fondata da Padre Kimu, offre gratuitamente istruzione e almeno un pasto al giorno.\nSu un autobus da 70 posti viaggiano spesso fino a 200 bambini.\nOgni sedile, ogni corridoio, ogni angolo racconta una straordinaria voglia di imparare.",
-    text_en: "At dawn, the Saint John bus travels kilometres of dirt roads to collect village children.\nThe school, founded by Father Kimu, offers education and at least one meal a day, free of charge.\nOn a 70-seat bus, up to 200 children often travel together.\nEvery seat, every aisle, every corner tells of an extraordinary desire to learn."
+    text: "All'alba il pullman della Saint John percorre chilometri di strade sterrate per raccogliere i bambini dei villaggi.\nLa scuola, fondata da Padre Kimu e sostenuta anche grazie ad Aleimar, offre gratuitamente istruzione e almeno un pasto al giorno.\nSu un autobus da 70 posti viaggiano spesso fino a 200 bambini.\nOgni sedile, ogni corridoio, ogni angolo racconta una straordinaria voglia di imparare.",
+    text_en: "At dawn, the Saint John bus travels kilometres of dirt roads to collect village children.\nThe school, founded by Father Kimu and supported also thanks to Aleimar, offers education and at least one meal a day, free of charge.\nOn a 70-seat bus, up to 200 children often travel together.\nEvery seat, every aisle, every corner tells of an extraordinary desire to learn."
   },
   {
     hall: 2,
@@ -542,8 +544,8 @@ const rooms = [
         caption_en: "The celebration is over, but the true result is this. As the sky clears after the storm, the new well goes straight into use. Children and adults take turns at the pump, turning a just-inaugurated structure into a concrete resource for the entire community."
       }
     ],
-    text: "Per un villaggio che aveva sempre vissuto la fatica della ricerca dell'acqua, quel giorno accadde qualcosa di speciale. Mentre inauguravamo il nuovo pozzo costruito grazie alle donazioni raccolte in Italia, una pioggia torrenziale iniziò a cadere sul villaggio. Gli abitanti la accolsero come un dono del cielo. Noi ci unimmo a loro, ballando sotto l'acqua fino a sera.",
-    text_en: "For a village that had always known the hardship of finding water, something special happened that day. As we were inaugurating the new well built thanks to donations raised in Italy, torrential rain began to fall on the village. The villagers welcomed it as a gift from heaven. We joined them, dancing in the rain until evening."
+    text: "Per un villaggio che aveva sempre vissuto la fatica della ricerca dell'acqua, quel giorno accadde qualcosa di speciale. Mentre inauguravamo il nuovo pozzo costruito grazie alle donazioni raccolte in Italia con Aleimar, una pioggia torrenziale iniziò a cadere sul villaggio. Gli abitanti la accolsero come un dono del cielo. Noi ci unimmo a loro, ballando sotto l'acqua fino a sera.",
+    text_en: "For a village that had always known the hardship of finding water, something special happened that day. As we were inaugurating the new well built thanks to donations raised in Italy with Aleimar, torrential rain began to fall on the village. The villagers welcomed it as a gift from heaven. We joined them, dancing in the rain until evening."
   },
   {
     hall: 3,
@@ -1377,6 +1379,12 @@ function applyLang() {
 
   const donateSpan = menuDonateButton.querySelector("span:last-child");
   if (donateSpan) donateSpan.textContent = t("helpProject");
+
+  const menuAleimarBtn = document.getElementById("menuAleimarButton");
+  if (menuAleimarBtn) menuAleimarBtn.querySelector("span:last-child").textContent = t("aleimarBtn");
+
+  const exitAleimarBtn = document.getElementById("exitAleimarButton");
+  if (exitAleimarBtn) exitAleimarBtn.querySelector("span").textContent = t("aleimarBtn");
 
   const backGuideSpan = backToGuideButton ? backToGuideButton.querySelector("span") : null;
   if (backGuideSpan) backGuideSpan.textContent = t("welcome");

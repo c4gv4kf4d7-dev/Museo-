@@ -444,6 +444,18 @@ a {
   transition: transform 240ms ease, background 240ms ease, box-shadow 240ms ease;
 }
 
+.menu-meta-link--aleimar {
+  margin-top: 10px;
+  background: #d32f2f;
+  border-color: #d32f2f;
+  color: #ffffff;
+}
+
+.menu-meta-link--aleimar:hover {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
 .menu-meta-link:hover {
   transform: translateY(-1px);
   background: rgba(205, 227, 174, 0.92);
@@ -1681,6 +1693,17 @@ a {
 .exit-action--primary:hover {
   background: #6a8f43;
   border-color: #6a8f43;
+}
+
+.exit-action--aleimar {
+  background: #d32f2f;
+  border-color: #d32f2f;
+  color: #fff;
+}
+
+.exit-action--aleimar:hover {
+  background: #b71c1c;
+  border-color: #b71c1c;
 }
 
 .exit-action svg {
