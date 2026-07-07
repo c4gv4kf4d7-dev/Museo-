@@ -2162,10 +2162,10 @@ a {
 
 @media (max-width: 500px) and (orientation: portrait) {
 
-  /* App container: usa l'altezza del viewport visibile (no spazio morto sotto) */
+  /* App container: card a tutto schermo, niente doppia cornice */
   .museum-app:not(.museum-app--tour) {
     min-height: 100svh;
-    padding: 14px 8px 14px;
+    padding: 0;
   }
 
   /* Tasti lingua: area di tocco ≥40px */
@@ -2174,16 +2174,17 @@ a {
     font-size: 0.68rem;
   }
 
-  /* Menu: layout a pagine */
+  /* Menu: layout a pagine, a tutto schermo */
   .menu-screen {
     overflow: hidden;
-    border-radius: 26px;
+    border-radius: 0;
     min-height: 0;
-    height: calc(100svh - 28px);
-    padding: 14px 14px 12px;
-    gap: 10px;
+    height: 100svh;
+    padding: 0;
+    gap: 0;
     display: flex;
     flex-direction: column;
+    box-shadow: none;
   }
 
   /* Card Benvenuto compatta: tutto deve stare a schermo */
@@ -2255,7 +2256,7 @@ a {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin: 0 -14px;
+    margin: 0;
   }
 
   .menu-pages::-webkit-scrollbar { display: none; }
@@ -2269,7 +2270,18 @@ a {
     scroll-snap-stop: always;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    margin: 0 14px;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* A tutto schermo: rispetta notch e barra home di iPhone */
+  .menu-card--guide {
+    padding: calc(20px + env(safe-area-inset-top, 0px)) 20px calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .menu-card--areas {
+    padding: calc(24px + env(safe-area-inset-top, 0px)) 22px calc(20px + env(safe-area-inset-bottom, 0px));
   }
 
   .menu-card--areas .menu-areas {
