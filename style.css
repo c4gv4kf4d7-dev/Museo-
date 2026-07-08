@@ -219,6 +219,11 @@ a {
   background: rgba(118, 89, 56, 0.72);
 }
 
+/* Più respiro sopra il logo (non tocca lo spazio tra TERRA ROSSA e il sottotitolo) */
+.menu-card--guide .menu-card__divider {
+  margin-bottom: 34px;
+}
+
 .menu-card__headline {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
@@ -241,12 +246,18 @@ a {
 }
 
 .logo__word {
+  display: inline-flex;
+  /* Gap visivo netto ~0.4em tra le parole (il margin-right sotto ne "mangia" 0.16em) */
+  gap: 0.56em;
   font-size: clamp(1.7rem, 4.6vw, 2.6rem);
   font-weight: 600;
-  letter-spacing: 0.16em;
   line-height: 1.05;
-  white-space: nowrap;
-  text-indent: 0.16em;
+}
+
+.logo__word > span {
+  letter-spacing: 0.16em;
+  /* Rimuove lo spazio fantasma dopo l'ultima lettera: centraggio esatto dei glifi */
+  margin-right: -0.16em;
 }
 
 .logo__sub {
@@ -261,6 +272,8 @@ a {
   font-size: clamp(0.78rem, 1.7vw, 1.05rem);
   font-weight: 500;
   letter-spacing: 0.12em;
+  /* Rimuove lo spazio fantasma dopo l'ultima lettera: i due trattini restano equidistanti */
+  margin-right: -0.12em;
   white-space: nowrap;
 }
 
@@ -272,7 +285,7 @@ a {
 }
 
 .menu-intro {
-  margin-top: 22px;
+  margin-top: 28px;
 }
 
 .menu-card__intro {
@@ -2207,11 +2220,11 @@ a {
   }
 
   .menu-card--guide .menu-card__divider {
-    margin: 12px 0 14px;
+    margin: 12px 0 20px;
   }
 
   .menu-intro {
-    margin-top: 14px;
+    margin-top: 20px;
   }
 
   .menu-card--guide .menu-card__intro {
