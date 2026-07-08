@@ -236,14 +236,16 @@ a {
   color: #a94b34;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .logo__word {
-  font-size: clamp(2.6rem, 8vw, 4.3rem);
+  font-size: clamp(1.7rem, 4.6vw, 2.6rem);
   font-weight: 600;
   letter-spacing: 0.16em;
-  line-height: 1.02;
+  line-height: 1.05;
+  white-space: nowrap;
   text-indent: 0.16em;
 }
 
@@ -2193,7 +2195,7 @@ a {
   }
 
   .logo__word {
-    font-size: clamp(1.9rem, 7vw, 2.3rem);
+    font-size: clamp(1.35rem, 7.2vw, 1.75rem);
   }
 
   .logo__sub {
