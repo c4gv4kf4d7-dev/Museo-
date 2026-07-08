@@ -221,7 +221,7 @@ a {
 
 /* Più respiro sopra il logo (non tocca lo spazio tra TERRA ROSSA e il sottotitolo) */
 .menu-card--guide .menu-card__divider {
-  margin-bottom: 44px;
+  margin-bottom: 50px;
 }
 
 .menu-card__headline {
@@ -285,7 +285,7 @@ a {
 }
 
 .menu-intro {
-  margin-top: 38px;
+  margin-top: 44px;
 }
 
 .menu-card__intro {
@@ -2220,11 +2220,11 @@ a {
   }
 
   .menu-card--guide .menu-card__divider {
-    margin: 12px 0 26px;
+    margin: 12px 0 30px;
   }
 
   .menu-intro {
-    margin-top: 26px;
+    margin-top: 30px;
   }
 
   .menu-card--guide .menu-card__intro {
